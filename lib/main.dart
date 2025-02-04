@@ -21,8 +21,11 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Nagi El-Shershaby',
-          themeMode: ThemeMode.dark,
-          darkTheme: ThemeData(
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: const Color(0xff4F4F4F),
+              secondary: const Color(0xffFFFFFF),
+            ),
             useMaterial3: true,
           ),
           home: child,
@@ -180,7 +183,7 @@ class MyHomePage extends StatelessWidget {
                         ),
 
                         /// the project features in a dot list
-                        for(var feature in projects[index].features!.entries)
+                        for (var feature in projects[index].features!.entries)
                           Text(
                             "• ${feature.key}: ${feature.value}",
                             style: TextStyle(
@@ -241,10 +244,141 @@ class MyHomePage extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                /// the project images
+                Transform.rotate(
+                  angle: 0.4,
+                  child: Stack(clipBehavior: Clip.none,
+                    children: [
+                      // 1st column
+                      Positioned(
+                        right: 800.w,
+                        top: -360.h,
+                        child: Column(children: [
+                          screenshot('assets/images/ahadith/ahadith.jpg'),
+                          SizedBox(height: 20.h),
+                          screenshot('assets/images/ahadith/ahadith1.jpg'),
+                          SizedBox(height: 20.h),
+                          screenshot('assets/images/ahadith/ahadith2.jpg'),
+                        ]),
+                      ),
+                      // 2nd column
+                      Positioned(
+                        right: 560.w,
+                        top: -450.h,
+                        child: Column(children: [
+                          screenshot('assets/images/ahadith/ahadith3.jpg'),
+                          SizedBox(height: 20.h),
+                          screenshot('assets/images/ahadith/ahadith4.jpg'),
+                          SizedBox(height: 20.h),
+                          screenshot('assets/images/ahadith/ahadith5.jpg'),
+                        ]),
+                      ),
+                      // 3rd column
+                      Positioned(
+                        right: 320.w,
+                        top: -330.h,
+                        child: Column(children: [
+                          screenshot('assets/images/ahadith/ahadith6.jpg'),
+                          SizedBox(height: 20.h),
+                          screenshot('assets/images/ahadith/ahadith7.jpg'),
+                          SizedBox(height: 20.h),
+                          screenshot('assets/images/ahadith/ahadith8.jpg'),
+                        ]),
+                      ),
+                      // 4th column
+                      Positioned(
+                        right: 80.w,
+                        top: -400.h,
+                        child: Column(children: [
+                          screenshot('assets/images/ahadith/ahadith9.jpg'),
+                          SizedBox(height: 20.h),
+                          screenshot('assets/images/ahadith/ahadith10.jpg'),
+                          SizedBox(height: 20.h),
+                          screenshot('assets/images/ahadith/ahadith11.jpg'),
+                        ]),
+                      ),
+                      // 5th column
+                      Positioned(
+                        right: -160.w,
+                        top: -400.h,
+                        child: Column(children: [
+                          screenshot('assets/images/ahadith/ahadith12.jpg'),
+                          SizedBox(height: 20.h),
+                          screenshot('assets/images/ahadith/ahadith13.jpg'),
+                          SizedBox(height: 20.h),
+                          screenshot('assets/images/ahadith/ahadith12.jpg'),
+                        ]),
+                      ),
+                    ],
+                  ),
+                ),
+                /// the images
+                // Positioned(
+                //   right: 200.w,
+                //   top: 100.h,
+                //   // child: Transform.rotate(
+                //     // angle: 0.4,
+                //     child: SizedBox(
+                //       width: 800.w,
+                //       height: 800.h,
+                //       child: GridView(
+                //           // child: screenshot('assets/images/ahadith/ahadith.jpg')
+                //           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                //             crossAxisCount: 5,
+                //             crossAxisSpacing: 20,
+                //             mainAxisSpacing: 20,
+                //           ),
+                //           children: [
+                //             screenshot('assets/images/ahadith/ahadith.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith1.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith2.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith3.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith4.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith5.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith6.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith7.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith8.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith9.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith10.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith11.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith12.jpg'),
+                //             screenshot('assets/images/ahadith/ahadith13.jpg'),
+                //           ]
+                //       ),
+                //     ),
+                //   // ),
+                // ),
+                // 1st column
               ],
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget screenshot(String? imagePath) {
+    return Container(
+      width: 220.w,
+      height: 560.h,
+      decoration: BoxDecoration(
+        color: const Color(0xffFFFFFF),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        // boxShadow: const [
+        //   BoxShadow(
+        //     color: Colors.grey,
+        //     spreadRadius: 10,
+        //     blurRadius: 100,
+        //     offset: Offset(4, 4), // changes position of shadow
+        //   ),
+        // ],
+        image: (imagePath != null)? DecorationImage(
+          image: AssetImage(
+            imagePath,
+          ),
+          fit: BoxFit.cover,
+        ): null,
       ),
     );
   }
