@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:protofolio/data/project/project.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:protofolio/ui/pages/projects_page.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -25,7 +24,8 @@ class HomePage extends StatelessWidget {
                 height: MediaQuery.of(context).size.height,
               ),
             ),
-            /// the project name and links
+
+            /// the name and links
             Positioned(
               left: 200.w,
               top: 100.h,
@@ -80,8 +80,8 @@ class HomePage extends StatelessWidget {
                           IconButton(
                             icon: const Icon(Icons.code),
                             onPressed: () {
-                              launchUrl(
-                                  Uri.parse("https://github.com/nagiElshershaby"));
+                              launchUrl(Uri.parse(
+                                  "https://github.com/nagiElshershaby"));
                             },
                           ),
                         ],
@@ -92,16 +92,16 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
-            /// the project description & features
+            /// the About me & Education & Skills & Language
             Positioned(
               left: 207.w,
               top: 324.h,
               child: Container(
                 color: const Color(0xffFFFFFF),
                 width: 700.w,
-                height: 400.h,
-                child: ListView(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
+                // height: 500.h,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Passionate about creating meaningful digital experiences that simplify lives and solve real-world problems. As a Flutter developer, I focus on building efficient, user-friendly applications that blend functionality with intuitive design. Driven by a desire to continuously learn and innovate, I thrive in collaborative environments where I can contribute to impactful projects and grow alongside my team.",
@@ -114,6 +114,91 @@ class HomePage extends StatelessWidget {
                     ),
                     SizedBox(
                       height: 20.h,
+                    ),
+                    Text(
+                      "Education",
+                      style: TextStyle(
+                        color: const Color(0xff4F4F4F),
+                        fontSize: 26.sp,
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Text(
+                      "Bachelor of Computer Science | FCAI - Cairo University | Egypt",
+                      style: TextStyle(
+                        color: const Color(0xff4F4F4F),
+                        fontSize: 16.sp,
+                        fontFamily: 'Raleway',
+                        // fontWeight: FontWeight.w100,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 4.h,
+                    ),
+                    Text(
+                      "2020 - 2024",
+                      style: TextStyle(
+                        color: const Color(0xff4F4F4F),
+                        fontSize: 14.sp,
+                        fontFamily: 'Raleway',
+                        // fontWeight: FontWeight.w100,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Text(
+                      "Graduation Project",
+                      style: TextStyle(
+                        color: const Color(0xff4F4F4F),
+                        fontSize: 26.sp,
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Text(
+                      """• Built a Flask-based backend system for processing 
+    and visualizing complex environmental datasets (NetCDF).
+• Integrated Firebase for storage and database management.
+• Led the project team, managing tasks, communicating with supervisors, 
+    and ensuring timely delivery.""",
+                      style: TextStyle(
+                        color: const Color(0xff4F4F4F),
+                        fontSize: 16.sp,
+                        fontFamily: 'Raleway',
+                        // fontWeight: FontWeight.w100,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Text(
+                      "Languages",
+                      style: TextStyle(
+                        color: const Color(0xff4F4F4F),
+                        fontSize: 26.sp,
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Text(
+                      "Arabic, English",
+                      style: TextStyle(
+                        color: const Color(0xff4F4F4F),
+                        fontSize: 16.sp,
+                        fontFamily: 'Raleway',
+                        // fontWeight: FontWeight.w100,
+                      ),
                     ),
                   ],
                 ),
@@ -162,6 +247,140 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
+              ),
+            ),
+
+            /// the social media icons
+            Positioned(
+              right: 200.w,
+              bottom: 70.h,
+              child: Container(
+                color: const Color(0xffFFFFFF),
+                width: 100.w,
+                height: 107.h,
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.mail_outline),
+                        onPressed: () {
+                          launchUrl(
+                              Uri.parse("mailto:nagielshershaby@gmail.com"));
+                        },
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          launchUrl(Uri.parse(
+                              "https://eg.linkedin.com/in/nagi-el-shershaby-85660a231"));
+                        },
+                        child: Image.asset(
+                          'assets/images/icons/linkedin.png',
+                          width: 46.w,
+                          height: 46.h,
+                          cacheWidth: (220.w * 0.7)
+                              .toInt(), // Adjust this for optimal size
+                          cacheHeight: (560.h * 0.7).toInt(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
+            /// the Experience bar
+            Positioned(
+              left: 1000.w,
+              top: 410,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Experience",
+                    style: TextStyle(
+                      color: const Color(0xff4F4F4F),
+                      fontSize: 26.sp,
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
+                    "Flutter Developer | Tuwaiq",
+                    style: TextStyle(
+                      color: const Color(0xff4F4F4F),
+                      fontSize: 16.sp,
+                      fontFamily: 'Raleway',
+                      // fontWeight: FontWeight.w100,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  Text(
+                    "September 2024 - Present",
+                    style: TextStyle(
+                      color: const Color(0xff4F4F4F),
+                      fontSize: 14.sp,
+                      fontFamily: 'Raleway',
+                      // fontWeight: FontWeight.w100,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
+                    "Flutter instructor | Microsoft Student Partner",
+                    style: TextStyle(
+                      color: const Color(0xff4F4F4F),
+                      fontSize: 16.sp,
+                      fontFamily: 'Raleway',
+                      // fontWeight: FontWeight.w100,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  Text(
+                    "April 2023 - July 2023",
+                    style: TextStyle(
+                      color: const Color(0xff4F4F4F),
+                      fontSize: 14.sp,
+                      fontFamily: 'Raleway',
+                      // fontWeight: FontWeight.w100,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
+                    "Skills",
+                    style: TextStyle(
+                      color: const Color(0xff4F4F4F),
+                      fontSize: 26.sp,
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Text(
+                    """Flutter, Dart, Firebase, Git, GitHub, GitHub projects, Figma
+Provider, Bloc, Dio, Shared Preferences, Hive, REST API, JSON
+Caching, Unit test, localization 
+Clean architecture""",
+                    style: TextStyle(
+                      color: const Color(0xff4F4F4F),
+                      fontSize: 16.sp,
+                      fontFamily: 'Raleway',
+                      // fontWeight: FontWeight.w100,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
