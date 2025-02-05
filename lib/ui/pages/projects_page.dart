@@ -4,42 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:protofolio/ui/pages/home_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(1920, 1080),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      // Use builder only if you need to use library outside ScreenUtilInit context
-      builder: (_, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Nagi El-Shershaby',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSwatch().copyWith(
-              primary: const Color(0xff4F4F4F),
-              secondary: const Color(0xffFFFFFF),
-            ),
-            useMaterial3: true,
-          ),
-          home: child,
-        );
-      },
-      child: const HomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class ProjectsPage extends StatelessWidget {
+  const ProjectsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -309,10 +275,20 @@ class MyHomePage extends StatelessWidget {
                               angle: 3.14159, // 180 degrees in radians
                               child: GestureDetector(
                                 onTap: () {
-                                  pageController.previousPage(
-                                    duration: const Duration(milliseconds: 500),
-                                    curve: Curves.easeInOut,
-                                  );
+                                  if (index == 0) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const HomePage(),
+                                      ),
+                                    );
+                                  } else {
+                                    pageController.previousPage(
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.easeInOut,
+                                    );
+                                  }
                                 },
                                 child: Image.asset(
                                   'assets/images/icons/Vector.png',
