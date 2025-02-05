@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:protofolio/data/project/project.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:protofolio/ui/pages/home_page.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +12,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      designSize: const Size(1920, 1080),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      // Use builder only if you need to use library outside ScreenUtilInit context
+      builder: (_, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Nagi El-Shershaby',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: const Color(0xff4F4F4F),
+              secondary: const Color(0xffFFFFFF),
+            ),
+            useMaterial3: true,
+          ),
+          home: child,
+        );
+      },
+      child: const HomePage(),
     return ScreenUtilInit(
       designSize: const Size(1920, 1080),
       minTextAdapt: true,
@@ -353,107 +371,6 @@ class MyHomePage extends StatelessWidget {
             ),
           );
         },
-      ),
-    );
-  }
-
-  Widget screenshot({String? imagePath}) {
-    return Container(
-      width: 220.w,
-      height: 560.h,
-      decoration: BoxDecoration(
-        color: const Color(0xffFFFFFF),
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
-        boxShadow: imagePath != null
-            ? const [
-                BoxShadow(
-                  color: Colors.grey,
-                  spreadRadius: 4,
-                  blurRadius: 4,
-                  offset: Offset(4, 4), // changes position of shadow
-                ),
-              ]
-            : null,
-        image: (imagePath != null)
-            ? DecorationImage(
-                image: AssetImage(
-                  imagePath,
-                ),
-                filterQuality: FilterQuality.low,
-                fit: BoxFit.fill,
-              )
-            : null,
-      ),
-    );
-  }
-
-  Widget scatteredImages(List<String?> images) {
-    return Transform.rotate(
-      angle: 0.4,
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          // 1st column
-          Positioned(
-            right: 800.w,
-            top: -360.h,
-            child: Column(children: [
-              screenshot(imagePath: images[0]),
-              SizedBox(height: 20.h),
-              screenshot(imagePath: images[1]),
-              SizedBox(height: 20.h),
-              screenshot(imagePath: images[2]),
-            ]),
-          ),
-          // 2nd column
-          Positioned(
-            right: 560.w,
-            top: -450.h,
-            child: Column(children: [
-              screenshot(imagePath: images[3]),
-              SizedBox(height: 20.h),
-              screenshot(imagePath: images[4]),
-              SizedBox(height: 20.h),
-              screenshot(imagePath: images[5]),
-            ]),
-          ),
-          // 3rd column
-          Positioned(
-            right: 320.w,
-            top: -330.h,
-            child: Column(children: [
-              screenshot(imagePath: images[6]),
-              SizedBox(height: 20.h),
-              screenshot(imagePath: images[7]),
-              SizedBox(height: 20.h),
-              screenshot(imagePath: images[8]),
-            ]),
-          ),
-          // 4th column
-          Positioned(
-            right: 80.w,
-            top: -400.h,
-            child: Column(children: [
-              screenshot(imagePath: images[9]),
-              SizedBox(height: 20.h),
-              screenshot(imagePath: images[10]),
-              SizedBox(height: 20.h),
-              screenshot(imagePath: images[11]),
-            ]),
-          ),
-          // 5th column
-          Positioned(
-            right: -160.w,
-            top: -400.h,
-            child: Column(children: [
-              screenshot(imagePath: images[12]),
-              SizedBox(height: 20.h),
-              screenshot(imagePath: images[13]),
-              SizedBox(height: 20.h),
-              screenshot(imagePath: images[14]),
-            ]),
-          ),
-        ],
       ),
     );
   }
