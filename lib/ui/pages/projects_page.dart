@@ -13,7 +13,7 @@ class ProjectsPage extends StatelessWidget {
       Project(
         name: 'Ahadith',
         description:
-            'The startup company has built a gadget for vehicles by which to remotely track and control the vehicle.',
+            'an Android application that provides a comprehensive collection of Prophetic hadiths for users looking for guidance and a deeper understanding of Islamic teachings. Hadiths Sustained by HadeethEnc.com API, the app offers a wide range of diverse categories, each category filled with deep conversations.',
         imagesUrls: [
           'assets/images/ahadith/ahadith.jpg',
           'assets/images/ahadith/ahadith1.jpg',
@@ -36,15 +36,23 @@ class ProjectsPage extends StatelessWidget {
             'https://play.google.com/store/apps/details?id=com.prof_nagi.ahadith',
         github: 'https://github.com/nagiElshershaby/Ahadith',
         features: {
-          'Feature 1':
-              'Designing the user interface of the app (In two versions of admin and user)',
-          'Feature 2':
-              'Designing the user interface of the web app (In two versions of admin and user)',
-          'Feature 3': 'Designing the user interface of the gadget',
-          'Feature 4': 'Designing the user interface of the gadget\'s app',
+          'Bloc': 'State management for complex tasks',
+          'Dio': 'HTTP client for making API calls to HadeethEnc.com',
+          'flutter_offline': 'Check internet connection',
+          'flutter_screenutil': 'Responsive UI',
+          'provider': 'used it for state management along side the Bloc in the Favorites',
+          'hive': 'Local database for storing favorites, and whole collections of Ahadith',
+          'google_fonts': 'Custom fonts for the app',
+          'screenshot': 'Taking screenshots of the app and cutting it to share it',
+          'share_plus': 'Sharing the app and the Ahadith with friends',
+          'path_provider': 'Getting the path of the screenshots',
+          'hijri': 'Converting Gregorian dates to Hijri dates',
+          'flutter_native_splash': 'Custom splash screen',
+          'flutter_native_timezone_updated_gradle': 'Getting the device timezone',
+          'flutter_local_notifications': 'Local notifications for daily reminders',
+          'flutter_launcher_icons': 'Custom app icons',
         },
-        iconUrl: 'https://via.placeholder.com/150',
-        backgroundUrl: 'assets/bg/bg.jpg',
+        iconUrl: 'https://play-lh.googleusercontent.com/u-GuFuhZtA1T2Gvsto2H5ahn4g6t2zCGrUBeb3Gs3sFWIbuRqmDPv_j3Y9tMeCPPqw=w240-h480-rw',
       ),
       Project(
         name: "أذكار",
@@ -226,12 +234,12 @@ class ProjectsPage extends StatelessWidget {
                     child: Container(
                       color: const Color(0xffFFFFFF),
                       width: 700.w,
-                      height: 400.h,
+                      height: 600.h,
                       child: ListView(
                         // crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "an Android application that provides a comprehensive collection of Prophetic hadiths for users looking for guidance and a deeper understanding of Islamic teachings. Hadiths Sustained by HadeethEnc.com API, the app offers a wide range of diverse categories, each category filled with deep conversations.",
+                            projects[index].description!,
                             style: TextStyle(
                               color: const Color(0xff4F4F4F),
                               fontSize: 16.sp,
@@ -245,13 +253,36 @@ class ProjectsPage extends StatelessWidget {
 
                           /// the project features in a dot list
                           for (var feature in projects[index].features!.entries)
-                            Text(
-                              "• ${feature.key}: ${feature.value}",
-                              style: TextStyle(
-                                color: const Color(0xff4F4F4F),
-                                fontSize: 14.sp,
-                                fontFamily: 'Raleway',
-                                // fontWeight: FontWeight.w100,
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: '• ',
+                                    style: TextStyle(
+                                      color: const Color(0xff4F4F4F),
+                                      fontSize: 16.sp,
+                                      fontFamily: 'Raleway',
+                                      fontWeight: FontWeight.w100,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: '${feature.key}: ',
+                                    style: TextStyle(
+                                      color: const Color(0xff4F4F4F),
+                                      fontSize: 16.sp,
+                                      fontFamily: 'Raleway',
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: feature.value,
+                                    style: TextStyle(
+                                      color: const Color(0xff4F4F4F),
+                                      fontSize: 16.sp,
+                                      fontFamily: 'Raleway',
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                         ],
