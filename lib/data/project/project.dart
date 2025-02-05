@@ -3,7 +3,7 @@ class Project {
   String? description;
   String? iconUrl;
   String? backgroundUrl;
-  List<String>? imagesUrls;
+  List<String?>? imagesUrls;
   String? googlePlay;
   String? appStore;
   String? github;
