@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:protofolio/ui/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,42 +12,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      themeMode: ThemeMode.dark,
-      darkTheme: ThemeData.dark(
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        centerTitle: false,
-        title: const Text('Nagi El-Shershaby'),
-      ),
-      body: PageView.builder(
-        itemCount: 3,
-        scrollDirection: Axis.vertical,
-        itemBuilder: (context, index) {
-          return Container(
-            color: index.isEven ? Colors.black : Colors.black45,
-            width: double.infinity,
-            height: double.infinity,
-            child: Center(
-              child: Text('Page $index'),
+    return ScreenUtilInit(
+      designSize: const Size(1920, 1080),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      // Use builder only if you need to use library outside ScreenUtilInit context
+      builder: (_, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Nagi El-Shershaby',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: const Color(0xff4F4F4F),
+              secondary: const Color(0xffFFFFFF),
             ),
-          );
-        },
-      ),
+            useMaterial3: true,
+          ),
+          home: child,
+        );
+      },
+      child: const HomePage(),
     );
   }
 }
