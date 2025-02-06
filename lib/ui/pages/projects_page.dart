@@ -290,6 +290,9 @@ class ProjectsPage extends StatelessWidget {
                     ),
                   ),
 
+                  /// the project images
+                  scatteredImages(projects[index].imagesUrls!),
+
                   /// the navigation arrows
                   Positioned(
                     left: 200.w,
@@ -316,7 +319,7 @@ class ProjectsPage extends StatelessWidget {
                                   } else {
                                     pageController.previousPage(
                                       duration:
-                                          const Duration(milliseconds: 500),
+                                      const Duration(milliseconds: 500),
                                       curve: Curves.easeInOut,
                                     );
                                   }
@@ -352,9 +355,6 @@ class ProjectsPage extends StatelessWidget {
                       ),
                     ),
                   ),
-
-                  /// the project images
-                  scatteredImages(projects[index].imagesUrls!),
                 ],
               ),
             ),
