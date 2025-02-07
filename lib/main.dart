@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:protofolio/ui/draft.dart';
 import 'package:protofolio/ui/pages/home_page.dart';
+import 'package:protofolio/ui/pages/projects_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +21,9 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      // home: const HomePage(),
+      home: const ProjectsPage(),
+      // home: const Draft(),
     );
   }
 }

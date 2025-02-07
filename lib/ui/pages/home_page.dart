@@ -77,15 +77,24 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ),
                                 const SizedBox(
-                                  width: 2,
+                                  width: 20,
                                 ),
-                                IconButton(
-                                  icon: const Icon(
-                                      Icons.play_arrow_outlined),
-                                  onPressed: () {
+                                GestureDetector(
+                                  onTap: () {
                                     launchUrl(Uri.parse(
                                         "https://play.google.com/store/apps/developer?id=Prof.+Nagi"));
                                   },
+                                  child: Image.asset(
+                                    'assets/images/icons/google-play.png',
+                                    width: 28,
+                                    height: 28,
+                                    cacheWidth: (225 * 0.7)
+                                        .toInt(), // Adjust this for optimal size
+                                    cacheHeight: (225 * 0.7).toInt(),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 10,
                                 ),
                                 IconButton(
                                   icon: const Icon(Icons.code),
@@ -170,11 +179,7 @@ class HomePage extends StatelessWidget {
                               height: 10,
                             ),
                             Text(
-                              """• Built a Flask-based backend system for processing 
-            and visualizing complex environmental datasets (NetCDF).
-        • Integrated Firebase for storage and database management.
-        • Led the project team, managing tasks, communicating with supervisors, 
-            and ensuring timely delivery.""",
+                              """• Built a Flask-based backend system for processing \n   and visualizing complex environmental datasets (NetCDF).\n• Integrated Firebase for storage and database management.\n• Led the project team, managing tasks, communicating with supervisors, \n    and ensuring timely delivery.""",
                               style: TextStyle(
                                 color: Color(0xff4F4F4F),
                                 fontSize: 16,
@@ -344,10 +349,7 @@ class HomePage extends StatelessWidget {
                       height: 10,
                     ),
                     const Text(
-                      """Flutter, Dart, Firebase, Git, GitHub, GitHub projects, Figma
-                Provider, Bloc, Dio, Shared Preferences, Hive, REST API, JSON
-                Caching, Unit test, localization 
-                Clean architecture""",
+                      "Flutter, Dart, Firebase, Git, GitHub, GitHub projects, Figma\nProvider, Bloc, Dio, Shared Preferences, Hive, REST API, JSON\nCaching, Unit test, localization \nClean architecture",
                       style: TextStyle(
                         color: Color(0xff4F4F4F),
                         fontSize: 16,
