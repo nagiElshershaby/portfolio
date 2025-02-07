@@ -32,6 +32,7 @@ class ProjectsPage extends StatelessWidget {
           null,
           null
         ],
+        backgroundUrl: 'assets/images/ahadith/ahadith_bg.png',
         googlePlay:
             'https://play.google.com/store/apps/details?id=com.prof_nagi.ahadith',
         github: 'https://github.com/nagiElshershaby/Ahadith',
@@ -40,19 +41,25 @@ class ProjectsPage extends StatelessWidget {
           'Dio': 'HTTP client for making API calls to HadeethEnc.com',
           'flutter_offline': 'Check internet connection',
           'flutter_screenutil': 'Responsive UI',
-          'provider': 'used it for state management along side the Bloc in the Favorites',
-          'hive': 'Local database for storing favorites, and whole collections of Ahadith',
+          'provider':
+              'used it for state management along side the Bloc in the Favorites',
+          'hive':
+              'Local database for storing favorites, and whole collections of Ahadith',
           'google_fonts': 'Custom fonts for the app',
-          'screenshot': 'Taking screenshots of the app and cutting it to share it',
+          'screenshot':
+              'Taking screenshots of the app and cutting it to share it',
           'share_plus': 'Sharing the app and the Ahadith with friends',
           'path_provider': 'Getting the path of the screenshots',
           'hijri': 'Converting Gregorian dates to Hijri dates',
           'flutter_native_splash': 'Custom splash screen',
-          'flutter_native_timezone_updated_gradle': 'Getting the device timezone',
-          'flutter_local_notifications': 'Local notifications for daily reminders',
+          'flutter_native_timezone_updated_gradle':
+              'Getting the device timezone',
+          'flutter_local_notifications':
+              'Local notifications for daily reminders',
           'flutter_launcher_icons': 'Custom app icons',
         },
-        iconUrl: 'https://play-lh.googleusercontent.com/u-GuFuhZtA1T2Gvsto2H5ahn4g6t2zCGrUBeb3Gs3sFWIbuRqmDPv_j3Y9tMeCPPqw=w240-h480-rw',
+        iconUrl:
+            'https://play-lh.googleusercontent.com/u-GuFuhZtA1T2Gvsto2H5ahn4g6t2zCGrUBeb3Gs3sFWIbuRqmDPv_j3Y9tMeCPPqw=w240-h480-rw',
       ),
       Project(
         name: "أذكار",
@@ -85,7 +92,6 @@ class ProjectsPage extends StatelessWidget {
           'Feature 2': 'Description 2',
         },
         iconUrl: 'https://via.placeholder.com/150',
-        backgroundUrl: 'assets/bg/leaf_bg.jpg',
       ),
       Project(
         name: 'Project 3',
@@ -117,7 +123,6 @@ class ProjectsPage extends StatelessWidget {
           'Feature 2': 'Description 2',
         },
         iconUrl: 'https://via.placeholder.com/150',
-        backgroundUrl: 'assets/bg/bage_bg.jpg',
       ),
     ];
     PageController pageController = PageController();
@@ -133,6 +138,23 @@ class ProjectsPage extends StatelessWidget {
               color: Colors.white,
               child: Stack(
                 children: [
+                  /// the background image
+                  if (projects[index].backgroundUrl != null)
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      child: Container(
+                        width: 1920.w,
+                        height: 1080.h,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(projects[index].backgroundUrl!),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+
                   /// the black line
                   Positioned(
                     left: 200.w,
@@ -145,7 +167,7 @@ class ProjectsPage extends StatelessWidget {
 
                   /// the index number
                   Positioned(
-                    left: 200.w,
+                    left: 199.w,
                     top: 100.h,
                     child: Container(
                       color: const Color(0xffFFFFFF),
@@ -169,7 +191,7 @@ class ProjectsPage extends StatelessWidget {
 
                   /// the project name and links
                   Positioned(
-                    left: 200.w,
+                    left: 199.w,
                     top: 200.h,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -231,8 +253,8 @@ class ProjectsPage extends StatelessWidget {
                   Positioned(
                     left: 207.w,
                     top: 304.h,
-                    child: Container(
-                      color: const Color(0xffFFFFFF),
+                    child: SizedBox(
+                      // color: const Color(0xffFFFFFF),
                       width: 700.w,
                       height: 600.h,
                       child: ListView(
@@ -291,20 +313,25 @@ class ProjectsPage extends StatelessWidget {
                   ),
 
                   /// the project images
-                  scatteredImages(projects[index].imagesUrls!),
+                  // scatteredImages(projects[index].imagesUrls!),
 
                   /// the navigation arrows
                   Positioned(
-                    left: 200.w,
+                    left: 199.w,
                     bottom: 70.h,
-                    child: Container(
-                      color: const Color(0xffFFFFFF),
-                      width: 325.w,
+                    child: SizedBox(
+                      // color: const Color(0xffFFFFFF),
+                      width: 275.w,
                       height: 107.h,
                       child: Center(
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
+                            Container(
+                              color: const Color(0xffFFFFFF),
+                              height: 107.h,
+                              width: 5.w,
+                            ),
                             Transform.rotate(
                               angle: 3.14159, // 180 degrees in radians
                               child: GestureDetector(
@@ -319,7 +346,7 @@ class ProjectsPage extends StatelessWidget {
                                   } else {
                                     pageController.previousPage(
                                       duration:
-                                      const Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       curve: Curves.easeInOut,
                                     );
                                   }
@@ -334,6 +361,7 @@ class ProjectsPage extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            Expanded(child: Container()),
                             GestureDetector(
                               onTap: () {
                                 pageController.nextPage(
@@ -367,7 +395,7 @@ class ProjectsPage extends StatelessWidget {
   Widget screenshot({String? imagePath}) {
     return Container(
       width: 220.w,
-      height: 560.h,
+      height: 490.h,
       decoration: BoxDecoration(
         color: const Color(0xffFFFFFF),
         borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -453,6 +481,7 @@ class ProjectsPage extends StatelessWidget {
             right: -160.w,
             top: -400.h,
             child: Column(children: [
+              SizedBox(height: 400.h),
               screenshot(imagePath: images[12]),
               SizedBox(height: 20.h),
               screenshot(imagePath: images[13]),
