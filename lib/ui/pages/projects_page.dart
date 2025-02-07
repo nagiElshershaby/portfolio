@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:protofolio/data/project/project.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:protofolio/ui/pages/home_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -144,12 +143,12 @@ class ProjectsPage extends StatelessWidget {
                       left: 0,
                       top: 0,
                       child: Container(
-                        width: 1920.w,
-                        height: 1080.h,
+                        width: 1920,
+                        height: 1080,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage(projects[index].backgroundUrl!),
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fill,
                           ),
                         ),
                       ),
@@ -157,29 +156,29 @@ class ProjectsPage extends StatelessWidget {
 
                   /// the black line
                   Positioned(
-                    left: 200.w,
+                    left: 200,
                     child: Container(
                       color: const Color(0xff4F4F4F),
-                      width: 3.w,
+                      width: 3,
                       height: MediaQuery.of(context).size.height,
                     ),
                   ),
 
                   /// the index number
                   Positioned(
-                    left: 199.w,
-                    top: 100.h,
+                    left: 199,
+                    top: 100,
                     child: Container(
                       color: const Color(0xffFFFFFF),
-                      width: 50.w,
-                      height: 100.h,
+                      width: 50,
+                      height: 100,
                       child: Row(
                         children: [
                           Text(
                             "0${index + 1}",
-                            style: TextStyle(
-                              color: const Color(0xff4F4F4F),
-                              fontSize: 32.sp,
+                            style: const TextStyle(
+                              color: Color(0xff4F4F4F),
+                              fontSize: 32,
                               fontFamily: 'Raleway',
                               fontWeight: FontWeight.w100,
                             ),
@@ -191,8 +190,8 @@ class ProjectsPage extends StatelessWidget {
 
                   /// the project name and links
                   Positioned(
-                    left: 199.w,
-                    top: 200.h,
+                    left: 199,
+                    top: 200,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -200,22 +199,22 @@ class ProjectsPage extends StatelessWidget {
                       children: [
                         Container(
                           color: const Color(0xffFFFFFF),
-                          // width: 370.w,
-                          height: 104.h,
+                          // width: 370,
+                          height: 104,
                           child: Center(
                             child: Text(
                               projects[index].name!,
-                              style: TextStyle(
-                                color: const Color(0xff4F4F4F),
-                                fontSize: 48.sp,
+                              style: const TextStyle(
+                                color: Color(0xff4F4F4F),
+                                fontSize: 48,
                                 fontFamily: 'Raleway',
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: 2.w,
+                        const SizedBox(
+                          width: 2,
                         ),
                         if (projects[index].googlePlay != null)
                           IconButton(
@@ -251,26 +250,26 @@ class ProjectsPage extends StatelessWidget {
 
                   /// the project description & features
                   Positioned(
-                    left: 207.w,
-                    top: 304.h,
+                    left: 207,
+                    top: 304,
                     child: SizedBox(
                       // color: const Color(0xffFFFFFF),
-                      width: 700.w,
-                      height: 600.h,
+                      width: 700,
+                      height: 600,
                       child: ListView(
                         // crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             projects[index].description!,
-                            style: TextStyle(
-                              color: const Color(0xff4F4F4F),
-                              fontSize: 16.sp,
+                            style: const TextStyle(
+                              color: Color(0xff4F4F4F),
+                              fontSize: 16,
                               fontFamily: 'Raleway',
                               // fontWeight: FontWeight.w100,
                             ),
                           ),
-                          SizedBox(
-                            height: 20.h,
+                          const SizedBox(
+                            height: 20,
                           ),
 
                           /// the project features in a dot list
@@ -278,29 +277,29 @@ class ProjectsPage extends StatelessWidget {
                             RichText(
                               text: TextSpan(
                                 children: [
-                                  TextSpan(
+                                  const TextSpan(
                                     text: '• ',
                                     style: TextStyle(
-                                      color: const Color(0xff4F4F4F),
-                                      fontSize: 16.sp,
+                                      color: Color(0xff4F4F4F),
+                                      fontSize: 16,
                                       fontFamily: 'Raleway',
                                       fontWeight: FontWeight.w100,
                                     ),
                                   ),
                                   TextSpan(
                                     text: '${feature.key}: ',
-                                    style: TextStyle(
-                                      color: const Color(0xff4F4F4F),
-                                      fontSize: 16.sp,
+                                    style: const TextStyle(
+                                      color: Color(0xff4F4F4F),
+                                      fontSize: 16,
                                       fontFamily: 'Raleway',
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),
                                   TextSpan(
                                     text: feature.value,
-                                    style: TextStyle(
-                                      color: const Color(0xff4F4F4F),
-                                      fontSize: 16.sp,
+                                    style: const TextStyle(
+                                      color: Color(0xff4F4F4F),
+                                      fontSize: 16,
                                       fontFamily: 'Raleway',
                                     ),
                                   ),
@@ -317,70 +316,66 @@ class ProjectsPage extends StatelessWidget {
 
                   /// the navigation arrows
                   Positioned(
-                    left: 199.w,
-                    bottom: 70.h,
-                    child: SizedBox(
-                      // color: const Color(0xffFFFFFF),
-                      width: 275.w,
-                      height: 107.h,
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              color: const Color(0xffFFFFFF),
-                              height: 107.h,
-                              width: 5.w,
-                            ),
-                            Transform.rotate(
-                              angle: 3.14159, // 180 degrees in radians
-                              child: GestureDetector(
-                                onTap: () {
-                                  if (index == 0) {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const HomePage(),
-                                      ),
-                                    );
-                                  } else {
-                                    pageController.previousPage(
-                                      duration:
-                                          const Duration(milliseconds: 500),
-                                      curve: Curves.easeInOut,
-                                    );
-                                  }
-                                },
-                                child: Image.asset(
-                                  'assets/images/icons/Vector.png',
-                                  width: 92.w,
-                                  height: 46.h,
-                                  cacheWidth: (220.w * 0.7)
-                                      .toInt(), // Adjust this for optimal size
-                                  cacheHeight: (560.h * 0.7).toInt(),
-                                ),
-                              ),
-                            ),
-                            Expanded(child: Container()),
-                            GestureDetector(
-                              onTap: () {
-                                pageController.nextPage(
-                                  duration: const Duration(milliseconds: 500),
+                    left: 199,
+                    bottom: 70,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          color: const Color(0xffFFFFFF),
+                          height: 107,
+                          width: 5,
+                        ),
+                        Transform.rotate(
+                          angle: 3.14159, // 180 degrees in radians
+                          child: GestureDetector(
+                            onTap: () {
+                              if (index == 0) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HomePage(),
+                                  ),
+                                );
+                              } else {
+                                pageController.previousPage(
+                                  duration:
+                                      const Duration(milliseconds: 500),
                                   curve: Curves.easeInOut,
                                 );
-                              },
-                              child: Image.asset(
-                                'assets/images/icons/Vector.png',
-                                width: 92.w,
-                                height: 46.h,
-                                cacheWidth: (220.w * 0.7)
-                                    .toInt(), // Adjust this for optimal size
-                                cacheHeight: (560.h * 0.7).toInt(),
-                              ),
+                              }
+                            },
+                            child: Image.asset(
+                              'assets/images/icons/Vector.png',
+                              width: 92,
+                              height: 46,
+                              cacheWidth: (220 * 0.7)
+                                  .toInt(), // Adjust this for optimal size
+                              cacheHeight: (560 * 0.7).toInt(),
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                        const SizedBox(
+                          width: 100,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            pageController.nextPage(
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.easeInOut,
+                            );
+                          },
+                          child: Image.asset(
+                            'assets/images/icons/Vector.png',
+                            width: 92,
+                            height: 46,
+                            cacheWidth: (220 * 0.7)
+                                .toInt(), // Adjust this for optimal size
+                            cacheHeight: (560 * 0.7).toInt(),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -394,8 +389,8 @@ class ProjectsPage extends StatelessWidget {
 
   Widget screenshot({String? imagePath}) {
     return Container(
-      width: 220.w,
-      height: 490.h,
+      width: 220,
+      height: 490,
       decoration: BoxDecoration(
         color: const Color(0xffFFFFFF),
         borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -430,62 +425,62 @@ class ProjectsPage extends StatelessWidget {
         children: [
           // 1st column
           Positioned(
-            right: 800.w,
-            top: -360.h,
+            right: 800,
+            top: -360,
             child: Column(children: [
               screenshot(imagePath: images[0]),
-              SizedBox(height: 20.h),
+              const SizedBox(height: 20),
               screenshot(imagePath: images[1]),
-              SizedBox(height: 20.h),
+              const SizedBox(height: 20),
               screenshot(imagePath: images[2]),
             ]),
           ),
           // 2nd column
           Positioned(
-            right: 560.w,
-            top: -450.h,
+            right: 560,
+            top: -450,
             child: Column(children: [
               screenshot(imagePath: images[3]),
-              SizedBox(height: 20.h),
+              const SizedBox(height: 20),
               screenshot(imagePath: images[4]),
-              SizedBox(height: 20.h),
+              const SizedBox(height: 20),
               screenshot(imagePath: images[5]),
             ]),
           ),
           // 3rd column
           Positioned(
-            right: 320.w,
-            top: -330.h,
+            right: 320,
+            top: -330,
             child: Column(children: [
               screenshot(imagePath: images[6]),
-              SizedBox(height: 20.h),
+              const SizedBox(height: 20),
               screenshot(imagePath: images[7]),
-              SizedBox(height: 20.h),
+              const SizedBox(height: 20),
               screenshot(imagePath: images[8]),
             ]),
           ),
           // 4th column
           Positioned(
-            right: 80.w,
-            top: -400.h,
+            right: 80,
+            top: -400,
             child: Column(children: [
               screenshot(imagePath: images[9]),
-              SizedBox(height: 20.h),
+              const SizedBox(height: 20),
               screenshot(imagePath: images[10]),
-              SizedBox(height: 20.h),
+              const SizedBox(height: 20),
               screenshot(imagePath: images[11]),
             ]),
           ),
           // 5th column
           Positioned(
-            right: -160.w,
-            top: -400.h,
+            right: -160,
+            top: -400,
             child: Column(children: [
-              SizedBox(height: 400.h),
+              const SizedBox(height: 400),
               screenshot(imagePath: images[12]),
-              SizedBox(height: 20.h),
+              const SizedBox(height: 20),
               screenshot(imagePath: images[13]),
-              SizedBox(height: 20.h),
+              const SizedBox(height: 20),
               screenshot(imagePath: images[14]),
             ]),
           ),

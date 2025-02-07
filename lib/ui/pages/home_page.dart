@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:protofolio/ui/pages/projects_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -17,17 +16,17 @@ class HomePage extends StatelessWidget {
           children: [
             /// the black line
             Positioned(
-              left: 200.w,
+              left: 200,
               child: Container(
                 color: const Color(0xff4F4F4F),
-                width: 3.w,
+                width: 3,
                 height: MediaQuery.of(context).size.height,
               ),
             ),
             /// the social media icons
             Positioned(
-              right: 200.w,
-              bottom: 70.h,
+              right: 200,
+              bottom: 70,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -45,11 +44,11 @@ class HomePage extends StatelessWidget {
                     },
                     child: Image.asset(
                       'assets/images/icons/linkedin.png',
-                      width: 46.w,
-                      height: 46.h,
-                      cacheWidth: (220.w * 0.7)
+                      width: 46,
+                      height: 46,
+                      cacheWidth: (220 * 0.7)
                           .toInt(), // Adjust this for optimal size
-                      cacheHeight: (560.h * 0.7).toInt(),
+                      cacheHeight: (560 * 0.7).toInt(),
                     ),
                   ),
                 ],
@@ -66,34 +65,34 @@ class HomePage extends StatelessWidget {
                       // mainAxisAlignment: MainAxisAlignment.start,
                       // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          height: 100.h,
+                        const SizedBox(
+                          height: 100,
                         ),
                         /// the name and links
                         Container(
                           color: const Color(0xffFFFFFF),
-                          // width: 370.w,
-                          height: 230.w,
-                          padding: EdgeInsets.only(left: 200.w),
+                          // width: 370,
+                          height: 230,
+                          padding: const EdgeInsets.only(left: 200),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
+                              const Text(
                                 "HI! I am",
                                 style: TextStyle(
-                                  color: const Color(0xff4F4F4F),
-                                  fontSize: 32.sp,
+                                  color: Color(0xff4F4F4F),
+                                  fontSize: 32,
                                   fontFamily: 'Raleway',
                                   fontWeight: FontWeight.w100,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 "Nagi El-Shershaby",
                                 style: TextStyle(
-                                  color: const Color(0xff4F4F4F),
-                                  fontSize: 48.sp,
+                                  color: Color(0xff4F4F4F),
+                                  fontSize: 48,
                                   fontFamily: 'Raleway',
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -101,16 +100,16 @@ class HomePage extends StatelessWidget {
                               Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Flutter Dev",
                                     style: TextStyle(
-                                      color: const Color(0xff4F4F4F),
-                                      fontSize: 32.sp,
+                                      color: Color(0xff4F4F4F),
+                                      fontSize: 32,
                                       fontFamily: 'Raleway',
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: 2.w,
+                                  const SizedBox(
+                                    width: 2,
                                   ),
                                   IconButton(
                                     icon: const Icon(Icons.play_arrow_outlined),
@@ -135,70 +134,70 @@ class HomePage extends StatelessWidget {
                         /// the About me & Education & Graduation Project & Languages
                         Container(
                           // color: const Color(0xffFFFFFF),
-                          width: 900.w,
-                          padding: EdgeInsets.only(left: 207.w, right: 20.w),
-                          child: Column(
+                          width: 900,
+                          padding: const EdgeInsets.only(left: 207, right: 20),
+                          child: const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 "Passionate about creating meaningful digital experiences that simplify lives and solve real-world problems. As a Flutter developer, I focus on building efficient, user-friendly applications that blend functionality with intuitive design. Driven by a desire to continuously learn and innovate, I thrive in collaborative environments where I can contribute to impactful projects and grow alongside my team.",
                                 style: TextStyle(
-                                  color: const Color(0xff4F4F4F),
-                                  fontSize: 16.sp,
+                                  color: Color(0xff4F4F4F),
+                                  fontSize: 16,
                                   fontFamily: 'Raleway',
                                   // fontWeight: FontWeight.w100,
                                 ),
                               ),
                               SizedBox(
-                                height: 20.h,
+                                height: 20,
                               ),
                               Text(
                                 "Education",
                                 style: TextStyle(
-                                  color: const Color(0xff4F4F4F),
-                                  fontSize: 26.sp,
+                                  color: Color(0xff4F4F4F),
+                                  fontSize: 26,
                                   fontFamily: 'Raleway',
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
                               SizedBox(
-                                height: 10.h,
+                                height: 10,
                               ),
                               Text(
                                 "Bachelor of Computer Science | FCAI - Cairo University | Egypt",
                                 style: TextStyle(
-                                  color: const Color(0xff4F4F4F),
-                                  fontSize: 16.sp,
+                                  color: Color(0xff4F4F4F),
+                                  fontSize: 16,
                                   fontFamily: 'Raleway',
                                   // fontWeight: FontWeight.w100,
                                 ),
                               ),
                               SizedBox(
-                                height: 4.h,
+                                height: 4,
                               ),
                               Text(
                                 "2020 - 2024",
                                 style: TextStyle(
-                                  color: const Color(0xff4F4F4F),
-                                  fontSize: 14.sp,
+                                  color: Color(0xff4F4F4F),
+                                  fontSize: 14,
                                   fontFamily: 'Raleway',
                                   // fontWeight: FontWeight.w100,
                                 ),
                               ),
                               SizedBox(
-                                height: 20.h,
+                                height: 20,
                               ),
                               Text(
                                 "Graduation Project",
                                 style: TextStyle(
-                                  color: const Color(0xff4F4F4F),
-                                  fontSize: 26.sp,
+                                  color: Color(0xff4F4F4F),
+                                  fontSize: 26,
                                   fontFamily: 'Raleway',
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
                               SizedBox(
-                                height: 10.h,
+                                height: 10,
                               ),
                               Text(
                                 """• Built a Flask-based backend system for processing 
@@ -207,32 +206,32 @@ class HomePage extends StatelessWidget {
 • Led the project team, managing tasks, communicating with supervisors, 
     and ensuring timely delivery.""",
                                 style: TextStyle(
-                                  color: const Color(0xff4F4F4F),
-                                  fontSize: 16.sp,
+                                  color: Color(0xff4F4F4F),
+                                  fontSize: 16,
                                   fontFamily: 'Raleway',
                                   // fontWeight: FontWeight.w100,
                                 ),
                               ),
                               SizedBox(
-                                height: 20.h,
+                                height: 20,
                               ),
                               Text(
                                 "Languages",
                                 style: TextStyle(
-                                  color: const Color(0xff4F4F4F),
-                                  fontSize: 26.sp,
+                                  color: Color(0xff4F4F4F),
+                                  fontSize: 26,
                                   fontFamily: 'Raleway',
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
                               SizedBox(
-                                height: 10.h,
+                                height: 10,
                               ),
                               Text(
                                 "Arabic, English",
                                 style: TextStyle(
-                                  color: const Color(0xff4F4F4F),
-                                  fontSize: 16.sp,
+                                  color: Color(0xff4F4F4F),
+                                  fontSize: 16,
                                   fontFamily: 'Raleway',
                                   // fontWeight: FontWeight.w100,
                                 ),
@@ -244,9 +243,9 @@ class HomePage extends StatelessWidget {
                         /// the navigation arrows
                         Container(
                           color: const Color(0xffFFFFFF),
-                          // width: 250.w,
-                          height: 107.h,
-                          padding: EdgeInsets.only(left: 200.w),
+                          // width: 250,
+                          height: 107,
+                          padding: const EdgeInsets.only(left: 200),
                           child: GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -260,25 +259,25 @@ class HomePage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Text(
+                                const Text(
                                   "Projects",
                                   style: TextStyle(
-                                    color: const Color(0xff4F4F4F),
-                                    fontSize: 32.sp,
+                                    color: Color(0xff4F4F4F),
+                                    fontSize: 32,
                                     fontFamily: 'Raleway',
                                     // fontWeight: FontWeight.w100,
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 20.w,
+                                const SizedBox(
+                                  width: 20,
                                 ),
                                 Image.asset(
                                   'assets/images/icons/Vector.png',
-                                  width: 92.w,
-                                  height: 46.h,
-                                  cacheWidth: (220.w * 0.7)
+                                  width: 92,
+                                  height: 46,
+                                  cacheWidth: (220 * 0.7)
                                       .toInt(), // Adjust this for optimal size
-                                  cacheHeight: (560.h * 0.7).toInt(),
+                                  cacheHeight: (560 * 0.7).toInt(),
                                 ),
                               ],
                             ),
@@ -290,93 +289,93 @@ class HomePage extends StatelessWidget {
                   Expanded(
                     child: Container(
                       color: const Color(0x104F4F4F),
-                      padding: EdgeInsets.only(left: 20.w),
+                      padding: const EdgeInsets.only(left: 20),
                       child: ListView(
                         children: [
-                          SizedBox(
-                            height: 450.h,
+                          const SizedBox(
+                            height: 450,
                           ),
                           /// the Experience & Skills
-                          Text(
+                          const Text(
                             "Experience",
                             style: TextStyle(
-                              color: const Color(0xff4F4F4F),
-                              fontSize: 26.sp,
+                              color: Color(0xff4F4F4F),
+                              fontSize: 26,
                               fontFamily: 'Raleway',
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          SizedBox(
-                            height: 20.h,
+                          const SizedBox(
+                            height: 20,
                           ),
-                          Text(
+                          const Text(
                             "Flutter Developer | Tuwaiq",
                             style: TextStyle(
-                              color: const Color(0xff4F4F4F),
-                              fontSize: 16.sp,
+                              color: Color(0xff4F4F4F),
+                              fontSize: 16,
                               fontFamily: 'Raleway',
                               // fontWeight: FontWeight.w100,
                             ),
                           ),
-                          SizedBox(
-                            height: 4.h,
+                          const SizedBox(
+                            height: 4,
                           ),
-                          Text(
+                          const Text(
                             "September 2024 - Present",
                             style: TextStyle(
-                              color: const Color(0xff4F4F4F),
-                              fontSize: 14.sp,
+                              color: Color(0xff4F4F4F),
+                              fontSize: 14,
                               fontFamily: 'Raleway',
                               // fontWeight: FontWeight.w100,
                             ),
                           ),
-                          SizedBox(
-                            height: 20.h,
+                          const SizedBox(
+                            height: 20,
                           ),
-                          Text(
+                          const Text(
                             "Flutter instructor | Microsoft Student Partner",
                             style: TextStyle(
-                              color: const Color(0xff4F4F4F),
-                              fontSize: 16.sp,
+                              color: Color(0xff4F4F4F),
+                              fontSize: 16,
                               fontFamily: 'Raleway',
                               // fontWeight: FontWeight.w100,
                             ),
                           ),
-                          SizedBox(
-                            height: 4.h,
+                          const SizedBox(
+                            height: 4,
                           ),
-                          Text(
+                          const Text(
                             "April 2023 - July 2023",
                             style: TextStyle(
-                              color: const Color(0xff4F4F4F),
-                              fontSize: 14.sp,
+                              color: Color(0xff4F4F4F),
+                              fontSize: 14,
                               fontFamily: 'Raleway',
                               // fontWeight: FontWeight.w100,
                             ),
                           ),
-                          SizedBox(
-                            height: 20.h,
+                          const SizedBox(
+                            height: 20,
                           ),
-                          Text(
+                          const Text(
                             "Skills",
                             style: TextStyle(
-                              color: const Color(0xff4F4F4F),
-                              fontSize: 26.sp,
+                              color: Color(0xff4F4F4F),
+                              fontSize: 26,
                               fontFamily: 'Raleway',
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          SizedBox(
-                            height: 10.h,
+                          const SizedBox(
+                            height: 10,
                           ),
-                          Text(
+                          const Text(
                             """Flutter, Dart, Firebase, Git, GitHub, GitHub projects, Figma
 Provider, Bloc, Dio, Shared Preferences, Hive, REST API, JSON
 Caching, Unit test, localization 
 Clean architecture""",
                             style: TextStyle(
-                              color: const Color(0xff4F4F4F),
-                              fontSize: 16.sp,
+                              color: Color(0xff4F4F4F),
+                              fontSize: 16,
                               fontFamily: 'Raleway',
                               // fontWeight: FontWeight.w100,
                             ),
