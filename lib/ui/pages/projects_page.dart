@@ -247,9 +247,9 @@ class ProjectsPage extends StatelessWidget {
           null,
         ],
         googlePlay:
-        'https://play.google.com/store/apps/details?id=com.example.app',
+            'https://play.google.com/store/apps/details?id=com.example.app',
         appStore:
-        'https://play.google.com/store/apps/details?id=com.example.app',
+            'https://play.google.com/store/apps/details?id=com.example.app',
         github: '',
         features: {
           'Feature 1': 'Description 1',
@@ -530,10 +530,19 @@ class ProjectsPage extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            pageController.nextPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeInOut,
-                            );
+                            if (index == projects.length - 1) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomePage(),
+                                ),
+                              );
+                            } else {
+                              pageController.nextPage(
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeInOut,
+                              );
+                            }
                           },
                           child: Image.asset(
                             'assets/images/icons/Vector.png',
