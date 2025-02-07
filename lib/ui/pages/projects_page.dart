@@ -9,6 +9,42 @@ class ProjectsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Project> projects = [
+      // Roze Moon
+      Project(
+        name: 'Roze Moon',
+        description:
+            '🌸 Welcome to Roze Moon – Your Gateway to Beautiful Flowers! 🌸\nDiscover a world of floral elegance with Roze Moon, your ultimate destination for ordering fresh flowers effortlessly. Whether it’s a special occasion or just a gesture to brighten someone’s day, we’ve got you covered with stunning bouquets, tailored arrangements, and seamless ordering options.',
+        imagesUrls: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+        ],
+        googlePlay:
+            'https://play.google.com/store/apps/details?id=com.rozemoon.app',
+        appStore: 'https://apps.apple.com/eg/app/roze-moon/id6739536345',
+        features: {
+          'Feature1': '💐 Browse a Variety of Flowers',
+          'Feature2': '🛒 Order or Pre-Order with Ease',
+          'Feature3': '📍 Select Your Delivery Address with Precision',
+          'Feature4': '📱 Stay Updated with WhatsApp Notifications',
+          'Feature5': '💌 Personalize Your Gifting',
+        },
+        iconUrl:
+            'https://play-lh.googleusercontent.com/eVZIFAMQazrVN2VybzAEgHOd8FJKjqiekLv26u7PvFBpQcK5TrVsJNXP97dJ8s4wDByr=w240-h480-rw',
+      ),
+      // Ahadith
       Project(
         name: 'Ahadith',
         description:
@@ -60,6 +96,7 @@ class ProjectsPage extends StatelessWidget {
         iconUrl:
             'https://play-lh.googleusercontent.com/u-GuFuhZtA1T2Gvsto2H5ahn4g6t2zCGrUBeb3Gs3sFWIbuRqmDPv_j3Y9tMeCPPqw=w240-h480-rw',
       ),
+      // Azkar
       Project(
         name: "أذكار",
         description: 'Description 2',
@@ -92,8 +129,137 @@ class ProjectsPage extends StatelessWidget {
         },
         iconUrl: 'https://via.placeholder.com/150',
       ),
+      // Lamha
       Project(
-        name: 'Project 3',
+        name: 'لمحــة',
+        description: 'Description 3',
+        imagesUrls: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+        ],
+        googlePlay:
+            'https://play.google.com/store/apps/details?id=com.example.app',
+        appStore:
+            'https://play.google.com/store/apps/details?id=com.example.app',
+        github: '',
+        features: {
+          'Feature 1': 'Description 1',
+          'Feature 2': 'Description 2',
+        },
+        iconUrl: 'https://via.placeholder.com/150',
+      ),
+      // Zahra Flowers
+      Project(
+        name: 'Zahra Flowers',
+        description: 'Description 3',
+        imagesUrls: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+        ],
+        googlePlay:
+            'https://play.google.com/store/apps/details?id=com.example.app',
+        appStore:
+            'https://play.google.com/store/apps/details?id=com.example.app',
+        github: '',
+        features: {
+          'Feature 1': 'Description 1',
+          'Feature 2': 'Description 2',
+        },
+        iconUrl: 'https://via.placeholder.com/150',
+      ),
+      // The Closet
+      Project(
+        name: 'The Closet',
+        description: 'Description 3',
+        imagesUrls: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+        ],
+        googlePlay:
+            'https://play.google.com/store/apps/details?id=com.example.app',
+        appStore:
+            'https://play.google.com/store/apps/details?id=com.example.app',
+        github: '',
+        features: {
+          'Feature 1': 'Description 1',
+          'Feature 2': 'Description 2',
+        },
+        iconUrl: 'https://via.placeholder.com/150',
+      ),
+      // Ill-Vent
+      Project(
+        name: 'Ill-Vent',
+        description: 'Description 3',
+        imagesUrls: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+        ],
+        googlePlay:
+        'https://play.google.com/store/apps/details?id=com.example.app',
+        appStore:
+        'https://play.google.com/store/apps/details?id=com.example.app',
+        github: '',
+        features: {
+          'Feature 1': 'Description 1',
+          'Feature 2': 'Description 2',
+        },
+        iconUrl: 'https://via.placeholder.com/150',
+      ),
+      // Other Modules
+      Project(
+        name: 'Other Modules',
         description: 'Description 3',
         imagesUrls: [
           null,
@@ -217,9 +383,13 @@ class ProjectsPage extends StatelessWidget {
                           width: 2,
                         ),
                         if (projects[index].googlePlay != null)
-                          IconButton(
-                            icon: const Icon(Icons.play_arrow_outlined),
-                            onPressed: () {
+                          GestureDetector(
+                            child: Image.asset(
+                              "assets/images/icons/google_play.png",
+                              height: 46,
+                              width: 46,
+                            ),
+                            onTap: () {
                               if (projects[index].googlePlay != null) {
                                 launchUrl(
                                     Uri.parse(projects[index].googlePlay!));
@@ -340,8 +510,7 @@ class ProjectsPage extends StatelessWidget {
                                 );
                               } else {
                                 pageController.previousPage(
-                                  duration:
-                                      const Duration(milliseconds: 500),
+                                  duration: const Duration(milliseconds: 500),
                                   curve: Curves.easeInOut,
                                 );
                               }
