@@ -319,242 +319,254 @@ class ProjectsPage extends StatelessWidget {
                         ),
                       ),
                     ),
-
-                  /// the black line
-                  Positioned(
-                    left: 200,
-                    child: Container(
-                      color: const Color(0xff4F4F4F),
-                      width: 3,
-                      height: MediaQuery.of(context).size.height,
-                    ),
-                  ),
-
-                  /// the index number
-                  Positioned(
-                    left: 199,
-                    top: 100,
-                    child: Container(
-                      color: const Color(0xffFFFFFF),
-                      width: 50,
-                      height: 100,
-                      child: Row(
-                        children: [
-                          Text(
-                            "0${index + 1}",
-                            style: const TextStyle(
-                              color: Color(0xff4F4F4F),
-                              fontSize: 32,
-                              fontFamily: 'Raleway',
-                              fontWeight: FontWeight.w100,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  /// the project name and links
-                  Positioned(
-                    left: 199,
-                    top: 200,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          color: const Color(0xffFFFFFF),
-                          // width: 370,
-                          height: 104,
-                          child: Center(
-                            child: Text(
-                              projects[index].name!,
-                              style: const TextStyle(
-                                color: Color(0xff4F4F4F),
-                                fontSize: 48,
-                                fontFamily: 'Raleway',
-                                fontWeight: FontWeight.w700,
+                  ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      SizedBox(
+                        width: 960,
+                        child: Stack(
+                          children: [
+                            /// the black line
+                            Positioned(
+                              left: 200,
+                              child: Container(
+                                color: const Color(0xff4F4F4F),
+                                width: 3,
+                                height: MediaQuery.of(context).size.height,
                               ),
                             ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 2,
-                        ),
-                        if (projects[index].googlePlay != null)
-                          GestureDetector(
-                            child: Image.asset(
-                              "assets/images/icons/google_play.png",
-                              height: 46,
-                              width: 46,
-                            ),
-                            onTap: () {
-                              if (projects[index].googlePlay != null) {
-                                launchUrl(
-                                    Uri.parse(projects[index].googlePlay!));
-                              }
-                            },
-                          ),
-                        if (projects[index].appStore != null)
-                          IconButton(
-                            icon: const Icon(Icons.apple),
-                            onPressed: () {
-                              if (projects[index].appStore != null) {
-                                // launchUrl(Uri.parse(projects[index].appStore!));
-                              }
-                            },
-                          ),
-                        if (projects[index].github != null)
-                          IconButton(
-                            icon: const Icon(Icons.code),
-                            onPressed: () {
-                              if (projects[index].github != null) {
-                                launchUrl(Uri.parse(projects[index].github!));
-                              }
-                            },
-                          ),
-                      ],
-                    ),
-                  ),
 
-                  /// the project description & features
-                  Positioned(
-                    left: 207,
-                    top: 304,
-                    child: SizedBox(
-                      // color: const Color(0xffFFFFFF),
-                      width: 700,
-                      height: 600,
-                      child: ListView(
-                        // crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            projects[index].description!,
-                            style: const TextStyle(
-                              color: Color(0xff4F4F4F),
-                              fontSize: 16,
-                              fontFamily: 'Raleway',
-                              // fontWeight: FontWeight.w100,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-
-                          /// the project features in a dot list
-                          for (var feature in projects[index].features!.entries)
-                            RichText(
-                              text: TextSpan(
-                                children: [
-                                  const TextSpan(
-                                    text: '• ',
-                                    style: TextStyle(
-                                      color: Color(0xff4F4F4F),
-                                      fontSize: 16,
-                                      fontFamily: 'Raleway',
-                                      fontWeight: FontWeight.w100,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: '${feature.key}: ',
-                                    style: const TextStyle(
-                                      color: Color(0xff4F4F4F),
-                                      fontSize: 16,
-                                      fontFamily: 'Raleway',
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: feature.value,
-                                    style: const TextStyle(
-                                      color: Color(0xff4F4F4F),
-                                      fontSize: 16,
-                                      fontFamily: 'Raleway',
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  /// the project images
-                  // scatteredImages(projects[index].imagesUrls!),
-
-                  /// the navigation arrows
-                  Positioned(
-                    left: 199,
-                    bottom: 70,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          color: const Color(0xffFFFFFF),
-                          height: 107,
-                          width: 5,
-                        ),
-                        Transform.rotate(
-                          angle: 3.14159, // 180 degrees in radians
-                          child: GestureDetector(
-                            onTap: () {
-                              if (index == 0) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const HomePage(),
-                                  ),
-                                );
-                              } else {
-                                pageController.previousPage(
-                                  duration: const Duration(milliseconds: 500),
-                                  curve: Curves.easeInOut,
-                                );
-                              }
-                            },
-                            child: Image.asset(
-                              'assets/images/icons/Vector.png',
-                              width: 92,
-                              height: 46,
-                              cacheWidth: (220 * 0.7)
-                                  .toInt(), // Adjust this for optimal size
-                              cacheHeight: (560 * 0.7).toInt(),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 100,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            if (index == projects.length - 1) {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HomePage(),
+                            ListView(
+                              children: [
+                                const SizedBox(
+                                  height: 100,
                                 ),
-                              );
-                            } else {
-                              pageController.nextPage(
-                                duration: const Duration(milliseconds: 500),
-                                curve: Curves.easeInOut,
-                              );
-                            }
-                          },
-                          child: Image.asset(
-                            'assets/images/icons/Vector.png',
-                            width: 92,
-                            height: 46,
-                            cacheWidth: (220 * 0.7)
-                                .toInt(), // Adjust this for optimal size
-                            cacheHeight: (560 * 0.7).toInt(),
-                          ),
+                                /// the index number, project name and links
+                                Container(
+                                  height: 230,
+                                  padding: const EdgeInsets.only(left: 200),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        color: const Color(0xffFFFFFF),
+                                        width: 5,
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "0${index + 1}",
+                                            style: const TextStyle(
+                                              color: Color(0xff4F4F4F),
+                                              fontSize: 32,
+                                              fontFamily: 'Raleway',
+                                              fontWeight: FontWeight.w100,
+                                            ),
+                                          ),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Text(
+                                                projects[index].name!,
+                                                style: const TextStyle(
+                                                  color: Color(0xff4F4F4F),
+                                                  fontSize: 48,
+                                                  fontFamily: 'Raleway',
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              if (projects[index].googlePlay != null)
+                                                GestureDetector(
+                                                  child: Image.asset(
+                                                    "assets/images/icons/google_play.png",
+                                                    height: 46,
+                                                    width: 46,
+                                                  ),
+                                                  onTap: () {
+                                                    if (projects[index].googlePlay != null) {
+                                                      launchUrl(
+                                                          Uri.parse(projects[index].googlePlay!));
+                                                    }
+                                                  },
+                                                ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              if (projects[index].appStore != null)
+                                                GestureDetector(
+                                                  child: Image.asset(
+                                                    "assets/images/icons/app-store.png",
+                                                    height: 28,
+                                                    width: 28,
+                                                  ),
+                                                  onTap: () {
+                                                    if (projects[index].appStore != null) {
+                                                      launchUrl(
+                                                          Uri.parse(projects[index].appStore!));
+                                                    }
+                                                  },
+                                                ),
+                                              if (projects[index].github != null)
+                                                IconButton(
+                                                  icon: const Icon(Icons.code),
+                                                  onPressed: () {
+                                                    if (projects[index].github != null) {
+                                                      launchUrl(Uri.parse(projects[index].github!));
+                                                    }
+                                                  },
+                                                ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                /// the project description & features
+                                Container(
+                                  // color: const Color(0xffFFFFFF),
+                                  padding: const EdgeInsets.only(left: 207, right: 20),
+                                  // width: 900,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        projects[index].description!,
+                                        style: const TextStyle(
+                                          color: Color(0xff4F4F4F),
+                                          fontSize: 16,
+                                          fontFamily: 'Raleway',
+                                          // fontWeight: FontWeight.w100,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+
+                                      /// the project features in a dot list
+                                      for (var feature in projects[index].features!.entries)
+                                        RichText(
+                                          text: TextSpan(
+                                            children: [
+                                              const TextSpan(
+                                                text: '• ',
+                                                style: TextStyle(
+                                                  color: Color(0xff4F4F4F),
+                                                  fontSize: 16,
+                                                  fontFamily: 'Raleway',
+                                                  fontWeight: FontWeight.w100,
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                text: '${feature.key}: ',
+                                                style: const TextStyle(
+                                                  color: Color(0xff4F4F4F),
+                                                  fontSize: 16,
+                                                  fontFamily: 'Raleway',
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                text: feature.value,
+                                                style: const TextStyle(
+                                                  color: Color(0xff4F4F4F),
+                                                  fontSize: 16,
+                                                  fontFamily: 'Raleway',
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 50,
+                                ),
+                                /// the navigation arrows
+                                Container(
+                                  height: 107,
+                                  padding: const EdgeInsets.only(left: 200),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Container(
+                                        color: const Color(0xffFFFFFF),
+                                        height: 107,
+                                        width: 5,
+                                      ),
+                                      Transform.rotate(
+                                        angle: 3.14159, // 180 degrees in radians
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            if (index == 0) {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) => const HomePage(),
+                                                ),
+                                              );
+                                            } else {
+                                              pageController.previousPage(
+                                                duration: const Duration(milliseconds: 500),
+                                                curve: Curves.easeInOut,
+                                              );
+                                            }
+                                          },
+                                          child: Image.asset(
+                                            'assets/images/icons/Vector.png',
+                                            width: 92,
+                                            height: 46,
+                                            cacheWidth: (220 * 0.7)
+                                                .toInt(), // Adjust this for optimal size
+                                            cacheHeight: (560 * 0.7).toInt(),
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 100,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          if (index == projects.length - 1) {
+                                            Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => const HomePage(),
+                                              ),
+                                            );
+                                          } else {
+                                            pageController.nextPage(
+                                              duration: const Duration(milliseconds: 500),
+                                              curve: Curves.easeInOut,
+                                            );
+                                          }
+                                        },
+                                        child: Image.asset(
+                                          'assets/images/icons/Vector.png',
+                                          width: 92,
+                                          height: 46,
+                                          cacheWidth: (220 * 0.7)
+                                              .toInt(), // Adjust this for optimal size
+                                          cacheHeight: (560 * 0.7).toInt(),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ],
               ),
