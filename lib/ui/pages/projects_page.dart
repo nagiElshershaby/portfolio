@@ -572,30 +572,10 @@ class ProjectsPage extends StatelessWidget {
         googlePlay:
             'https://play.google.com/store/apps/details?id=com.rozemoon.app',
         appStore: 'https://apps.apple.com/eg/app/roze-moon/id6739536345',
-        features: {
-          'Type': 'Developed at Tuwaiq',
-          'Feature1': '💐 Browse a Variety of Flowers',
-          'Feature2': '🛒 Order or Pre-Order with Ease',
-          'Feature3': '📍 Select Your Delivery Address with Precision',
-          'Feature4': '📱 Stay Updated with WhatsApp Notifications',
-          'Feature5': '💌 Personalize Your Gifting',
-          'hive':
-              'Local database for storing favorites, and whole collections of Ahadith',
-          'google_fonts': 'Custom fonts for the app',
-          'screenshot':
-              'Taking screenshots of the app and cutting it to share it',
-          'share_plus': 'Sharing the app and the Ahadith with friends',
-          'path_provider': 'Getting the path of the screenshots',
-          'hijri': 'Converting Gregorian dates to Hijri dates',
-          'flutter_native_splash': 'Custom splash screen',
-          'flutter_native_timezone_updated_gradle':
-              'Getting the device timezone',
-          'flutter_local_notifications':
-              'Local notifications for daily reminders',
-          'flutter_launcher_icons': 'Custom app icons',
-        },
         iconUrl:
             'https://play-lh.googleusercontent.com/eVZIFAMQazrVN2VybzAEgHOd8FJKjqiekLv26u7PvFBpQcK5TrVsJNXP97dJ8s4wDByr=w240-h480-rw',
+        lastUpdate: '2025',
+        status: 'ongoing',
       ),
       // Zahra Flowers
       Project(
@@ -603,29 +583,8 @@ class ProjectsPage extends StatelessWidget {
         description:
             'A Flux Store template that worked with Shopify that i was asked to edit and connect its graphQl collections',
         backgroundUrl: 'assets/images/bg/zahra_bg.png',
-        features: {
-          'Type': 'Freelancing',
-          'Bloc': 'State management for complex tasks',
-          'Dio': 'HTTP client for making API calls to HadeethEnc.com',
-          'flutter_offline': 'Check internet connection',
-          'flutter_screenutil': 'Responsive UI',
-          'provider':
-              'used it for state management along side the Bloc in the Favorites',
-          'hive':
-              'Local database for storing favorites, and whole collections of Ahadith',
-          'google_fonts': 'Custom fonts for the app',
-          'screenshot':
-              'Taking screenshots of the app and cutting it to share it',
-          'share_plus': 'Sharing the app and the Ahadith with friends',
-          'path_provider': 'Getting the path of the screenshots',
-          'hijri': 'Converting Gregorian dates to Hijri dates',
-          'flutter_native_splash': 'Custom splash screen',
-          'flutter_native_timezone_updated_gradle':
-              'Getting the device timezone',
-          'flutter_local_notifications':
-              'Local notifications for daily reminders',
-          'flutter_launcher_icons': 'Custom app icons',
-        },
+        lastUpdate: '2024',
+        status: 'discontinued',
       ),
       // Ahadith
       Project(
@@ -636,31 +595,10 @@ class ProjectsPage extends StatelessWidget {
         googlePlay:
             'https://play.google.com/store/apps/details?id=com.prof_nagi.ahadith',
         github: 'https://github.com/nagiElshershaby/Ahadith',
-        features: {
-          'Type': 'Personal Project',
-          'Bloc': 'State management for complex tasks',
-          'Dio': 'HTTP client for making API calls to HadeethEnc.com',
-          'flutter_offline': 'Check internet connection',
-          'flutter_screenutil': 'Responsive UI',
-          'provider':
-              'used it for state management along side the Bloc in the Favorites',
-          'hive':
-              'Local database for storing favorites, and whole collections of Ahadith',
-          'google_fonts': 'Custom fonts for the app',
-          'screenshot':
-              'Taking screenshots of the app and cutting it to share it',
-          'share_plus': 'Sharing the app and the Ahadith with friends',
-          'path_provider': 'Getting the path of the screenshots',
-          'hijri': 'Converting Gregorian dates to Hijri dates',
-          'flutter_native_splash': 'Custom splash screen',
-          'flutter_native_timezone_updated_gradle':
-              'Getting the device timezone',
-          'flutter_local_notifications':
-              'Local notifications for daily reminders',
-          'flutter_launcher_icons': 'Custom app icons',
-        },
         iconUrl:
             'https://play-lh.googleusercontent.com/u-GuFuhZtA1T2Gvsto2H5ahn4g6t2zCGrUBeb3Gs3sFWIbuRqmDPv_j3Y9tMeCPPqw=w240-h480-rw',
+        lastUpdate: '2024',
+        status: 'completed',
       ),
       // Lamha
       Project(
@@ -670,30 +608,9 @@ class ProjectsPage extends StatelessWidget {
         backgroundUrl: 'assets/images/bg/lamha_bg.png',
         googlePlay:
             'https://play.google.com/store/apps/details?id=com.prof_nagi.lam7ah',
-        github: '',
-        features: {
-          'Type': 'Freelancing',
-          'Bloc': 'State management for complex tasks',
-          'Dio': 'HTTP client for making API calls to HadeethEnc.com',
-          'flutter_offline': 'Check internet connection',
-          'flutter_screenutil': 'Responsive UI',
-          'provider':
-              'used it for state management along side the Bloc in the Favorites',
-          'hive':
-              'Local database for storing favorites, and whole collections of Ahadith',
-          'google_fonts': 'Custom fonts for the app',
-          'screenshot':
-              'Taking screenshots of the app and cutting it to share it',
-          'share_plus': 'Sharing the app and the Ahadith with friends',
-          'path_provider': 'Getting the path of the screenshots',
-          'hijri': 'Converting Gregorian dates to Hijri dates',
-          'flutter_native_splash': 'Custom splash screen',
-          'flutter_native_timezone_updated_gradle':
-              'Getting the device timezone',
-          'flutter_local_notifications':
-              'Local notifications for daily reminders',
-          'flutter_launcher_icons': 'Custom app icons',
-        },
+        github: 'https://github.com/nagiElshershaby/mogezat_app/tree/master',
+        lastUpdate: '2023',
+        status: 'completed',
       ),
       // Azkar
       Project(
@@ -703,61 +620,19 @@ class ProjectsPage extends StatelessWidget {
         backgroundUrl: 'assets/images/bg/azkar_bg.png',
         googlePlay:
             'https://play.google.com/store/apps/details?id=com.prof_nagi.azkar',
-        github: '',
-        features: {
-          'Type': 'Freelancing',
-          'Bloc': 'State management for complex tasks',
-          'Dio': 'HTTP client for making API calls to HadeethEnc.com',
-          'flutter_offline': 'Check internet connection',
-          'flutter_screenutil': 'Responsive UI',
-          'provider':
-              'used it for state management along side the Bloc in the Favorites',
-          'hive':
-              'Local database for storing favorites, and whole collections of Ahadith',
-          'google_fonts': 'Custom fonts for the app',
-          'screenshot':
-              'Taking screenshots of the app and cutting it to share it',
-          'share_plus': 'Sharing the app and the Ahadith with friends',
-          'path_provider': 'Getting the path of the screenshots',
-          'hijri': 'Converting Gregorian dates to Hijri dates',
-          'flutter_native_splash': 'Custom splash screen',
-          'flutter_native_timezone_updated_gradle':
-              'Getting the device timezone',
-          'flutter_local_notifications':
-              'Local notifications for daily reminders',
-          'flutter_launcher_icons': 'Custom app icons',
-        },
+        github: 'https://github.com/nagiElshershaby/azkar_prayers',
+        lastUpdate: '2023',
+        status: 'completed',
       ),
       // The Closet
       Project(
         name: 'The Closet',
         description:
             'The Closet is a personal concept project for a fashion app that helps users to organize their clothes and plan their outfits.',
-        github: '',
-        features: {
-          'Type': 'Personal Project',
-          'Bloc': 'State management for complex tasks',
-          'Dio': 'HTTP client for making API calls to HadeethEnc.com',
-          'flutter_offline': 'Check internet connection',
-          'flutter_screenutil': 'Responsive UI',
-          'provider':
-              'used it for state management along side the Bloc in the Favorites',
-          'hive':
-              'Local database for storing favorites, and whole collections of Ahadith',
-          'google_fonts': 'Custom fonts for the app',
-          'screenshot':
-              'Taking screenshots of the app and cutting it to share it',
-          'share_plus': 'Sharing the app and the Ahadith with friends',
-          'path_provider': 'Getting the path of the screenshots',
-          'hijri': 'Converting Gregorian dates to Hijri dates',
-          'flutter_native_splash': 'Custom splash screen',
-          'flutter_native_timezone_updated_gradle':
-              'Getting the device timezone',
-          'flutter_local_notifications':
-              'Local notifications for daily reminders',
-          'flutter_launcher_icons': 'Custom app icons',
-        },
+        github: 'https://github.com/nagiElshershaby/clothes',
         backgroundUrl: 'assets/images/bg/closet_bg.png',
+        lastUpdate: '2023',
+        status: 'ongoing',
       ),
       // Ill-Vent
       Project(
@@ -765,60 +640,17 @@ class ProjectsPage extends StatelessWidget {
         description:
             'Ill-Vent is a startup project that I worked on with a team of developers, designers, and business developers. It is a platform for emergency services that connects users with the nearest available ambulance, police, or fire department.',
         backgroundUrl: 'assets/images/bg/ill-vent_bg.png',
-        features: {
-          'Type': 'Freelancing',
-          'Bloc': 'State management for complex tasks',
-          'Dio': 'HTTP client for making API calls to HadeethEnc.com',
-          'flutter_offline': 'Check internet connection',
-          'flutter_screenutil': 'Responsive UI',
-          'provider':
-              'used it for state management along side the Bloc in the Favorites',
-          'hive':
-              'Local database for storing favorites, and whole collections of Ahadith',
-          'google_fonts': 'Custom fonts for the app',
-          'screenshot':
-              'Taking screenshots of the app and cutting it to share it',
-          'share_plus': 'Sharing the app and the Ahadith with friends',
-          'path_provider': 'Getting the path of the screenshots',
-          'hijri': 'Converting Gregorian dates to Hijri dates',
-          'flutter_native_splash': 'Custom splash screen',
-          'flutter_native_timezone_updated_gradle':
-              'Getting the device timezone',
-          'flutter_local_notifications':
-              'Local notifications for daily reminders',
-          'flutter_launcher_icons': 'Custom app icons',
-        },
+        github: 'https://github.com/nagiElshershaby/illVent',
+        lastUpdate: '2023',
+        status: 'completed',
       ),
       // Other Modules
       Project(
         name: 'Other Modules',
         description:
             'A list of other modules that I worked on, including a chat module, a localized version of Ahadith, and more...',
-        github: '',
+        github: 'https://github.com/nagiElshershaby?tab=repositories&q=ill&type=&language=&sort=',
         backgroundUrl: 'assets/images/bg/others_bg.png',
-        features: {
-          'Type': 'Personal Projects',
-          'Bloc': 'State management for complex tasks',
-          'Dio': 'HTTP client for making API calls to HadeethEnc.com',
-          'flutter_offline': 'Check internet connection',
-          'flutter_screenutil': 'Responsive UI',
-          'provider':
-              'used it for state management along side the Bloc in the Favorites',
-          'hive':
-              'Local database for storing favorites, and whole collections of Ahadith',
-          'google_fonts': 'Custom fonts for the app',
-          'screenshot':
-              'Taking screenshots of the app and cutting it to share it',
-          'share_plus': 'Sharing the app and the Ahadith with friends',
-          'path_provider': 'Getting the path of the screenshots',
-          'hijri': 'Converting Gregorian dates to Hijri dates',
-          'flutter_native_splash': 'Custom splash screen',
-          'flutter_native_timezone_updated_gradle':
-              'Getting the device timezone',
-          'flutter_local_notifications':
-              'Local notifications for daily reminders',
-          'flutter_launcher_icons': 'Custom app icons',
-        },
       ),
     ];
 
@@ -942,52 +774,6 @@ class ProjectsPage extends StatelessWidget {
                             fontSize: 14,
                             fontFamily: 'Raleway',
                           ),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      // Project features list
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: project.features?.entries.map((feature) {
-                                return Padding(
-                                  padding: const EdgeInsets.only(bottom: 8.0),
-                                  child: RichText(
-                                    text: TextSpan(
-                                      children: [
-                                        const TextSpan(
-                                          text: '• ',
-                                          style: TextStyle(
-                                            color: Color(0xff4F4F4F),
-                                            fontSize: 14,
-                                            fontFamily: 'Raleway',
-                                            fontWeight: FontWeight.w100,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: '${feature.key}: ',
-                                          style: const TextStyle(
-                                            color: Color(0xff4F4F4F),
-                                            fontSize: 14,
-                                            fontFamily: 'Raleway',
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: feature.value,
-                                          style: const TextStyle(
-                                            color: Color(0xff4F4F4F),
-                                            fontSize: 14,
-                                            fontFamily: 'Raleway',
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              }).toList() ??
-                              [],
                         ),
                       ),
                       const SizedBox(height: 70),
@@ -1196,9 +982,8 @@ class ProjectsPage extends StatelessWidget {
                                     padding: const EdgeInsets.only(
                                         left: 207, right: 20),
                                     height: 440,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                    child: ListView(
+
                                       children: [
                                         Text(
                                           project.description ?? "",
@@ -1208,41 +993,6 @@ class ProjectsPage extends StatelessWidget {
                                             fontFamily: 'Raleway',
                                           ),
                                         ),
-                                        const SizedBox(height: 20),
-                                        for (var feature
-                                            in project.features!.entries)
-                                          RichText(
-                                            text: TextSpan(
-                                              children: [
-                                                const TextSpan(
-                                                  text: '• ',
-                                                  style: TextStyle(
-                                                    color: Color(0xff4F4F4F),
-                                                    fontSize: 16,
-                                                    fontFamily: 'Raleway',
-                                                    fontWeight: FontWeight.w100,
-                                                  ),
-                                                ),
-                                                TextSpan(
-                                                  text: '${feature.key}: ',
-                                                  style: const TextStyle(
-                                                    color: Color(0xff4F4F4F),
-                                                    fontSize: 16,
-                                                    fontFamily: 'Raleway',
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                ),
-                                                TextSpan(
-                                                  text: feature.value,
-                                                  style: const TextStyle(
-                                                    color: Color(0xff4F4F4F),
-                                                    fontSize: 16,
-                                                    fontFamily: 'Raleway',
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
                                       ],
                                     ),
                                   ),

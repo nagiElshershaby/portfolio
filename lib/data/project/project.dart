@@ -7,7 +7,10 @@ class Project {
   String? googlePlay;
   String? appStore;
   String? github;
-  Map<String,String>? features;
+  List<String>? features;
+  List<String?>? pubspec;
+  String? lastUpdate;
+  String? status;
 
-  Project({this.name, this.description, this.imagesUrls, this.googlePlay, this.appStore, this.github, this.features, this.iconUrl, this.backgroundUrl});
+  Project({this.name, this.description, this.imagesUrls, this.googlePlay, this.appStore, this.github, this.features, this.iconUrl, this.backgroundUrl, this.pubspec, this.lastUpdate, this.status});
 }
