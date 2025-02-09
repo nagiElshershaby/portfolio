@@ -669,114 +669,113 @@ class ProjectsPage extends StatelessWidget {
             final project = projects[index];
             return Stack(
               children: [
+                if (project.backgroundUrl != null)
+                  Container(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height ,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(project.backgroundUrl!),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height,
+                  color: Colors.white.withOpacity(0.8),
+                ),
                 SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Header background image (occupies 30% of screen height)
-
-                      Stack(
+                      Column(
                         children: [
-                          if (project.backgroundUrl != null)
-                            Container(
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.3,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(project.backgroundUrl!),
-                                  fit: BoxFit.cover,
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          Row(
+                            children: [
+                              const SizedBox(width: 16),
+                              Text(
+                                "0${index + 1}",
+                                style: const TextStyle(
+                                  color: Color(0xff4F4F4F),
+                                  fontSize: 24, // Reduced size for mobile
+                                  fontFamily: 'Raleway',
+                                  fontWeight: FontWeight.w100,
                                 ),
                               ),
-                            ),
-                          // Project header: index, name and action icons
-                          Column(
-                            children: [
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              Row(
-                                children: [
-                                  const SizedBox(width: 16),
-                                  Text(
-                                    "0${index + 1}",
-                                    style: const TextStyle(
-                                      color: Color(0xff4F4F4F),
-                                      fontSize: 24, // Reduced size for mobile
-                                      fontFamily: 'Raleway',
-                                      fontWeight: FontWeight.w100,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    project.name ?? "",
-                                    style: const TextStyle(
-                                      color: Color(0xff4F4F4F),
-                                      fontSize: 32,
-                                      fontFamily: 'Raleway',
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              Row(
-                                children: [
-                                  const SizedBox(width: 16),
-                                  if (project.googlePlay != null)
-                                    GestureDetector(
-                                      child: Image.asset(
-                                        "assets/images/icons/google-play.png",
-                                        height: 28,
-                                        width: 28,
-                                      ),
-                                      onTap: () {
-                                        launchUrl(Uri.parse(project.googlePlay!));
-                                      },
-                                    ),
-                                  const SizedBox(width: 8),
-                                  if (project.appStore != null)
-                                    GestureDetector(
-                                      child: Image.asset(
-                                        "assets/images/icons/app-store.png",
-                                        height: 28,
-                                        width: 28,
-                                      ),
-                                      onTap: () {
-                                        launchUrl(Uri.parse(project.appStore!));
-                                      },
-                                    ),
-                                  if (project.github != null &&
-                                      project.github!.isNotEmpty)
-                                    IconButton(
-                                      icon: const Icon(Icons.code),
-                                      onPressed: () {
-                                        launchUrl(Uri.parse(project.github!));
-                                      },
-                                    ),
-                                ],
+                              const SizedBox(width: 8),
+                              Text(
+                                project.name ?? "",
+                                style: const TextStyle(
+                                  color: Color(0xff4F4F4F),
+                                  fontSize: 32,
+                                  fontFamily: 'Raleway',
+                                  fontWeight: FontWeight.w700,
+                                ),
                               ),
                             ],
                           ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          Row(
+                            children: [
+                              const SizedBox(width: 16),
+                              if (project.googlePlay != null)
+                                GestureDetector(
+                                  child: Image.asset(
+                                    "assets/images/icons/google-play.png",
+                                    height: 28,
+                                    width: 28,
+                                  ),
+                                  onTap: () {
+                                    launchUrl(Uri.parse(project.googlePlay!));
+                                  },
+                                ),
+                              const SizedBox(width: 8),
+                              if (project.appStore != null)
+                                GestureDetector(
+                                  child: Image.asset(
+                                    "assets/images/icons/app-store.png",
+                                    height: 28,
+                                    width: 28,
+                                  ),
+                                  onTap: () {
+                                    launchUrl(Uri.parse(project.appStore!));
+                                  },
+                                ),
+                              if (project.github != null &&
+                                  project.github!.isNotEmpty)
+                                IconButton(
+                                  icon: const Icon(Icons.code),
+                                  onPressed: () {
+                                    launchUrl(Uri.parse(project.github!));
+                                  },
+                                ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          // Project description
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Text(
+                              project.description ?? "",
+                              style: const TextStyle(
+                                color: Color(0xff4F4F4F),
+                                fontSize: 14,
+                                fontFamily: 'Raleway',
+                              ),
+                            ),
+                          ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      // Project description
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Text(
-                          project.description ?? "",
-                          style: const TextStyle(
-                            color: Color(0xff4F4F4F),
-                            fontSize: 14,
-                            fontFamily: 'Raleway',
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 70),
+
                     ],
                   ),
                 ),
