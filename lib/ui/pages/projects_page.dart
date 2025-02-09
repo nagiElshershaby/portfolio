@@ -562,96 +562,399 @@ class ProjectsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Project> projects = [
-      // Roze Moon
-      Project(
-        name: 'Roze Moon',
-        description:
-            '🌸 Welcome to Roze Moon – Your Gateway to Beautiful Flowers! 🌸\nDiscover a world of floral elegance with Roze Moon, your ultimate destination for ordering fresh flowers effortlessly. Whether it’s a special occasion or just a gesture to brighten someone’s day, we’ve got you covered with stunning bouquets, tailored arrangements, and seamless ordering options.',
-        backgroundUrl: 'assets/images/bg/rozemoon_bg.png',
-        googlePlay:
-            'https://play.google.com/store/apps/details?id=com.rozemoon.app',
-        appStore: 'https://apps.apple.com/eg/app/roze-moon/id6739536345',
-        iconUrl:
-            'https://play-lh.googleusercontent.com/eVZIFAMQazrVN2VybzAEgHOd8FJKjqiekLv26u7PvFBpQcK5TrVsJNXP97dJ8s4wDByr=w240-h480-rw',
-        lastUpdate: '2025',
-        status: 'ongoing',
-      ),
-      // Zahra Flowers
-      Project(
-        name: 'Zahra Flowers',
-        description:
-            'A Flux Store template that worked with Shopify that i was asked to edit and connect its graphQl collections',
+    Project rozeMoon = Project(
+      name: "Roze Moon",
+      description:
+      '🌸 Welcome to Roze Moon – Your Gateway to Beautiful Flowers! 🌸\nDiscover a world of floral elegance with Roze Moon, your ultimate destination for ordering fresh flowers effortlessly. Whether it’s a special occasion or just a gesture to brighten someone’s day, we’ve got you covered with stunning bouquets, tailored arrangements, and seamless ordering options.',
+      backgroundUrl: 'assets/images/bg/rozemoon_bg.png',
+      googlePlay:
+      'https://play.google.com/store/apps/details?id=com.rozemoon.app',
+      appStore: 'https://apps.apple.com/eg/app/roze-moon/id6739536345',
+      iconUrl:
+      'https://play-lh.googleusercontent.com/eVZIFAMQazrVN2VybzAEgHOd8FJKjqiekLv26u7PvFBpQcK5TrVsJNXP97dJ8s4wDByr=w240-h480-rw',
+      lastUpdate: '2025',
+      imagesUrls: [
+        "assets/screenshots/home.png",
+        "assets/screenshots/cart.png",
+        "assets/screenshots/orders.png"
+      ],
+      features: [
+        "Order flowers instantly or pre-order",
+        "Cart management & checkout",
+        "Multi-payment support (Amazon Payment, Wallet, etc.)",
+        "Push notifications (Firebase, Twilio WhatsApp, Email)",
+        "Multi-language support (easy_localization)",
+        "User authentication with secure storage",
+        "Maps integration for address selection",
+        "Infinite scroll for product listing",
+        "Skeleton loaders for better user experience",
+        "In-app web views for additional content",
+        "Image picking and file uploads",
+        "Upgrades and version checking",
+        "Secure local storage for sensitive data"
+      ],
+      pubspec: [
+        "flutter_screenutil",
+        "auto_route",
+        "bloc",
+        "cached_network_image",
+        "carousel_slider",
+        "easy_localization",
+        "easy_stepper",
+        "equatable",
+        "flutter",
+        "flutter_bloc",
+        "flutter_layout_grid",
+        "flutter_localizations",
+        "flutter_otp_text_field",
+        "flutter_rating_bar",
+        "flutter_secure_storage",
+        "flutter_svg",
+        "font_awesome_flutter",
+        "formz",
+        "get_it",
+        "google_fonts",
+        "iconsax_plus",
+        "infinite_scroll_pagination",
+        "intl",
+        "like_button",
+        "package_info_plus",
+        "photo_view",
+        "shared_preferences",
+        "url_launcher",
+        "skeletonizer",
+        "file_picker",
+        "phone_form_field",
+        "firebase_messaging",
+        "change_app_package_name",
+        "firebase_core",
+        "logger",
+        "flutter_native_splash",
+        "flutter_staggered_grid_view",
+        "timeago",
+        "connectivity_plus",
+        "flutter_map",
+        "latlong2",
+        "geolocator",
+        "path_provider",
+        "flutter_cache_manager",
+        "json_annotation",
+        "mockito",
+        "bloc_test",
+        "lyrebird",
+        "flutter_inappwebview",
+        "http",
+        "in_app_update",
+        "arb_generator",
+        "image_picker",
+        "upgrader"
+      ],
+      status: "Live - Ongoing",
+    );
+    Project zahraFlowers = Project(
+        name: "Zahra Flowers",
+        description: "Freelance assignment to customize a Shopify-based FluxStore template by integrating GraphQL collections and refining the UI. The work involved a workaround to bypass access code verification due to a missing/incorrect access code, which ultimately made the app unsuitable for publication in the app stores.",
         backgroundUrl: 'assets/images/bg/zahra_bg.png',
-        lastUpdate: '2024',
-        status: 'discontinued',
-      ),
-      // Ahadith
-      Project(
-        name: 'Ahadith',
+        features: [
+          "Integrated GraphQL collections with Shopify",
+          "Customized UI based on client requirements",
+          "Implemented a workaround for access code verification",
+          "Adapted FluxStore template for enhanced functionality"
+        ],
+        lastUpdate: "2024",
+        status: "Not Published",
+        notes: "A friend commissioned this project. Initially, the assignment seemed straightforward—edit and complete a Shopify template app. However, I discovered that the provided access code was non-functional. I located the section of the code that verified the access code and implemented a workaround. Although this solution met the client's requirements, it was not a viable approach for store publication. Consequently, the app was not uploaded to any public stores, and the code remains private."
+    );
+    Project ahadithApp = Project(
+        name: 'أحاديث',
         description:
-            'an Android application that provides a comprehensive collection of Prophetic hadiths for users looking for guidance and a deeper understanding of Islamic teachings. Hadiths Sustained by HadeethEnc.com API, the app offers a wide range of diverse categories, each category filled with deep conversations.',
+        'A comprehensive Android app that brings the treasure of Prophetic traditions (Ahadith) to your fingertips. With a massive collection of narrations sourced from HadeethEnc.com API, Ahadith offers an extensive range of categories, each filled with profound sayings. Delve into the world of Hadeeths, explore interpretations, word meanings, authenticity ratings, and references.',
         backgroundUrl: 'assets/images/bg/ahadith_bg.png',
         googlePlay:
-            'https://play.google.com/store/apps/details?id=com.prof_nagi.ahadith',
+        'https://play.google.com/store/apps/details?id=com.prof_nagi.ahadith',
         github: 'https://github.com/nagiElshershaby/Ahadith',
         iconUrl:
-            'https://play-lh.googleusercontent.com/u-GuFuhZtA1T2Gvsto2H5ahn4g6t2zCGrUBeb3Gs3sFWIbuRqmDPv_j3Y9tMeCPPqw=w240-h480-rw',
+        'https://play-lh.googleusercontent.com/u-GuFuhZtA1T2Gvsto2H5ahn4g6t2zCGrUBeb3Gs3sFWIbuRqmDPv_j3Y9tMeCPPqw=w240-h480-rw',
         lastUpdate: '2024',
-        status: 'completed',
-      ),
-      // Lamha
-      Project(
+
+        features: [
+          "Implements an Inverted Index IR algorithm for efficient search and ranking.",
+          "Allows users to search Hadith by keywords.",
+          "Ranks results based on relevance using TF-IDF."
+          "State management using Bloc & provider",
+          "Network requests with Dio",
+          "Offline support via flutter_offline",
+          "Responsive UI with flutter_screenutil",
+          "Local storage using Hive and Hive Flutter",
+          "Custom fonts with Google Fonts",
+          "Native splash screen configured via flutter_native_splash",
+          "Local notifications using flutter_local_notifications",
+          "Screenshot capture and sharing via screenshot & share_plus",
+          "Dependency management with Provider"
+        ],
+        pubspec: [
+          // Dependencies
+          "flutter",
+          "cupertino_icons",
+          "bloc",
+          "flutter_bloc",
+          "dio",
+          "flutter_offline",
+          "flutter_screenutil",
+          "provider",
+          "hive",
+          "hive_flutter",
+          "google_fonts",
+          "screenshot",
+          "share_plus",
+          "path_provider",
+          "hijri",
+          "flutter_translate",
+          "flutter_native_splash",
+          "flutter_native_timezone_updated_gradle",
+          "flutter_local_notifications",
+          // Dev Dependencies
+          "flutter_test",
+          "hive_generator",
+          "build_runner",
+          "flutter_lints"
+        ],
+        status: "Live"             // Or "In Development" if applicable
+    );
+    Project lamha = Project(
         name: 'لمحــة',
         description:
-            'A daily dose of knowledge and faith.\n Lamha is a simple freelancing project that I developed for a client, it contains a collection of scientific miracles in many fields, With a Quranic verse or a noble Prophet’s hadith.',
+        'A daily dose of knowledge and faith.\n Lamha is a simple freelancing project that I developed for a client, it contains a collection of scientific miracles in many fields, With a Quranic verse or a noble Prophet’s hadith.',
         backgroundUrl: 'assets/images/bg/lamha_bg.png',
         googlePlay:
-            'https://play.google.com/store/apps/details?id=com.prof_nagi.lam7ah',
-        github: 'https://github.com/nagiElshershaby/mogezat_app/tree/master',
-        lastUpdate: '2023',
-        status: 'completed',
-      ),
-      // Azkar
-      Project(
+        'https://play.google.com/store/apps/details?id=com.prof_nagi.lam7ah',
+        github: 'https://github.com/nagiElshershaby/mogezat_app/tree/master',      // Private project; source code not publicly available
+        features: [
+          "Local notifications with flutter_local_notifications",
+          "State management using Provider",
+          "Local storage with Hive & Hive Flutter",
+          "Responsive UI with flutter_screenutil",
+          "Screenshot capture & sharing using esys_flutter_share_plus",
+          "Timezone handling with flutter_native_timezone_updated_gradle",
+          "Custom app icons and native splash screen configuration"
+        ],
+        pubspec: [
+          // Dependencies
+          "flutter",
+          "cupertino_icons",
+          "flutter_local_notifications",
+          "provider",
+          "hive_flutter",
+          "hive",
+          "screenshot",
+          "path_provider",
+          "flutter_native_timezone_updated_gradle",
+          "flutter_screenutil",
+          "esys_flutter_share_plus",
+          // Dev Dependencies
+          "flutter_test",
+          "flutter_native_splash",
+          "flutter_launcher_icons",
+          "flutter_lints"
+        ],
+        lastUpdate: "2023",
+        status: "Live"
+    );
+    Project azkarPrayers = Project(
         name: "أذكار",
         description:
-            'Make yourself a daily remembrance of what our Master Muhammad, may God bless him and grant him peace, recommended\nAzkar is a very simple app that meant a lot to its users\nIt contains a collection of Azkar that the user can read, and it also contains a counter for each Azkar to help the user to keep track of the number of times he/she read it.',
+        'Make yourself a daily remembrance of what our Master Muhammad, may God bless him and grant him peace, recommended\nAzkar is a very simple app that meant a lot to its users\nIt contains a collection of Azkar that the user can read, and it also contains a counter for each Azkar to help the user to keep track of the number of times he/she read it.',
         backgroundUrl: 'assets/images/bg/azkar_bg.png',
         googlePlay:
-            'https://play.google.com/store/apps/details?id=com.prof_nagi.azkar',
+        'https://play.google.com/store/apps/details?id=com.prof_nagi.azkar',
         github: 'https://github.com/nagiElshershaby/azkar_prayers',
         lastUpdate: '2023',
-        status: 'completed',
-      ),
-      // The Closet
-      Project(
+        status: 'Live',
+                               // Private project; code not publicly available
+        features: [
+          "Animated counter using animated_flip_counter",
+          "Local storage with Hive and Hive Flutter",
+          "State management via Provider",
+          "Native splash screen configuration using flutter_native_splash",
+          "App renaming support with the rename package"
+        ],
+        pubspec: [
+          // Dependencies
+          "flutter",
+          "cupertino_icons",
+          "animated_flip_counter",
+          "hive",
+          "hive_flutter",
+          "provider",
+          "flutter_native_splash",
+          "rename",
+          // Dev Dependencies
+          "flutter_launcher_icons",
+          "flutter_test",
+          "flutter_lints"
+        ],
+        );
+    Project changingRoom = Project(
         name: 'The Closet',
         description:
-            'The Closet is a personal concept project for a fashion app that helps users to organize their clothes and plan their outfits.',
-        github: 'https://github.com/nagiElshershaby/clothes',
+        'The Closet is a personal concept project for a fashion app that helps users to organize their clothes and plan their outfits.',
+        github: 'https://github.com/nagiElshershaby/Changing-Room/tree/master',
         backgroundUrl: 'assets/images/bg/closet_bg.png',
         lastUpdate: '2023',
-        status: 'ongoing',
-      ),
-      // Ill-Vent
-      Project(
-        name: 'Ill-Vent',
-        description:
-            'Ill-Vent is a startup project that I worked on with a team of developers, designers, and business developers. It is a platform for emergency services that connects users with the nearest available ambulance, police, or fire department.',
-        backgroundUrl: 'assets/images/bg/ill-vent_bg.png',
-        github: 'https://github.com/nagiElshershaby/illVent',
-        lastUpdate: '2023',
-        status: 'completed',
-      ),
-      // Other Modules
-      Project(
-        name: 'Other Modules',
-        description:
-            'A list of other modules that I worked on, including a chat module, a localized version of Ahadith, and more...',
-        github: 'https://github.com/nagiElshershaby?tab=repositories&q=ill&type=&language=&sort=',
+        features: [
+          "Image selection using image_picker",
+          "Camera integration for capturing photos",
+          "Path management with path_provider",
+          "Image cropping using image_cropper and native_image_cropper",
+          "HTTP networking with the http package",
+          "Screenshot functionality",
+          "Permission handling via permission_handler",
+          "Local storage with Hive and Hive Flutter",
+          "State management using Provider",
+          "Responsive UI with flutter_screenutil"
+        ],
+        pubspec: [
+          // Dependencies
+          "flutter",
+          "cupertino_icons",
+          "image_picker",
+          "camera",
+          "path_provider",
+          "image_cropper",
+          "native_image_cropper",
+          "http",
+          "screenshot",
+          "permission_handler",
+          "hive",
+          "hive_flutter",
+          "provider",
+          "flutter_screenutil",
+          // Dev Dependencies
+          "flutter_test",
+          "flutter_lints"
+        ],
+        status: "In Development"   // Change to "Live" if published
+    );
+    Project illVent = Project(
+      name: 'Ill-Vent',
+      description:
+      'Ill-Vent is a startup project that I worked on with a team of developers, designers, and business developers. It is a platform for emergency services that connects users with the nearest available ambulance, police, or fire department.',
+      backgroundUrl: 'assets/images/bg/ill-vent_bg.png',
+      github: 'https://github.com/nagiElshershaby/illVent',
+      lastUpdate: '2023',
+      status: 'completed',
+        features: [
+          "Animated splash screen using animated_splash_screen",
+          "Image selection via image_picker",
+          "Local file system access with path_provider",
+          "Custom curved navigation bar using curved_navigation_bar",
+          "QR code generation with qr_flutter",
+          "Location lookup via geocoding",
+        ],
+        pubspec: [
+          // Dependencies
+          "flutter",
+          "animated_splash_screen",
+          "image_picker",
+          "path_provider",
+          "curved_navigation_bar",
+          "cupertino_icons",
+          "qr_flutter",
+          "geocoding",
+          // Dev Dependencies
+          "flutter_test",
+          "flutter_lints"
+        ],  // Update as needed
+    );
+    Project otherModules = Project(
+        name: "Other Modules",
+        description: "A collection of various Flutter modules, including games, chat apps, authentication, notifications, and more.",
         backgroundUrl: 'assets/images/bg/others_bg.png',
-      ),
+        github: "https://github.com/nagiElshershaby",  // Root GitHub link
+        features: [
+          "Snake game built using Flutter and game loops",
+          "A simple notes app with CRUD functionality",
+          "Image cropping functionality for Flutter apps",
+          "Local notifications with scheduled reminders",
+          "Expense tracking with a money management module",
+          "Real-time chat functionality using Firebase and WebSockets",
+          "RxDart-based state management experiments",
+          "Cat explorer app fetching data from an API",
+          "Location tracking and dynamic theme toggling",
+          "Phone authentication using Firebase"
+        ],
+        pubspec: [
+          // Core Flutter dependencies
+          "flutter",
+          "cupertino_icons",
+
+          // Game development (for snake_game_using_flutter)
+          "flame",
+          // Game engine for Flutter
+          "flutter_bloc",
+          // Possible state management for game logic
+
+          // NotesApp (basic CRUD storage)
+          // Money tracking (money_spent)
+          "hive",
+          "hive_flutter",
+          "path_provider",
+
+          // Image cropping module (Image_cropper_example)
+          "image_cropper",
+          "image_picker",
+
+          // Local notifications module
+          "flutter_local_notifications",
+
+
+          // Chat app (flutter_chat_app)
+          "firebase_core",
+          "firebase_auth",
+          "cloud_firestore",
+          "cached_network_image",
+
+          // RxDart experiments (Rx_dart_test)
+          "rxdart",
+          "provider",
+
+          // Cat explorer app (cats_explorer_app)
+          "http",
+
+          // Location tracking & theme toggling (Location-Tracker-and-Theme-Toggle-Flutter-App)
+          "location",
+          "geolocator",
+          "shared_preferences",
+
+          // Phone authentication (Flutter-Phone-Authentication-Module)
+
+
+          // Dev dependencies
+          "flutter_test",
+          "flutter_lints"
+        ],
+        lastUpdate: "2022",  // Update with the actual last update date
+        status: "In Development"
+    );
+
+
+    List<Project> projects = [
+      // Roze Moon
+      rozeMoon,
+      // Zahra Flowers
+      zahraFlowers,
+      // Ahadith
+      ahadithApp,
+      // Lamha
+      lamha,
+      // Azkar
+      azkarPrayers,
+      // The Closet
+      changingRoom,
+      // Ill-Vent
+      illVent,
+      // Other Modules
+      otherModules,
     ];
 
     PageController pageController = PageController();

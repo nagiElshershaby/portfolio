@@ -11,6 +11,7 @@ class Project {
   List<String?>? pubspec;
   String? lastUpdate;
   String? status;
+  String? notes;
 
-  Project({this.name, this.description, this.imagesUrls, this.googlePlay, this.appStore, this.github, this.features, this.iconUrl, this.backgroundUrl, this.pubspec, this.lastUpdate, this.status});
+  Project({this.name, this.description, this.imagesUrls, this.googlePlay, this.appStore, this.github, this.features, this.iconUrl, this.backgroundUrl, this.pubspec, this.lastUpdate, this.status, this.notes});
 }
