@@ -868,8 +868,9 @@ class ProjectsPage extends StatelessWidget {
                                   Container(
                                     padding: EdgeInsets.only(
                                         left: leftPadding + 7, right: 20),
-                                    height: 440,
-                                    child: ListView(
+                                    // height: 440,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         // Project description
                                         Text(
