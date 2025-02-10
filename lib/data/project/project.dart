@@ -15,7 +15,7 @@ class Project {
 
 
 
-  List<String?>? imagesUrls;
+  List<String>? imagesUrls;
 
   Project({this.name, this.description, this.imagesUrls, this.googlePlay, this.appStore, this.github, this.features, this.iconUrl, this.backgroundUrl, this.pubspec, this.lastUpdate, this.status, this.notes, this.type});
 }

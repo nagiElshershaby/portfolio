@@ -60,10 +60,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/bg/
-    - assets/images/icons/
     - assets/images/ahadith/
     - assets/images/athkar/
+    - assets/images/bg/
+    - assets/images/icons/
+    - assets/images/rozemoon/
+    - assets/images/zahra/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

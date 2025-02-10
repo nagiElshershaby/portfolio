@@ -58,17 +58,18 @@ class ProjectsPage extends StatelessWidget {
       description:
           '🌸 Welcome to Roze Moon – Your Gateway to Beautiful Flowers! 🌸\nDiscover a world of floral elegance with Roze Moon, your ultimate destination for ordering fresh flowers effortlessly. Whether it’s a special occasion or just a gesture to brighten someone’s day, we’ve got you covered with stunning bouquets, tailored arrangements, and seamless ordering options.',
       backgroundUrl: 'assets/images/bg/rozemoon_bg.png',
+      imagesUrls: [
+        "assets/images/rozemoon/rozemoon_fg.png",
+        "assets/images/rozemoon/rozemoon_fg1.png",
+        "assets/images/rozemoon/rozemoon_fg2.png",
+        "assets/images/rozemoon/rozemoon_fg3.png",
+      ],
       googlePlay:
           'https://play.google.com/store/apps/details?id=com.rozemoon.app',
       appStore: 'https://apps.apple.com/eg/app/roze-moon/id6739536345',
       iconUrl:
           'https://play-lh.googleusercontent.com/eVZIFAMQazrVN2VybzAEgHOd8FJKjqiekLv26u7PvFBpQcK5TrVsJNXP97dJ8s4wDByr=w240-h480-rw',
       lastUpdate: '2025',
-      imagesUrls: [
-        "assets/screenshots/home.png",
-        "assets/screenshots/cart.png",
-        "assets/screenshots/orders.png"
-      ],
       features: [
         "Order flowers instantly or pre-order",
         "Cart management & checkout",
@@ -148,6 +149,12 @@ class ProjectsPage extends StatelessWidget {
         description:
             "Freelance assignment to customize a Shopify-based FluxStore template by integrating GraphQL collections and refining the UI. The work involved a workaround to bypass access code verification due to a missing/incorrect access code, which ultimately made the app unsuitable for publication in the app stores.",
         backgroundUrl: 'assets/images/bg/zahra_bg.png',
+        imagesUrls: [
+          "assets/images/zahra/zahra.jpg",
+          "assets/images/zahra/zahra2.jpg",
+          "assets/images/zahra/zahra4.jpg",
+          "assets/images/zahra/zahra6.jpg",
+        ],
         features: [
           "Integrated GraphQL collections with Shopify",
           "Customized UI based on client requirements",
@@ -165,6 +172,12 @@ class ProjectsPage extends StatelessWidget {
         description:
             'A comprehensive Android app that brings the treasure of Prophetic traditions (Ahadith) to your fingertips. With a massive collection of narrations sourced from HadeethEnc.com API, Ahadith offers an extensive range of categories, each filled with profound sayings. Delve into the world of Hadeeths, explore interpretations, word meanings, authenticity ratings, and references.',
         backgroundUrl: 'assets/images/bg/ahadith_bg.png',
+        imagesUrls: [
+          "assets/images/ahadith/ahadith.jpg",
+          "assets/images/ahadith/ahadith1.jpg",
+          "assets/images/ahadith/ahadith3.jpg",
+          "assets/images/ahadith/ahadith5.jpg",
+        ],
         googlePlay:
             'https://play.google.com/store/apps/details?id=com.prof_nagi.ahadith',
         github: 'https://github.com/nagiElshershaby/Ahadith',
@@ -260,6 +273,12 @@ class ProjectsPage extends StatelessWidget {
       name: "أذكار",
       type: "Freelance Project – Islamic Remembrance & Supplication App",
       iconUrl: "https://play-lh.googleusercontent.com/56RUS8o5dkktygR7x_1fY2giZ8z_S9Y-1qIg9E3Rc_H6lE_FoENAFzJ99ZpjWhed1x0=w240-h480",
+      imagesUrls: [
+        "assets/images/athkar/athkar.jpg",
+        "assets/images/athkar/athkar1.jpg",
+        "assets/images/athkar/athkar2.jpg",
+        "assets/images/athkar/athkar3.jpg",
+      ],
       description:
           'Make yourself a daily remembrance of what our Master Muhammad, may God bless him and grant him peace, recommended\nAzkar is a very simple app that meant a lot to its users\nIt contains a collection of Azkar that the user can read, and it also contains a counter for each Azkar to help the user to keep track of the number of times he/she read it.',
       backgroundUrl: 'assets/images/bg/azkar_bg.png',
@@ -573,6 +592,24 @@ class ProjectsPage extends StatelessWidget {
                             ),
 
                             const SizedBox(height: 16),
+                            // images
+                            if (project.imagesUrls != null &&
+                                project.imagesUrls!.isNotEmpty)
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  for (var imageUrl in project.imagesUrls!)
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width /4.9,
+                                      child: Image.asset(
+                                        imageUrl,
+                                        // height: MediaQuery.of(context).size.height / 3,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            const SizedBox(height: 16),
                             // Project description
                             Text(
                               project.description ?? "",
@@ -762,7 +799,8 @@ class ProjectsPage extends StatelessWidget {
           },
         ),
       );
-    } else {
+    }
+    else {
       // Desktop / Web layout (original code)
       final double leftPadding = 0.1041 * MediaQuery.of(context).size.width;
       return Scaffold(
