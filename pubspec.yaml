@@ -1,5 +1,5 @@
-name: protofolio
-description: "A new Flutter project."
+name: NagiElshershaby
+description: "My Personal Portfolio"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -84,6 +84,8 @@ flutter:
           weight: 700
         - asset: assets/fonts/Raleway-Thin.ttf
           weight: 100
+        - asset: assets/fonts/Raleway-Medium.ttf
+          weight: 300
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

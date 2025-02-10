@@ -1,16 +1,27 @@
-# protofolio
+# 🚀 My Portfolio
 
-A new Flutter project.
+Welcome to my personal **Flutter Web Portfolio**! This project showcases my skills, experience, and projects in an interactive and visually appealing way. Built entirely with **Flutter for Web**, it provides a seamless and responsive experience across devices.
 
-## Getting Started
+## 🌟 Features
+- **Modern UI/UX** – Clean and elegant design with smooth animations.
+- **Interactive Sections** – Browse my work, skills, and experience easily.
+- **Project Showcase** – Detailed view of my past projects with descriptions and links.
+- **Keyboard Navigation** – Use arrow keys to navigate between pages.
+- **Flutter Web Optimization** – Fast performance and responsive layout.
+- **SEO Friendly** – Enhanced metadata for better search engine visibility.
 
-This project is a starting point for a Flutter application.
+## 🛠️ Tech Stack
+- **Framework:** Flutter for Web
+- **Animations:** Flutter Animations
+- **Fonts & Icons:** Rale-way font, Flutter Icons
+- **Deployment:** GitHub Hosting / GitHub Pages
 
-A few resources to get you started if this is your first Flutter project:
+## 🌍 Live Demo
+Check out my portfolio live at: https://nagielshershaby.github.io/portfolio/
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🤝 Connect With Me
+- **GitHub:** [nagiElshershaby](https://github.com/nagiElshershaby)
+- **LinkedIn:** [Nagi El-Shershaby](https://www.linkedin.com/in/nagi-el-shershaby-85660a231/)
+- **Email:** nagielshershaby@gmail.com
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
