@@ -436,9 +436,7 @@ class ProjectsPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(
-                        height: 16
-                      ),
+                      const SizedBox(height: 16),
                       // Project index, name, and icons
                       Row(
                         children: [
@@ -841,6 +839,26 @@ class ProjectsPage extends StatelessWidget {
                                                   ),
                                               ],
                                             ),
+                                            // type
+                                            Text(
+                                              project.type ?? "",
+                                              style: const TextStyle(
+                                                color: Color(0xff4F4F4F),
+                                                fontSize: 24,
+                                                fontFamily: 'Raleway',
+                                                // fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                            // Status and last update
+                                            Text(
+                                              "${project.status ?? ""} - Last Update: ${project.lastUpdate ?? ""}",
+                                              style: const TextStyle(
+                                                color: Color(0xff4F4F4F),
+                                                fontSize: 24,
+                                                fontFamily: 'Raleway',
+                                                fontWeight: FontWeight.w100,
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ],
@@ -853,6 +871,7 @@ class ProjectsPage extends StatelessWidget {
                                     height: 440,
                                     child: ListView(
                                       children: [
+                                        // Project description
                                         Text(
                                           project.description ?? "",
                                           style: const TextStyle(
@@ -861,6 +880,102 @@ class ProjectsPage extends StatelessWidget {
                                             fontFamily: 'Raleway',
                                           ),
                                         ),
+                                        const SizedBox(height: 16),
+                                        // Features title
+                                        if (project.features != null &&
+                                            project.features!.isNotEmpty)
+                                          const Text(
+                                            "Features:",
+                                            style: TextStyle(
+                                              color: Color(0xff4F4F4F),
+                                              fontSize: 26,
+                                              fontFamily: 'Raleway',
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        // Features list
+                                        if (project.features != null &&
+                                            project.features!.isNotEmpty)
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              for (var feature in project.features!)
+                                                Text(
+                                                  '• $feature',
+                                                  style: const TextStyle(
+                                                    color: Color(0xff4F4F4F),
+                                                    fontSize: 16,
+                                                    fontFamily: 'Raleway',
+                                                  ),
+                                                ),
+                                            ],
+                                          ),
+                                        if (project.features != null &&
+                                            project.features!.isNotEmpty)
+                                          const SizedBox(
+                                            height: 16,
+                                          ),
+                                        // Notes title
+                                        if (project.notes != null &&
+                                            project.notes!.isNotEmpty)
+                                          const Text(
+                                            "Notes:",
+                                            style: TextStyle(
+                                              color: Color(0xff4F4F4F),
+                                              fontSize: 26,
+                                              fontFamily: 'Raleway',
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        // Notes content
+                                        if (project.notes != null &&
+                                            project.notes!.isNotEmpty)
+                                          Text(
+                                            project.notes ?? "",
+                                            style: const TextStyle(
+                                              color: Color(0xff4F4F4F),
+                                              fontSize: 16,
+                                              fontFamily: 'Raleway',
+                                            ),
+                                          ),
+                                        // Pubspec title
+                                        if (project.pubspec != null &&
+                                            project.pubspec!.isNotEmpty)
+                                          const Text(
+                                            "Pubspec Dependencies:",
+                                            style: TextStyle(
+                                              color: Color(0xff4F4F4F),
+                                              fontSize: 26,
+                                              fontFamily: 'Raleway',
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        if (project.pubspec != null &&
+                                            project.pubspec!.isNotEmpty)
+                                          const SizedBox(
+                                            height: 8,
+                                          ),
+                                        // Pubspec tags
+                                        if (project.pubspec != null &&
+                                            project.pubspec!.isNotEmpty)
+                                          Wrap(
+                                            spacing: 8,
+                                            runSpacing: 8,
+                                            children: [
+                                              for (var dependency in project.pubspec!)
+                                                Chip(
+                                                  label: Text(
+                                                    dependency,
+                                                    style: const TextStyle(
+                                                      fontSize: 16,
+                                                      fontFamily: 'Raleway',
+                                                    ),
+                                                  ),
+                                                  elevation: 2,
+                                                  shadowColor: Colors.black,
+                                                ),
+                                            ],
+                                          ),
                                       ],
                                     ),
                                   ),
