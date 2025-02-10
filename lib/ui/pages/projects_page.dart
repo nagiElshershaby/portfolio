@@ -839,7 +839,7 @@ class ProjectsPage extends StatelessWidget {
                         Positioned(
                           left: 0,
                           child: Container(
-                            width: 1920,
+                            width: MediaQuery.sizeOf(context).width,
                             height: MediaQuery.of(context).size.height,
                             decoration: BoxDecoration(
                               image: DecorationImage(
@@ -849,11 +849,16 @@ class ProjectsPage extends StatelessWidget {
                             ),
                           ),
                         ),
+                      Container(
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height,
+                        color: Colors.white.withOpacity(0.8),
+                      ),
                       ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
                           SizedBox(
-                            width: 960,
+                            width: (MediaQuery.sizeOf(context).width>1160)?960:MediaQuery.sizeOf(context).width-leftPadding,
                             child: Stack(
                               children: [
                                 // Vertical line for design
@@ -982,14 +987,33 @@ class ProjectsPage extends StatelessWidget {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           // Project description
-                                          Text(
-                                            project.description ?? "",
-                                            style: const TextStyle(
-                                              color: Color(0xff4F4F4F),
-                                              fontSize: 16,
-                                              fontFamily: 'Raleway',
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 8.0),
+                                            child: Text(
+                                              project.description ?? "",
+                                              style: const TextStyle(
+                                                color: Color(0xff4F4F4F),
+                                                fontSize: 16,
+                                                fontFamily: 'Raleway',
+                                              ),
                                             ),
                                           ),
+                                          const SizedBox(height: 16),
+                                          // images
+                                          if (project.imagesUrls != null &&
+                                              project.imagesUrls!.isNotEmpty)
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                for (var imageUrl in project.imagesUrls!)
+                                                  Image.asset(
+                                                    imageUrl,
+                                                    width: (MediaQuery.sizeOf(context).width>1160)?180:(MediaQuery.sizeOf(context).width-leftPadding)/5,
+                                                    fit: BoxFit.contain,
+                                                  ),
+                                              ],
+                                            ),
                                           const SizedBox(height: 16),
                                           // Features title
                                           if (project.features != null &&
