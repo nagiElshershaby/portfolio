@@ -1,4 +1,4 @@
-import 'package:NagiElshershaby/ui/pages/projects_page.dart';
+import 'package:portfolio/ui/pages/projects_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -923,7 +923,7 @@ class HomePage extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(height: 107),
+                            const SizedBox(height: 107),
                             Padding(
                               padding: EdgeInsets.only(
                                   left: leftPadding + 7, right: 20),

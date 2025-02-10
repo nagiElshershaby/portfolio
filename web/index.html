@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -18,21 +18,85 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Check out my portfolio showcasing my Flutter projects and experience.">
 
   <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="protofolio">
+  <meta name="apple-mobile-web-app-title" content="Nagi El-Shershaby">
 <!--  <link rel="apple-touch-icon" href="icons/Icon-192.png">-->
 
   <!-- Favicon -->
 <!--  <link rel="icon" type="image/png" href="favicon.png"/>-->
 
-  <title>protofolio</title>
+  <title>My Portfolio - Nagi El-Shershaby</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    /* Fullscreen loader */
+    #loading-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        z-index: 9999;
+    }
+
+    /* Simple spinner animation */
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #ccc;
+        border-top: 5px solid #4F4F4F;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+  </style>
+
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <div id="loading" style="
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    ">
+    <div class="spinner"></div>
+  </div>
+
+  <script>
+    const loadingElement = document.getElementById('loading');
+
+    {{flutter_js}}
+    {{flutter_build_config}}
+
+    _flutter.loader.load({
+      onEntrypointLoaded: async function (engineInitializer) {
+        const appRunner = await engineInitializer.initializeEngine();
+        await appRunner.runApp();
+
+        // Hide spinner once the app is fully loaded
+        loadingElement.style.display = "none";
+      }
+    });
+  </script>
 </body>
+
+
+
+
+
+
+
+
 </html>

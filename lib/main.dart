@@ -1,4 +1,4 @@
-import 'package:NagiElshershaby/ui/pages/home_page.dart';
+import 'package:portfolio/ui/pages/home_page.dart';
 import 'package:flutter/material.dart';
 // import 'package:protofolio/ui/pages/projects_page.dart';
 
