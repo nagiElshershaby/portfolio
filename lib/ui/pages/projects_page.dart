@@ -52,6 +52,158 @@ class ProjectsPage extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
+    Project ahadithApp = Project(
+        name: 'أحاديث',
+        type:
+        "Personal Project – Islamic Knowledge & Information retrieval System",
+        description:
+        'A comprehensive Android app that brings the treasure of Prophetic traditions (Ahadith) to your fingertips. With a massive collection of narrations sourced from HadeethEnc.com API, Ahadith offers an extensive range of categories, each filled with profound sayings. Delve into the world of Hadeeths, explore interpretations, word meanings, authenticity ratings, and references.',
+        backgroundUrl: 'assets/images/bg/ahadith_bg.png',
+        imagesUrls: [
+          "assets/images/ahadith/ahadith.jpg",
+          "assets/images/ahadith/ahadith1.jpg",
+          "assets/images/ahadith/ahadith3.jpg",
+          "assets/images/ahadith/ahadith5.jpg",
+        ],
+        googlePlay:
+        'https://play.google.com/store/apps/details?id=com.prof_nagi.ahadith',
+        github: 'https://github.com/nagiElshershaby/Ahadith',
+        iconUrl:
+        'https://play-lh.googleusercontent.com/u-GuFuhZtA1T2Gvsto2H5ahn4g6t2zCGrUBeb3Gs3sFWIbuRqmDPv_j3Y9tMeCPPqw=w240-h480-rw',
+        lastUpdate: '2024',
+        features: [
+          "Implements an Inverted Index IR algorithm for efficient search and ranking.",
+          "Allows users to search Hadith by keywords.",
+          "Ranks results based on relevance using TF-IDF."
+              "State management using Bloc & provider",
+          "Network requests with Dio",
+          "Offline support via flutter_offline",
+          "Responsive UI with flutter_screenutil",
+          "Local storage using Hive and Hive Flutter",
+          "Custom fonts with Google Fonts",
+          "Native splash screen configured via flutter_native_splash",
+          "Local notifications using flutter_local_notifications",
+          "Screenshot capture and sharing via screenshot & share_plus",
+          "Dependency management with Provider"
+        ],
+        pubspec: [
+          // Dependencies
+          "flutter",
+          "cupertino_icons",
+          "bloc",
+          "flutter_bloc",
+          "dio",
+          "flutter_offline",
+          "flutter_screenutil",
+          "provider",
+          "hive",
+          "hive_flutter",
+          "google_fonts",
+          "screenshot",
+          "share_plus",
+          "path_provider",
+          "hijri",
+          "flutter_translate",
+          "flutter_native_splash",
+          "flutter_native_timezone_updated_gradle",
+          "flutter_local_notifications",
+          // Dev Dependencies
+          "flutter_test",
+          "hive_generator",
+          "build_runner",
+          "flutter_lints"
+        ],
+        status: "Live" // Or "In Development" if applicable
+    );
+    Project azkarPrayers = Project(
+      name: "أذكار",
+      type: "Freelance Project – Islamic Remembrance & Supplication App",
+      iconUrl: "https://play-lh.googleusercontent.com/56RUS8o5dkktygR7x_1fY2giZ8z_S9Y-1qIg9E3Rc_H6lE_FoENAFzJ99ZpjWhed1x0=w240-h480",
+      imagesUrls: [
+        "assets/images/athkar/athkar.jpg",
+        "assets/images/athkar/athkar1.jpg",
+        "assets/images/athkar/athkar2.jpg",
+        "assets/images/athkar/athkar3.jpg",
+      ],
+      description:
+      'Make yourself a daily remembrance of what our Master Muhammad, may God bless him and grant him peace, recommended\nAzkar is a very simple app that meant a lot to its users\nIt contains a collection of Azkar that the user can read, and it also contains a counter for each Azkar to help the user to keep track of the number of times he/she read it.',
+      backgroundUrl: 'assets/images/bg/azkar_bg.png',
+      googlePlay:
+      'https://play.google.com/store/apps/details?id=com.prof_nagi.azkar',
+      github: 'https://github.com/nagiElshershaby/azkar_prayers',
+      lastUpdate: '2023',
+      status: 'Live',
+      // Private project; code not publicly available
+      features: [
+        "Animated counter using animated_flip_counter",
+        "Local storage with Hive and Hive Flutter",
+        "State management via Provider",
+        "Native splash screen configuration using flutter_native_splash",
+        "App renaming support with the rename package"
+      ],
+      pubspec: [
+        // Dependencies
+        "flutter",
+        "cupertino_icons",
+        "animated_flip_counter",
+        "hive",
+        "hive_flutter",
+        "provider",
+        "flutter_native_splash",
+        "rename",
+        // Dev Dependencies
+        "flutter_launcher_icons",
+        "flutter_test",
+        "flutter_lints"
+      ],
+    );
+    Project lamha = Project(
+        name: 'لمحــة',
+        type: "Freelance Project – Islamic Knowledge & Faith App",
+        iconUrl: "https://play-lh.googleusercontent.com/6KWtaVHL5UxWNilAnghox_K5blFgF7vH7Lt5_SRPlelNSWmQzRefgFlbAwkzNHM-vQ=w240-h480",
+        description:
+        'A daily dose of knowledge and faith.\n Lamha is a simple freelancing project that I developed for a client, it contains a collection of scientific miracles in many fields, With a Quranic verse or a noble Prophet’s hadith.',
+        backgroundUrl: 'assets/images/bg/lamha_bg.png',
+        imagesUrls: [
+          "assets/images/lamha/lamha.jpg",
+          "assets/images/lamha/lamha1.jpg",
+          "assets/images/lamha/lamha2.jpg",
+          "assets/images/lamha/lamha3.jpg",
+        ],
+        googlePlay:
+        'https://play.google.com/store/apps/details?id=com.prof_nagi.lam7ah',
+        github:
+        'https://github.com/nagiElshershaby/mogezat_app/tree/master', // Private project; source code not publicly available
+        features: [
+          "Local notifications with flutter_local_notifications",
+          "State management using Provider",
+          "Local storage with Hive & Hive Flutter",
+          "Responsive UI with flutter_screenutil",
+          "Screenshot capture & sharing using esys_flutter_share_plus",
+          "Timezone handling with flutter_native_timezone_updated_gradle",
+          "Custom app icons and native splash screen configuration"
+        ],
+        pubspec: [
+          // Dependencies
+          "flutter",
+          "cupertino_icons",
+          "flutter_local_notifications",
+          "provider",
+          "hive_flutter",
+          "hive",
+          "screenshot",
+          "path_provider",
+          "flutter_native_timezone_updated_gradle",
+          "flutter_screenutil",
+          "esys_flutter_share_plus",
+          // Dev Dependencies
+          "flutter_test",
+          "flutter_native_splash",
+          "flutter_launcher_icons",
+          "flutter_lints"
+        ],
+        lastUpdate: "2023",
+        status: "Live");
     Project rozeMoon = Project(
       name: "Roze Moon",
       type: "Developed at Tuwaiq – E-commerce Application",
@@ -143,181 +295,19 @@ class ProjectsPage extends StatelessWidget {
       ],
       status: "Live - Ongoing",
     );
-    Project zahraFlowers = Project(
-        name: "Zahra Flowers",
-        type: "Freelance Project – Shopify Template Customization",
-        description:
-            "Freelance assignment to customize a Shopify-based FluxStore template by integrating GraphQL collections and refining the UI. The work involved a workaround to bypass access code verification due to a missing/incorrect access code, which ultimately made the app unsuitable for publication in the app stores.",
-        backgroundUrl: 'assets/images/bg/zahra_bg.png',
-        imagesUrls: [
-          "assets/images/zahra/zahra.jpg",
-          "assets/images/zahra/zahra2.jpg",
-          "assets/images/zahra/zahra4.jpg",
-          "assets/images/zahra/zahra6.jpg",
-        ],
-        features: [
-          "Integrated GraphQL collections with Shopify",
-          "Customized UI based on client requirements",
-          "Implemented a workaround for access code verification",
-          "Adapted FluxStore template for enhanced functionality"
-        ],
-        lastUpdate: "2024",
-        status: "Not Published",
-        notes:
-            "A friend commissioned this project. Initially, the assignment seemed straightforward—edit and complete a Shopify template app. However, I discovered that the provided access code was non-functional. I located the section of the code that verified the access code and implemented a workaround. Although this solution met the client's requirements, it was not a viable approach for store publication. Consequently, the app was not uploaded to any public stores, and the code remains private.");
-    Project ahadithApp = Project(
-        name: 'أحاديث',
-        type:
-            "Personal Project – Islamic Knowledge & Information retrieval System",
-        description:
-            'A comprehensive Android app that brings the treasure of Prophetic traditions (Ahadith) to your fingertips. With a massive collection of narrations sourced from HadeethEnc.com API, Ahadith offers an extensive range of categories, each filled with profound sayings. Delve into the world of Hadeeths, explore interpretations, word meanings, authenticity ratings, and references.',
-        backgroundUrl: 'assets/images/bg/ahadith_bg.png',
-        imagesUrls: [
-          "assets/images/ahadith/ahadith.jpg",
-          "assets/images/ahadith/ahadith1.jpg",
-          "assets/images/ahadith/ahadith3.jpg",
-          "assets/images/ahadith/ahadith5.jpg",
-        ],
-        googlePlay:
-            'https://play.google.com/store/apps/details?id=com.prof_nagi.ahadith',
-        github: 'https://github.com/nagiElshershaby/Ahadith',
-        iconUrl:
-            'https://play-lh.googleusercontent.com/u-GuFuhZtA1T2Gvsto2H5ahn4g6t2zCGrUBeb3Gs3sFWIbuRqmDPv_j3Y9tMeCPPqw=w240-h480-rw',
-        lastUpdate: '2024',
-        features: [
-          "Implements an Inverted Index IR algorithm for efficient search and ranking.",
-          "Allows users to search Hadith by keywords.",
-          "Ranks results based on relevance using TF-IDF."
-              "State management using Bloc & provider",
-          "Network requests with Dio",
-          "Offline support via flutter_offline",
-          "Responsive UI with flutter_screenutil",
-          "Local storage using Hive and Hive Flutter",
-          "Custom fonts with Google Fonts",
-          "Native splash screen configured via flutter_native_splash",
-          "Local notifications using flutter_local_notifications",
-          "Screenshot capture and sharing via screenshot & share_plus",
-          "Dependency management with Provider"
-        ],
-        pubspec: [
-          // Dependencies
-          "flutter",
-          "cupertino_icons",
-          "bloc",
-          "flutter_bloc",
-          "dio",
-          "flutter_offline",
-          "flutter_screenutil",
-          "provider",
-          "hive",
-          "hive_flutter",
-          "google_fonts",
-          "screenshot",
-          "share_plus",
-          "path_provider",
-          "hijri",
-          "flutter_translate",
-          "flutter_native_splash",
-          "flutter_native_timezone_updated_gradle",
-          "flutter_local_notifications",
-          // Dev Dependencies
-          "flutter_test",
-          "hive_generator",
-          "build_runner",
-          "flutter_lints"
-        ],
-        status: "Live" // Or "In Development" if applicable
-        );
-    Project lamha = Project(
-        name: 'لمحــة',
-        type: "Freelance Project – Islamic Knowledge & Faith App",
-        iconUrl: "https://play-lh.googleusercontent.com/6KWtaVHL5UxWNilAnghox_K5blFgF7vH7Lt5_SRPlelNSWmQzRefgFlbAwkzNHM-vQ=w240-h480",
-        description:
-            'A daily dose of knowledge and faith.\n Lamha is a simple freelancing project that I developed for a client, it contains a collection of scientific miracles in many fields, With a Quranic verse or a noble Prophet’s hadith.',
-        backgroundUrl: 'assets/images/bg/lamha_bg.png',
-        googlePlay:
-            'https://play.google.com/store/apps/details?id=com.prof_nagi.lam7ah',
-        github:
-            'https://github.com/nagiElshershaby/mogezat_app/tree/master', // Private project; source code not publicly available
-        features: [
-          "Local notifications with flutter_local_notifications",
-          "State management using Provider",
-          "Local storage with Hive & Hive Flutter",
-          "Responsive UI with flutter_screenutil",
-          "Screenshot capture & sharing using esys_flutter_share_plus",
-          "Timezone handling with flutter_native_timezone_updated_gradle",
-          "Custom app icons and native splash screen configuration"
-        ],
-        pubspec: [
-          // Dependencies
-          "flutter",
-          "cupertino_icons",
-          "flutter_local_notifications",
-          "provider",
-          "hive_flutter",
-          "hive",
-          "screenshot",
-          "path_provider",
-          "flutter_native_timezone_updated_gradle",
-          "flutter_screenutil",
-          "esys_flutter_share_plus",
-          // Dev Dependencies
-          "flutter_test",
-          "flutter_native_splash",
-          "flutter_launcher_icons",
-          "flutter_lints"
-        ],
-        lastUpdate: "2023",
-        status: "Live");
-    Project azkarPrayers = Project(
-      name: "أذكار",
-      type: "Freelance Project – Islamic Remembrance & Supplication App",
-      iconUrl: "https://play-lh.googleusercontent.com/56RUS8o5dkktygR7x_1fY2giZ8z_S9Y-1qIg9E3Rc_H6lE_FoENAFzJ99ZpjWhed1x0=w240-h480",
-      imagesUrls: [
-        "assets/images/athkar/athkar.jpg",
-        "assets/images/athkar/athkar1.jpg",
-        "assets/images/athkar/athkar2.jpg",
-        "assets/images/athkar/athkar3.jpg",
-      ],
-      description:
-          'Make yourself a daily remembrance of what our Master Muhammad, may God bless him and grant him peace, recommended\nAzkar is a very simple app that meant a lot to its users\nIt contains a collection of Azkar that the user can read, and it also contains a counter for each Azkar to help the user to keep track of the number of times he/she read it.',
-      backgroundUrl: 'assets/images/bg/azkar_bg.png',
-      googlePlay:
-          'https://play.google.com/store/apps/details?id=com.prof_nagi.azkar',
-      github: 'https://github.com/nagiElshershaby/azkar_prayers',
-      lastUpdate: '2023',
-      status: 'Live',
-      // Private project; code not publicly available
-      features: [
-        "Animated counter using animated_flip_counter",
-        "Local storage with Hive and Hive Flutter",
-        "State management via Provider",
-        "Native splash screen configuration using flutter_native_splash",
-        "App renaming support with the rename package"
-      ],
-      pubspec: [
-        // Dependencies
-        "flutter",
-        "cupertino_icons",
-        "animated_flip_counter",
-        "hive",
-        "hive_flutter",
-        "provider",
-        "flutter_native_splash",
-        "rename",
-        // Dev Dependencies
-        "flutter_launcher_icons",
-        "flutter_test",
-        "flutter_lints"
-      ],
-    );
     Project changingRoom = Project(
         name: 'The Closet',
         type: "Personal Project – Virtual Dressing Room & Outfit Visualization",
         description:
-            'The Closet is a personal concept project for a fashion app that helps users to organize their clothes and plan their outfits.',
+        'The Closet is a personal concept project for a fashion app that helps users to organize their clothes and plan their outfits.',
         github: 'https://github.com/nagiElshershaby/Changing-Room/tree/master',
         backgroundUrl: 'assets/images/bg/closet_bg.png',
+        imagesUrls: [
+          "assets/images/the_closet/the_closet.jpg",
+          "assets/images/the_closet/the_closet1.jpg",
+          "assets/images/the_closet/the_closet2.jpg",
+          "assets/images/the_closet/the_closet3.jpg",
+        ],
         lastUpdate: '2023',
         features: [
           "Image selection using image_picker",
@@ -352,7 +342,30 @@ class ProjectsPage extends StatelessWidget {
           "flutter_lints"
         ],
         status: "In Development" // Change to "Live" if published
-        );
+    );
+    Project zahraFlowers = Project(
+        name: "Zahra Flowers",
+        type: "Freelance Project – Shopify Template Customization",
+        description:
+            "Freelance assignment to customize a Shopify-based FluxStore template by integrating GraphQL collections and refining the UI. The work involved a workaround to bypass access code verification due to a missing/incorrect access code, which ultimately made the app unsuitable for publication in the app stores.",
+        backgroundUrl: 'assets/images/bg/zahra_bg.png',
+        imagesUrls: [
+          "assets/images/zahra/zahra.jpg",
+          "assets/images/zahra/zahra2.jpg",
+          "assets/images/zahra/zahra4.jpg",
+          "assets/images/zahra/zahra6.jpg",
+        ],
+        features: [
+          "Integrated GraphQL collections with Shopify",
+          "Customized UI based on client requirements",
+          "Implemented a workaround for access code verification",
+          "Adapted FluxStore template for enhanced functionality"
+        ],
+        lastUpdate: "2024",
+        status: "Not Published",
+        notes:
+            "A friend commissioned this project. Initially, the assignment seemed straightforward—edit and complete a Shopify template app. However, I discovered that the provided access code was non-functional. I located the section of the code that verified the access code and implemented a workaround. Although this solution met the client's requirements, it was not a viable approach for store publication. Consequently, the app was not uploaded to any public stores, and the code remains private.");
+
     Project illVent = Project(
       name: 'Ill-Vent',
       type: "Startup Project – Emergency Services Platform",
