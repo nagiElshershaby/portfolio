@@ -1,3 +1,4 @@
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/ui/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -68,8 +69,6 @@ class ProjectsPage extends StatelessWidget {
         googlePlay:
         'https://play.google.com/store/apps/details?id=com.prof_nagi.ahadith',
         github: 'https://github.com/nagiElshershaby/Ahadith',
-        iconUrl:
-        'https://play-lh.googleusercontent.com/u-GuFuhZtA1T2Gvsto2H5ahn4g6t2zCGrUBeb3Gs3sFWIbuRqmDPv_j3Y9tMeCPPqw=w240-h480-rw',
         lastUpdate: '2024',
         features: [
           "Implements an Inverted Index IR algorithm for efficient search and ranking.",
@@ -118,7 +117,6 @@ class ProjectsPage extends StatelessWidget {
     Project azkarPrayers = Project(
       name: "أذكار",
       type: "Freelance Project – Islamic Remembrance & Supplication App",
-      iconUrl: "https://play-lh.googleusercontent.com/56RUS8o5dkktygR7x_1fY2giZ8z_S9Y-1qIg9E3Rc_H6lE_FoENAFzJ99ZpjWhed1x0=w240-h480",
       imagesUrls: [
         "assets/images/athkar/athkar.jpg",
         "assets/images/athkar/athkar1.jpg",
@@ -160,7 +158,6 @@ class ProjectsPage extends StatelessWidget {
     Project lamha = Project(
         name: 'لمحــة',
         type: "Freelance Project – Islamic Knowledge & Faith App",
-        iconUrl: "https://play-lh.googleusercontent.com/6KWtaVHL5UxWNilAnghox_K5blFgF7vH7Lt5_SRPlelNSWmQzRefgFlbAwkzNHM-vQ=w240-h480",
         description:
         'A daily dose of knowledge and faith.\n Lamha is a simple freelancing project that I developed for a client, it contains a collection of scientific miracles in many fields, With a Quranic verse or a noble Prophet’s hadith.',
         backgroundUrl: 'assets/images/bg/lamha_bg.png',
@@ -219,8 +216,6 @@ class ProjectsPage extends StatelessWidget {
       googlePlay:
           'https://play.google.com/store/apps/details?id=com.rozemoon.app',
       appStore: 'https://apps.apple.com/eg/app/roze-moon/id6739536345',
-      iconUrl:
-          'https://play-lh.googleusercontent.com/eVZIFAMQazrVN2VybzAEgHOd8FJKjqiekLv26u7PvFBpQcK5TrVsJNXP97dJ8s4wDByr=w240-h480-rw',
       lastUpdate: '2025',
       features: [
         "Order flowers instantly or pre-order",
@@ -827,381 +822,380 @@ class ProjectsPage extends StatelessWidget {
             itemCount: projects.length,
             itemBuilder: (context, index) {
               final project = projects[index];
-              return RepaintBoundary(
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  color: Colors.white,
-                  child: Stack(
-                    children: [
-                      // Background image positioned on the left
-                      if (project.backgroundUrl != null)
-                        Positioned(
-                          left: 0,
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width,
-                            height: MediaQuery.of(context).size.height,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(project.backgroundUrl!),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+              return Stack(
+                children: [
+                  // Background image positioned on the left
+                  if (project.backgroundUrl != null)
+                    Positioned(
+                      left: 0,
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width,
+                        height: MediaQuery.of(context).size.height,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(project.backgroundUrl!),
+                            fit: BoxFit.cover,
                           ),
                         ),
-                      Container(
-                        width: double.infinity,
-                        height: MediaQuery.of(context).size.height,
-                        color: Colors.white.withOpacity(0.8),
                       ),
-                      ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          SizedBox(
-                            width: (MediaQuery.sizeOf(context).width>1160)?960:MediaQuery.sizeOf(context).width-leftPadding,
-                            child: Stack(
-                              children: [
-                                // Vertical line for design
-                                Positioned(
-                                  left: leftPadding,
-                                  child: Container(
-                                    color: const Color(0xff4F4F4F),
-                                    width: 3,
-                                    height: MediaQuery.of(context).size.height,
-                                  ),
-                                ),
-                                ListView(
-                                  children: [
-                                    const SizedBox(height: 100),
-                                    // Header section with index, name, and icons
-                                    Container(
-                                      height: 230,
-                                      padding:  EdgeInsets.only(left: leftPadding),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            color: const Color(0xffFFFFFF),
-                                            width: 5,
-                                          ),
-                                          Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              project.iconUrl==null?Text(
-                                                "0${index + 1}",
-                                                style: const TextStyle(
-                                                  color: Color(0xff4F4F4F),
-                                                  fontSize: 32,
-                                                  fontFamily: 'Raleway',
-                                                  fontWeight: FontWeight.w100,
-                                                ),
-                                              ):Image.network(
-                                                project.iconUrl!,
-                                                height: 48,
-                                                width: 48,
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Text(
-                                                    project.name ?? "",
-                                                    style: const TextStyle(
-                                                      color: Color(0xff4F4F4F),
-                                                      fontSize: 48,
-                                                      fontFamily: 'Raleway',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(width: 20),
-                                                  if (project.googlePlay != null)
-                                                    GestureDetector(
-                                                      child: Image.asset(
-                                                        "assets/images/icons/google-play.png",
-                                                        height: 28,
-                                                        width: 28,
-                                                      ),
-                                                      onTap: () {
-                                                        launchUrl(Uri.parse(
-                                                            project.googlePlay!));
-                                                      },
-                                                    ),
-                                                  const SizedBox(width: 20),
-                                                  if (project.appStore != null)
-                                                    GestureDetector(
-                                                      child: Image.asset(
-                                                        "assets/images/icons/app-store.png",
-                                                        height: 28,
-                                                        width: 28,
-                                                      ),
-                                                      onTap: () {
-                                                        launchUrl(Uri.parse(
-                                                            project.appStore!));
-                                                      },
-                                                    ),
-                                                  if (project.github != null &&
-                                                      project.github!.isNotEmpty)
-                                                    IconButton(
-                                                      icon:
-                                                          const Icon(Icons.code),
-                                                      onPressed: () {
-                                                        launchUrl(Uri.parse(
-                                                            project.github!));
-                                                      },
-                                                    ),
-                                                ],
-                                              ),
-                                              // type
-                                              Text(
-                                                project.type ?? "",
-                                                style: const TextStyle(
-                                                  color: Color(0xff4F4F4F),
-                                                  fontSize: 20,
-                                                  fontFamily: 'Raleway',
-                                                  // fontWeight: FontWeight.w700,
-                                                ),
-                                              ),
-                                              // Status and last update
-                                              Text(
-                                                "${project.status ?? ""} - Last Update: ${project.lastUpdate ?? ""}",
-                                                style: const TextStyle(
-                                                  color: Color(0xff4F4F4F),
-                                                  fontSize: 20,
-                                                  fontFamily: 'Raleway',
-                                                  fontWeight: FontWeight.w100,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    // Description and features
-                                    Container(
-                                      padding: EdgeInsets.only(
-                                          left: leftPadding + 7, right: 20),
-                                      // height: 440,
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          // Project description
-                                          Padding(
-                                            padding: const EdgeInsets.only(right: 8.0),
-                                            child: Text(
-                                              project.description ?? "",
-                                              style: const TextStyle(
-                                                color: Color(0xff4F4F4F),
-                                                fontSize: 16,
-                                                fontFamily: 'Raleway',
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(height: 16),
-                                          // images
-                                          if (project.imagesUrls != null &&
-                                              project.imagesUrls!.isNotEmpty)
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                for (var imageUrl in project.imagesUrls!)
-                                                  Image.asset(
-                                                    imageUrl,
-                                                    width: (MediaQuery.sizeOf(context).width>1160)?180:(MediaQuery.sizeOf(context).width-leftPadding)/5,
-                                                    fit: BoxFit.contain,
-                                                  ),
-                                              ],
-                                            ),
-                                          const SizedBox(height: 16),
-                                          // Features title
-                                          if (project.features != null &&
-                                              project.features!.isNotEmpty)
-                                            const Text(
-                                              "Features:",
-                                              style: TextStyle(
-                                                color: Color(0xff4F4F4F),
-                                                fontSize: 26,
-                                                fontFamily: 'Raleway',
-                                                fontWeight: FontWeight.w700,
-                                              ),
-                                            ),
-                                          // Features list
-                                          if (project.features != null &&
-                                              project.features!.isNotEmpty)
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                for (var feature in project.features!)
-                                                  Text(
-                                                    '• $feature',
-                                                    style: const TextStyle(
-                                                      color: Color(0xff4F4F4F),
-                                                      fontSize: 16,
-                                                      fontFamily: 'Raleway',
-                                                    ),
-                                                  ),
-                                              ],
-                                            ),
-                                          if (project.features != null &&
-                                              project.features!.isNotEmpty)
-                                            const SizedBox(
-                                              height: 16,
-                                            ),
-                                          // Notes title
-                                          if (project.notes != null &&
-                                              project.notes!.isNotEmpty)
-                                            const Text(
-                                              "Notes:",
-                                              style: TextStyle(
-                                                color: Color(0xff4F4F4F),
-                                                fontSize: 26,
-                                                fontFamily: 'Raleway',
-                                                fontWeight: FontWeight.w700,
-                                              ),
-                                            ),
-                                          // Notes content
-                                          if (project.notes != null &&
-                                              project.notes!.isNotEmpty)
-                                            Text(
-                                              project.notes ?? "",
-                                              style: const TextStyle(
-                                                color: Color(0xff4F4F4F),
-                                                fontSize: 16,
-                                                fontFamily: 'Raleway',
-                                              ),
-                                            ),
-                                          // Pubspec title
-                                          if (project.pubspec != null &&
-                                              project.pubspec!.isNotEmpty)
-                                            const Text(
-                                              "Pubspec Dependencies:",
-                                              style: TextStyle(
-                                                color: Color(0xff4F4F4F),
-                                                fontSize: 26,
-                                                fontFamily: 'Raleway',
-                                                fontWeight: FontWeight.w700,
-                                              ),
-                                            ),
-                                          if (project.pubspec != null &&
-                                              project.pubspec!.isNotEmpty)
-                                            const SizedBox(
-                                              height: 8,
-                                            ),
-                                          // Pubspec tags
-                                          if (project.pubspec != null &&
-                                              project.pubspec!.isNotEmpty)
-                                            Wrap(
-                                              spacing: 8,
-                                              runSpacing: 8,
-                                              children: [
-                                                for (var dependency in project.pubspec!)
-                                                  Chip(
-                                                    label: Text(
-                                                      dependency,
-                                                      style: const TextStyle(
-                                                        fontSize: 16,
-                                                        fontFamily: 'Raleway',
-                                                      ),
-                                                    ),
-                                                    elevation: 2,
-                                                    shadowColor: Colors.black,
-                                                  ),
-                                              ],
-                                            ),
-                                        ],
-                                      ),
-                                    ),
-                                    const SizedBox(height: 50),
-                                    // Navigation arrows for desktop
-                                    Container(
-                                      height: 107,
-                                      padding: EdgeInsets.only(left: leftPadding),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Container(
-                                            color: const Color(0xffFFFFFF),
-                                            height: 107,
-                                            width: 5,
-                                          ),
-                                          Transform.rotate(
-                                            angle: 3.14159, // 180° rotation
-                                            child: GestureDetector(
-                                              onTap: () {
-                                                if (index == 0) {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          const HomePage(),
-                                                    ),
-                                                  );
-                                                } else {
-                                                  pageController.previousPage(
-                                                    duration: const Duration(
-                                                        milliseconds: 500),
-                                                    curve: Curves.easeInOut,
-                                                  );
-                                                }
-                                              },
-                                              child: Image.asset(
-                                                'assets/images/icons/Vector.png',
-                                                width: 92,
-                                                height: 46,
-                                                cacheWidth: (220 * 0.7).toInt(),
-                                                cacheHeight: (560 * 0.7).toInt(),
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(width: 100),
-                                          GestureDetector(
-                                            onTap: () {
-                                              if (index == projects.length - 1) {
-                                                Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const HomePage(),
-                                                  ),
-                                                );
-                                              } else {
-                                                pageController.nextPage(
-                                                  duration: const Duration(
-                                                      milliseconds: 500),
-                                                  curve: Curves.easeInOut,
-                                                );
-                                              }
-                                            },
-                                            child: Image.asset(
-                                              'assets/images/icons/Vector.png',
-                                              width: 92,
-                                              height: 46,
-                                              cacheWidth: (220 * 0.7).toInt(),
-                                              cacheHeight: (560 * 0.7).toInt(),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                    ),
+                  // Background color layer
+                  Container(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height,
+                    color:Theme.of(context).colorScheme.surface.withOpacity(0.8),
                   ),
-                ),
+                  // Vertical line for design
+                  verticalBlackLine(context, leftPadding),
+                  SizedBox(
+                    // width: MediaQuery.sizeOf(context).width-leftPadding,
+                    width: (MediaQuery.sizeOf(context).width>1160)?960:MediaQuery.sizeOf(context).width-leftPadding,
+                    child: ListView(
+                      children: [
+                        const SizedBox(height: 100),
+                        // Header section with index, name, and icons
+                        header(leftPadding, project, index,context),
+                        // Description and features
+                        projectInfo(context, project, leftPadding),
+                        const SizedBox(height: 157),
+                        // Navigation arrows for desktop
+                      ],
+                    ),
+                  ),
+
+                  // navigationArrows(context, pageController, projects, index, 1,55,40,27),
+                  Positioned(
+                    bottom: 0,
+                      child: navigationArrows(context, pageController, projects, index, leftPadding,92,100,46,),
+                  ),
+                ],
               );
             },
           ),
         ),
       );
     }
+  }
+  Widget verticalBlackLine(context,leftPadding){
+    return Positioned(
+      left: leftPadding,
+      child: Container(
+        // for the color check if the theme is dark or light
+        color:Theme.of(context).colorScheme.onSurface,
+        width: 3,
+        height: MediaQuery.of(context).size.height,
+      ),
+    );
+  }
+  Widget header(leftPadding,project,index,context){
+    return Container(
+      height: 230,
+      padding:  EdgeInsets.only(left: leftPadding-1),
+      child: Row(
+        children: [
+          Container(
+            color: Theme.of(context).colorScheme.surface,
+            width: 6,
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment:
+            CrossAxisAlignment.start,
+            mainAxisAlignment:
+            MainAxisAlignment.center,
+            children: [
+              project.iconUrl==null?Text(
+                "0${index + 1}",
+                style: const TextStyle(
+                  fontSize: 32,
+                  fontFamily: 'Raleway',
+                  fontWeight: FontWeight.w100,
+                ),
+              ):Image.network(
+                project.iconUrl!,
+                height: 48,
+                width: 48,
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    project.name ?? "",
+                    style: const TextStyle(
+                      fontSize: 48,
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  if (project.googlePlay != null)
+                    GestureDetector(
+                      child: const FaIcon(
+                        FontAwesomeIcons.googlePlay,
+                        size: 28,
+                      ),
+                      onTap: () {
+                        launchUrl(Uri.parse(
+                            project.googlePlay!));
+                      },
+                    ),
+                  const SizedBox(width: 20),
+                  if (project.appStore != null)
+                    GestureDetector(
+                      child: const FaIcon(
+                        FontAwesomeIcons.appStore,
+                        size: 28,
+                      ),
+                      onTap: () {
+                        launchUrl(Uri.parse(
+                            project.appStore!));
+                      },
+                    ),
+                  if (project.github != null &&
+                      project.github!.isNotEmpty)
+                    IconButton(
+                      icon:
+                      const FaIcon(FontAwesomeIcons.github),
+                      onPressed: () {
+                        launchUrl(Uri.parse(
+                            project.github!));
+                      },
+                    ),
+                ],
+              ),
+              // type
+              Text(
+                project.type ?? "",
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Raleway',
+                  // fontWeight: FontWeight.w700,
+                ),
+              ),
+              // Status and last update
+              Text(
+                "${project.status ?? ""} - Last Update: ${project.lastUpdate ?? ""}",
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Raleway',
+                  fontWeight: FontWeight.w100,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+  Widget projectInfo(context,project,leftPadding){
+    return Padding(
+      padding: EdgeInsets.only(
+          left: leftPadding + 7, right: 20),
+      // height: 440,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Project description
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: Text(
+              project.description ?? "",
+              style: const TextStyle(
+
+                fontSize: 16,
+                fontFamily: 'Raleway',
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          // images
+          if (project.imagesUrls != null &&
+              project.imagesUrls!.isNotEmpty)
+            Row(
+              mainAxisAlignment:
+              MainAxisAlignment.spaceEvenly,
+              children: [
+                for (var imageUrl in project.imagesUrls!)
+                  Image.asset(
+                    imageUrl,
+                    width: (MediaQuery.sizeOf(context).width>1160)?180:(MediaQuery.sizeOf(context).width-leftPadding)/5,
+                    fit: BoxFit.contain,
+                  ),
+              ],
+            ),
+          const SizedBox(height: 16),
+          // Features title
+          if (project.features != null &&
+              project.features!.isNotEmpty)
+            const Text(
+              "Features:",
+              style: TextStyle(
+                fontSize: 26,
+                fontFamily: 'Raleway',
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          // Features list
+          if (project.features != null &&
+              project.features!.isNotEmpty)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (var feature in project.features!)
+                  Text(
+                    '• $feature',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Raleway',
+                    ),
+                  ),
+              ],
+            ),
+          if (project.features != null &&
+              project.features!.isNotEmpty)
+            const SizedBox(height: 16),
+          // Notes title
+          if (project.notes != null &&
+              project.notes!.isNotEmpty)
+            const Text(
+              "Notes:",
+              style: TextStyle(
+                fontSize: 26,
+                fontFamily: 'Raleway',
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          // Notes content
+          if (project.notes != null &&
+              project.notes!.isNotEmpty)
+            Text(
+              project.notes ?? "",
+              style: const TextStyle(
+                fontSize: 16,
+                fontFamily: 'Raleway',
+              ),
+            ),
+          // Pubspec title
+          if (project.pubspec != null &&
+              project.pubspec!.isNotEmpty)
+            const Text(
+              "Pubspec Dependencies:",
+              style: TextStyle(
+                fontSize: 26,
+                fontFamily: 'Raleway',
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          if (project.pubspec != null &&
+              project.pubspec!.isNotEmpty)
+            const SizedBox(
+              height: 8,
+            ),
+          // Pubspec tags
+          if (project.pubspec != null &&
+              project.pubspec!.isNotEmpty)
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                for (var dependency in project.pubspec!)
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        dependency,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontFamily: 'Raleway',
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+        ],
+      ),
+    );
+  }
+  Widget navigationArrows(context,pageController,projects,index,leftPadding,arrowWidth,space,arrowHeight){
+    return Container(
+      height: 107,
+      color: Colors.white.withOpacity(0.8),
+      margin: EdgeInsets.only(left: leftPadding-1),
+      child: Row(
+        mainAxisAlignment:
+        MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            color: Theme.of(context).colorScheme.surface,
+            height: 107,
+            width: 6,
+          ),
+          Transform.rotate(
+            angle: 3.14159, // 180° rotation
+            child: GestureDetector(
+              onTap: () {
+                if (index == 0) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                      const HomePage(),
+                    ),
+                  );
+                } else {
+                  pageController.previousPage(
+                    duration: const Duration(
+                        milliseconds: 500),
+                    curve: Curves.easeInOut,
+                  );
+                }
+              },
+              child: Image.asset(
+                'assets/images/icons/Vector.png',
+                color: Theme.of(context).textTheme.titleLarge?.color,
+                width: arrowWidth,
+                height: arrowHeight,
+                cacheWidth: (220 * 0.7).toInt(),
+                cacheHeight: (560 * 0.7).toInt(),
+              ),
+            ),
+          ),
+          SizedBox(width: space),
+          GestureDetector(
+            onTap: () {
+              if (index == projects.length - 1) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                    const HomePage(),
+                  ),
+                );
+              } else {
+                pageController.nextPage(
+                  duration: const Duration(
+                      milliseconds: 500),
+                  curve: Curves.easeInOut,
+                );
+              }
+            },
+            child: Image.asset(
+              'assets/images/icons/Vector.png',
+              color: Theme.of(context).textTheme.titleLarge?.color,
+              width: arrowWidth,
+              height: arrowHeight,
+              cacheWidth: (220 * 0.7).toInt(),
+              cacheHeight: (560 * 0.7).toInt(),
+            ),
+          ),
+          const SizedBox(width: 16),
+        ],
+      ),
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/ui/pages/projects_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -309,15 +310,6 @@ class HomePage extends StatelessWidget {
         ),
       ),
       const SizedBox(height: 70),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          const Spacer(),
-          linkedInAndMailIcons(),
-          SizedBox(width: leftPadding / 3),
-        ],
-      ),
-      const SizedBox(height: 70),
     ];
     return isMobile? Column(
       crossAxisAlignment: crossAxisAlignment,
@@ -369,23 +361,37 @@ class HomePage extends StatelessWidget {
                 launchUrl(Uri.parse(
                     "https://play.google.com/store/apps/developer?id=Prof.+Nagi"));
               },
-              child: Image.asset(
-                'assets/images/icons/google-play.png',
-                width: 24,
-                height: 24,
-              ),
+              child: const FaIcon(FontAwesomeIcons.googlePlay),
             ),
             const SizedBox(width: 10),
             IconButton(
-              icon: const Icon(
-                Icons.code,
-                size: 24,
-                // color: Color(0xff4F4F4F),
-              ),
+              icon: const FaIcon(FontAwesomeIcons.github),
               onPressed: () {
                 launchUrl(Uri.parse(
                     "https://github.com/nagiElshershaby"));
               },
+            ),
+            const SizedBox(width: 10),
+            IconButton(
+              icon: const Icon(Icons.mail_outline,color: Colors.black,),
+              onPressed: () {
+                launchUrl(Uri.parse("mailto:nagielshershaby@gmail.com"));
+              },
+            ),
+            const SizedBox(width: 10),
+            GestureDetector(
+              onTap: () {
+                launchUrl(Uri.parse(
+                    "https://eg.linkedin.com/in/nagi-el-shershaby-85660a231"));
+              },
+              child: const FaIcon(FontAwesomeIcons.linkedin),
+              // Image.asset(
+              //   'assets/images/icons/linkedin.png',
+              //   width: 46,
+              //   height: 46,
+              //   cacheWidth: (220 * 0.7).toInt(),
+              //   cacheHeight: (560 * 0.7).toInt(),
+              // ),
             ),
           ],
         ),
@@ -433,56 +439,47 @@ class HomePage extends StatelessWidget {
                   launchUrl(Uri.parse(
                       "https://play.google.com/store/apps/developer?id=Prof.+Nagi"));
                 },
-                child: Image.asset(
-                  'assets/images/icons/google-play.png',
-                  width: 28,
-                  height: 28,
-                  cacheWidth: (225 * 0.7).toInt(),
-                  cacheHeight: (225 * 0.7).toInt(),
-                ),
+                child: const FaIcon(FontAwesomeIcons.googlePlay),
+                // Image.asset(
+                //   'assets/images/icons/google-play.png',
+                //   width: 28,
+                //   height: 28,
+                //   cacheWidth: (225 * 0.7).toInt(),
+                //   cacheHeight: (225 * 0.7).toInt(),
+                // ),
               ),
               const SizedBox(width: 10),
               IconButton(
-                icon: const Icon(Icons.code),
+                icon: const FaIcon(FontAwesomeIcons.github),
                 onPressed: () {
                   launchUrl(Uri.parse(
                       "https://github.com/nagiElshershaby"));
                 },
               ),
+
+              const SizedBox(width: 10),
+              IconButton(
+                icon: const Icon(Icons.mail_outline,color: Colors.black,),
+                onPressed: () {
+                  launchUrl(Uri.parse("mailto:nagielshershaby@gmail.com"));
+                },
+              ),
+              const SizedBox(width: 10),
+              GestureDetector(
+                onTap: () {
+                  launchUrl(Uri.parse(
+                      "https://eg.linkedin.com/in/nagi-el-shershaby-85660a231"));
+                },
+                child: const FaIcon(FontAwesomeIcons.linkedin),
+                // Image.asset(
+                //   'assets/images/icons/linkedin.png',
+                //   width: 46,
+                //   height: 46,
+                //   cacheWidth: (220 * 0.7).toInt(),
+                //   cacheHeight: (560 * 0.7).toInt(),
+                // ),
+              ),
             ],
-          ),
-        ],
-      ),
-    );
-  }
-  Widget linkedInAndMailIcons() {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xffFFFFFF),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      padding: const EdgeInsets.all(4),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            icon: const Icon(Icons.mail_outline,color: Colors.black,),
-            onPressed: () {
-              launchUrl(Uri.parse("mailto:nagielshershaby@gmail.com"));
-            },
-          ),
-          GestureDetector(
-            onTap: () {
-              launchUrl(Uri.parse(
-                  "https://eg.linkedin.com/in/nagi-el-shershaby-85660a231"));
-            },
-            child: Image.asset(
-              'assets/images/icons/linkedin.png',
-              width: 46,
-              height: 46,
-              cacheWidth: (220 * 0.7).toInt(),
-              cacheHeight: (560 * 0.7).toInt(),
-            ),
           ),
         ],
       ),
@@ -530,27 +527,24 @@ class HomePage extends StatelessWidget {
     );
   }
   Widget toggleThemeButton(themeProvider){
-    return Positioned(
-      top: 20,
-      right: 20,
-      child: IconButton(
-        icon: themeProvider.themeMode == ThemeMode.dark
-            ? const Icon(Icons.light_mode)
-            : const Icon(Icons.dark_mode),
-        onPressed: themeProvider.toggleTheme,
-      ),
-    );
+    return const SizedBox();
+    //   Positioned(
+    //   top: 20,
+    //   right: 20,
+    //   child: IconButton(
+    //     icon: themeProvider.themeMode == ThemeMode.dark
+    //         ? const Icon(Icons.light_mode)
+    //         : const Icon(Icons.dark_mode),
+    //     onPressed: themeProvider.toggleTheme,
+    //   ),
+    // );
   }
   Widget verticalBlackLine(context,leftPadding){
     return Positioned(
       left: leftPadding,
       child: Container(
         // for the color check if the theme is dark or light
-        color:
-        (Theme.of(context).colorScheme.brightness ==
-            Brightness.light)
-            ? const Color(0xff4F4F4F)
-            : const Color(0xffFFFFFF),
+        color:Theme.of(context).colorScheme.onSurface,
         width: 3,
         height: MediaQuery.of(context).size.height,
       ),
