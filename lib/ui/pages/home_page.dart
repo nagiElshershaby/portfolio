@@ -265,7 +265,7 @@ class HomePage extends StatelessWidget {
       ),
       const SizedBox(height: 4),
       Text(
-        "September 2024 - Present",
+        "March 2024 - Present",
         style: TextStyle(
           // color: Color(0xff4F4F4F),
           fontSize: subtitleFontSize,
