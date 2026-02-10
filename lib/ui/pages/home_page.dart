@@ -256,7 +256,7 @@ class HomePage extends StatelessWidget {
       ),
       const SizedBox(height: 20),
       Text(
-        "Flutter Developer | Tuwaiq",
+        "Mid Level Flutter Developer | Harmonic Systems",
         style: TextStyle(
           // color: Color(0xff4F4F4F),
           fontSize: titleFontSize,
@@ -265,7 +265,25 @@ class HomePage extends StatelessWidget {
       ),
       const SizedBox(height: 4),
       Text(
-        "March 2024 - Present",
+        "June 2025 - Present",
+        style: TextStyle(
+          // color: Color(0xff4F4F4F),
+          fontSize: subtitleFontSize,
+          fontFamily: 'Raleway',
+        ),
+      ),
+      const SizedBox(height: 20),
+      Text(
+        "Junior Flutter Developer | Tuwaiq",
+        style: TextStyle(
+          // color: Color(0xff4F4F4F),
+          fontSize: titleFontSize,
+          fontFamily: 'Raleway',
+        ),
+      ),
+      const SizedBox(height: 4),
+      Text(
+        "March 2024 - June 2025",
         style: TextStyle(
           // color: Color(0xff4F4F4F),
           fontSize: subtitleFontSize,

@@ -592,13 +592,16 @@ class ProjectsPage extends StatelessWidget {
                                   ),
                                 ),
                           if (project.iconUrl == null) const SizedBox(width: 8),
-                          Text(
-                            project.name ?? "",
-                            style: const TextStyle(
-                              color: Color(0xff4F4F4F),
-                              fontSize: 32,
-                              fontFamily: 'Raleway',
-                              fontWeight: FontWeight.w700,
+                          Expanded(
+                            child: Text(
+                              project.name ?? "",
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: Color(0xff4F4F4F),
+                                fontSize: 28,
+                                fontFamily: 'Raleway',
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
                           ),
                           const SizedBox(width: 16),
@@ -633,7 +636,8 @@ class ProjectsPage extends StatelessWidget {
                                 launchUrl(Uri.parse(project.github!));
                               },
                             ),
-                        ],
+                        
+                          const SizedBox(width: 16),],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 48, right: 16),
@@ -671,12 +675,14 @@ class ProjectsPage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   for (var imageUrl in project.imagesUrls!)
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width /4.9,
-                                      child: Image.asset(
-                                        imageUrl,
-                                        // height: MediaQuery.of(context).size.height / 3,
-                                        fit: BoxFit.contain,
+                                    Expanded(
+                                      child: SizedBox(
+                                        width: MediaQuery.of(context).size.width /4.9,
+                                        child: Image.asset(
+                                          imageUrl,
+                                          // height: MediaQuery.of(context).size.height / 3,
+                                          fit: BoxFit.contain,
+                                        ),
                                       ),
                                     ),
                                 ],
