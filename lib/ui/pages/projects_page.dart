@@ -53,6 +53,65 @@ class ProjectsPage extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
+    Project magdouHealth = Project(
+        name: 'Magdou Health',
+        type:
+        "Developed at Harmoniq Systems\nTrusted by tens of facilities and hundreds of technetians in the US",
+        description:
+        'Magdou Health app is a new innovative way to schedule on-demand radiology services for technologists. The app will be used by the health care facilities to order on-demand healthcare technologists to do their radiology exams. The technologist will be able to accept and complete the order from the app.',
+        // backgroundUrl: 'assets/images/bg/ahadith_bg.png',//TODO
+        imagesUrls: [
+          "assets/images/magdouHealth/magdouHealth_1.jpeg",
+          "assets/images/magdouHealth/magdouHealth_2.jpeg",
+          "assets/images/magdouHealth/magdouHealth_3.jpeg",
+          "assets/images/magdouHealth/magdouHealth_4.jpeg",
+        ],
+        googlePlay:
+        'https://play.google.com/store/apps/details?id=com.emam.magdouhealth',
+        appStore: "https://apps.apple.com/eg/app/magdou-health/id1627827916",
+        lastUpdate: '2026',
+        features: [
+          "Secure login and access control",
+          "Browes your orders",
+          "Live traking and Routing",
+          "Submit and track leave requests",
+          "built on top of Odoo backend",
+          "View your schadule",
+          "Never mess an order: push notifications, SMS and calls",
+        ],
+        status: "Live" // Or "In Development" if applicable
+    );
+   
+    Project crewCoreApp = Project(
+        name: 'Crew Core',
+        type:
+        "Developed at Harmoniq Systems\nHr management system for interprises built on Odoo",
+        description:
+        'Crew Core is your all-in-one workplace management app designed to make HR and daily operations easier. With a simple and secure login, employees can clock in and out with location tracking, submit leave requests, log timesheets, manage expenses, and send approval requests—all in one place.',
+        // backgroundUrl: 'assets/images/bg/ahadith_bg.png',//TODO
+        imagesUrls: [
+          "assets/images/crewcore/crewcore_1.png",
+          "assets/images/crewcore/crewcore_2.png",
+          "assets/images/crewcore/crewcore_3.png",
+          "assets/images/crewcore/crewcore_7.png",
+        ],
+        googlePlay:
+        'https://play.google.com/store/apps/details?id=com.crew_core.app',
+        appStore: "https://apps.apple.com/eg/app/crew-core/id6751550943",
+        lastUpdate: '2026',
+        features: [
+          "Secure login and access control",
+          "Login with Googel integeration and Biomitrics",
+          "Clock-in/out with time and location records",
+          "Submit and track leave requests",
+          "Add and manage expenses with receipts, vendors, and tax details",
+          "Create approval requests",
+          "Log work hours and timesheets with dates, time, and attachments",
+          "Track your monthly payroll",
+        ],
+        status: "Live" // Or "In Development" if applicable
+    );
+   
     Project ahadithApp = Project(
         name: 'أحاديث',
         type:
@@ -114,6 +173,7 @@ class ProjectsPage extends StatelessWidget {
         ],
         status: "Live" // Or "In Development" if applicable
     );
+   
     Project azkarPrayers = Project(
       name: "أذكار",
       type: "Freelance Project – Islamic Remembrance & Supplication App",
@@ -464,6 +524,8 @@ class ProjectsPage extends StatelessWidget {
         status: "In Development");
 
     List<Project> projects = [
+      magdouHealth,
+      crewCoreApp,
       rozeMoon,
       zahraFlowers,
       ahadithApp,
@@ -502,7 +564,7 @@ class ProjectsPage extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height,
-                  color: Colors.white.withOpacity(0.8),
+                  color: Colors.white.withValues(alpha: 0.8),
                 ),
                 SingleChildScrollView(
                   child: Column(
@@ -587,6 +649,8 @@ class ProjectsPage extends StatelessWidget {
                                 fontFamily: 'Raleway',
                                 fontWeight: FontWeight.w700,
                               ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
                             ),
                             // Status and last update
                             Text(
@@ -598,7 +662,7 @@ class ProjectsPage extends StatelessWidget {
                                 fontWeight: FontWeight.w100,
                               ),
                             ),
-
+                        
                             const SizedBox(height: 16),
                             // images
                             if (project.imagesUrls != null &&
