@@ -144,34 +144,7 @@ class ProjectsPage extends StatelessWidget {
           "Screenshot capture and sharing via screenshot & share_plus",
           "Dependency management with Provider"
         ],
-        pubspec: [
-          // Dependencies
-          "flutter",
-          "cupertino_icons",
-          "bloc",
-          "flutter_bloc",
-          "dio",
-          "flutter_offline",
-          "flutter_screenutil",
-          "provider",
-          "hive",
-          "hive_flutter",
-          "google_fonts",
-          "screenshot",
-          "share_plus",
-          "path_provider",
-          "hijri",
-          "flutter_translate",
-          "flutter_native_splash",
-          "flutter_native_timezone_updated_gradle",
-          "flutter_local_notifications",
-          // Dev Dependencies
-          "flutter_test",
-          "hive_generator",
-          "build_runner",
-          "flutter_lints"
-        ],
-        status: "Live" // Or "In Development" if applicable
+         status: "Live" // Or "In Development" if applicable
     );
    
     // Project azkarPrayers = Project(
@@ -293,62 +266,6 @@ class ProjectsPage extends StatelessWidget {
         "Upgrades and version checking",
         "Secure local storage for sensitive data"
       ],
-      pubspec: [
-        "flutter_screenutil",
-        "auto_route",
-        "bloc",
-        "cached_network_image",
-        "carousel_slider",
-        "easy_localization",
-        "easy_stepper",
-        "equatable",
-        "flutter",
-        "flutter_bloc",
-        "flutter_layout_grid",
-        "flutter_localizations",
-        "flutter_otp_text_field",
-        "flutter_rating_bar",
-        "flutter_secure_storage",
-        "flutter_svg",
-        "font_awesome_flutter",
-        "formz",
-        "get_it",
-        "google_fonts",
-        "iconsax_plus",
-        "infinite_scroll_pagination",
-        "intl",
-        "like_button",
-        "package_info_plus",
-        "photo_view",
-        "shared_preferences",
-        "url_launcher",
-        "skeletonizer",
-        "file_picker",
-        "phone_form_field",
-        "firebase_messaging",
-        "change_app_package_name",
-        "firebase_core",
-        "logger",
-        "flutter_native_splash",
-        "flutter_staggered_grid_view",
-        "timeago",
-        "connectivity_plus",
-        "flutter_map",
-        "latlong2",
-        "geolocator",
-        "path_provider",
-        "flutter_cache_manager",
-        "json_annotation",
-        "mockito",
-        "bloc_test",
-        "lyrebird",
-        "flutter_inappwebview",
-        "http",
-        "in_app_update",
-        "arb_generator",
-        "image_picker",
-        "upgrader"
-      ],
       status: "Live - Ongoing",
     );
     Project changingRoom = Project(
@@ -376,26 +293,6 @@ class ProjectsPage extends StatelessWidget {
           "Local storage with Hive and Hive Flutter",
           "State management using Provider",
           "Responsive UI with flutter_screenutil"
-        ],
-        pubspec: [
-          // Dependencies
-          "flutter",
-          "cupertino_icons",
-          "image_picker",
-          "camera",
-          "path_provider",
-          "image_cropper",
-          "native_image_cropper",
-          "http",
-          "screenshot",
-          "permission_handler",
-          "hive",
-          "hive_flutter",
-          "provider",
-          "flutter_screenutil",
-          // Dev Dependencies
-          "flutter_test",
-          "flutter_lints"
         ],
         status: "In Development" // Change to "Live" if published
     );
@@ -759,46 +656,7 @@ class ProjectsPage extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                            // Pubspec title
-                            if (project.pubspec != null &&
-                                project.pubspec!.isNotEmpty)
-                              const Text(
-                                "Pubspec Dependencies:",
-                                style: TextStyle(
-                                  color: Color(0xff4F4F4F),
-                                  fontSize: 16,
-                                  fontFamily: 'Raleway',
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            if (project.pubspec != null &&
-                                project.pubspec!.isNotEmpty)
-                              const SizedBox(
-                                height: 8,
-                              ),
-                            // Pubspec tags
-                            if (project.pubspec != null &&
-                                project.pubspec!.isNotEmpty)
-                              Wrap(
-                                spacing: 8,
-                                runSpacing: 8,
-                                children: [
-                                  for (var dependency in project.pubspec!)
-                                    Chip(
-                                      label: Text(
-                                        dependency,
-                                        style: const TextStyle(
-                                          fontSize: 14,
-                                          fontFamily: 'Raleway',
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      elevation: 2,
-                                      shadowColor: Colors.black,
-                                    ),
-                                ],
-                              ),
-                          ],
+                                 ],
                         ),
                       ),
 
