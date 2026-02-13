@@ -1,570 +1,847 @@
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio/ui/pages/projects_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../providers/theme_provider.dart';
+import 'projects_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  void handleKeyEvents(KeyEvent event, BuildContext context) {
-    if (event is KeyDownEvent) {
-      if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
-        // Move to the projects page
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ProjectsPage()),
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Responsive breakpoints
+        final screenWidth = constraints.maxWidth;
+        final bool isMobile = screenWidth < 600;
+        final bool isTablet = screenWidth >= 600 && screenWidth < 900;
+        final bool isDesktop = screenWidth >= 900;
+
+        // Dynamic padding & font sizes
+        final horizontalPadding = isMobile ? 24.0 : (isTablet ? 40.0 : 64.0);
+        final titleFontSize = isMobile ? 32.0 : (isTablet ? 40.0 : 48.0);
+        final subtitleFontSize = isMobile ? 20.0 : (isTablet ? 24.0 : 28.0);
+        final bodyFontSize = isMobile ? 14.0 : 16.0;
+        final sectionTitleSize = isMobile ? 22.0 : 28.0;
+
+        return Scaffold(
+          body: KeyboardListener(
+            onKeyEvent: (event) {
+              if (event is KeyDownEvent &&
+                  event.logicalKey == LogicalKeyboardKey.arrowRight) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => ProjectsPage()),
+                );
+              }
+            },
+            focusNode: FocusNode()..requestFocus(),
+            child: Stack(
+              children: [
+                Container(
+                  color: Theme.of(context).colorScheme.surface,
+                  child: ScrollConfiguration(
+                    behavior: ScrollConfiguration.of(context).copyWith(
+                      scrollbars: isDesktop,
+                      overscroll: false,
+                    ),
+                    child: SingleChildScrollView(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: horizontalPadding,
+                        vertical: 32,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // ----- APP BAR (theme toggle + placeholder) -----
+                          _AppBar(
+                              themeProvider:
+                                  Provider.of<ThemeProvider>(context)),
+                          const SizedBox(height: 40),
+
+                          // ----- HERO SECTION -----
+                          _HeroSection(
+                            titleFontSize: titleFontSize,
+                            subtitleFontSize: subtitleFontSize,
+                          ),
+                          const SizedBox(height: 60),
+
+                          // ----- MAIN CONTENT GRID (responsive) -----
+                          if (isDesktop)
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  flex: 5,
+                                  child: _LeftColumn(
+                                    bodyFontSize: bodyFontSize,
+                                    sectionTitleSize: sectionTitleSize,
+                                  ),
+                                ),
+                                const SizedBox(width: 48),
+                                Expanded(
+                                  flex: 4,
+                                  child: _RightColumn(
+                                    bodyFontSize: bodyFontSize,
+                                    sectionTitleSize: sectionTitleSize,
+                                  ),
+                                ),
+                              ],
+                            )
+                          else
+                            Column(
+                              children: [
+                                _LeftColumn(
+                                  bodyFontSize: bodyFontSize,
+                                  sectionTitleSize: sectionTitleSize,
+                                ),
+                                const SizedBox(height: 48),
+                                _RightColumn(
+                                  bodyFontSize: bodyFontSize,
+                                  sectionTitleSize: sectionTitleSize,
+                                ),
+                              ],
+                            ),
+                          const SizedBox(height: 150),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                // ----- FOOTER / NAVIGATION -----
+                Positioned(
+                  bottom: !isDesktop?20:40,
+                  right: !isDesktop?20:40,
+                  child: _ProjectsNavigation(
+                    isMobile: !isDesktop,
+                    screenWidth: screenWidth,
+                  ),
+                ),
+              ],
+            ),
+          ),
         );
-      }
-    }
+      },
+    );
   }
+}
+
+// ---------------------------------------------------------------------
+//  APP BAR with theme toggle (restored and styled)
+// ---------------------------------------------------------------------
+class _AppBar extends StatelessWidget {
+  final ThemeProvider themeProvider;
+  const _AppBar({required this.themeProvider});
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
-
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    // Define a breakpoint for mobile devices.
-    final bool isMobile = screenWidth < 600;
-
-    if (isMobile) {
-      // Mobile Layout: A vertical scrollable layout
-      return Scaffold(
-        body: Stack(
-          children: [
-            SingleChildScrollView(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Header Section: Name and links
-                  const SizedBox(height: 20),
-                  header(context, 0, 0, isMobile),
-                  const SizedBox(height: 20),
-                  // About Me & Education Section
-                  aboutMeEducationGraduationProjectAndLanguages(isMobile),
-
-                  const SizedBox(height: 30),
-
-                  // Experience & Skills Section
-                  experienceAndSkills(0, MainAxisAlignment.start, CrossAxisAlignment.start, isMobile, screenHeight)
-                ],
+    final colorScheme = Theme.of(context).colorScheme;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        // Optional: add a logo or name here
+        const Spacer(),
+        Container(
+          decoration: BoxDecoration(
+            color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: IconButton(
+            icon: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              child: Icon(
+                themeProvider.themeMode == ThemeMode.dark
+                    ? Icons.light_mode
+                    : Icons.dark_mode,
+                key: ValueKey(themeProvider.themeMode),
+                color: colorScheme.onSurface,
               ),
             ),
-            // button to toggle the theme
-            toggleThemeButton(themeProvider),
-            navigationArrows(context, 16, const Color(0xff4F4F4F), 70,isMobile),
-          ],
-        ),
-      );
-    } else {
-      // Desktop/Web Layout: The original horizontal layout
-      final double leftPadding = 0.1041 * screenWidth;
-      return Scaffold(
-        body: KeyboardListener(
-          onKeyEvent: (event) => handleKeyEvents(event, context),
-          focusNode: FocusNode()..requestFocus(),
-          child: SizedBox(
-            width: double.infinity,
-            height: double.infinity,
-            // color: Colors.white,
-            child: (screenWidth >= 1300)
-                ? ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      // First horizontal page
-                      SizedBox(
-                        width: screenWidth / 2,
-                        child: Stack(
-                          children: [
-                            // Black vertical line for design
-                            verticalBlackLine(context, leftPadding),
-                            ListView(
-                              children: [
-                                const SizedBox(height: 100),
-                                // Header: Name and links
-                                header(context, leftPadding,230, isMobile),
-                                // About me, education, graduation project & languages
-                                Container(
-                                  width: 900,
-                                  padding: EdgeInsets.only(
-                                      left: leftPadding + 7, right: 20),
-                                  child: aboutMeEducationGraduationProjectAndLanguages(isMobile),
-                                ),
-                                const SizedBox(height: 107),
-                              ],
-                            ),
-                            // button to toggle the theme
-                            toggleThemeButton(themeProvider),
-                            // navigation arrows
-                            navigationArrows(context, leftPadding, Theme.of(context).colorScheme.surface,0,isMobile),
-                          ],
-                        ),
-                      ),
-                      // Second horizontal page
-                      SizedBox(
-                        width: screenWidth / 2,
-                        child: Container(
-                          color: const Color(0x104F4F4F),
-                          padding: const EdgeInsets.only(left: 20),
-                          child: experienceAndSkills(leftPadding, MainAxisAlignment.end, CrossAxisAlignment.start, isMobile,screenHeight),
-                        ),
-                      ),
-                    ],
-                  )
-                : SizedBox(
-                    width: screenWidth,
-                    child: Stack(
-                      children: [
-                        // Black vertical line for design
-                        verticalBlackLine(context, leftPadding),
-                        ListView(
-                          children: [
-                            const SizedBox(height: 100),
-                            // Header: Name and links
-                            header(context, leftPadding,230, isMobile),
-                            // About me, education, graduation project & languages
-                            Container(
-                              width: 900,
-                              padding: EdgeInsets.only(
-                                  left: leftPadding + 7, right: 20),
-                              child: aboutMeEducationGraduationProjectAndLanguages(isMobile),
-                            ),
-                            const SizedBox(height: 107),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: leftPadding + 7, right: 20),
-                              child: experienceAndSkills(leftPadding, MainAxisAlignment.start, CrossAxisAlignment.start, isMobile, screenHeight)
-                            ),
-                          ],
-                        ),
-                        // button to toggle the theme
-                        toggleThemeButton(themeProvider),
-                        navigationArrows(context,leftPadding, const Color(0xff4F4F4F),30,isMobile),
-                      ],
-                    ),
-                  ),
+            onPressed: themeProvider.toggleTheme,
+            tooltip: 'Toggle theme',
           ),
         ),
-      );
-    }
+      ],
+    );
   }
+}
 
-  Widget aboutMeEducationGraduationProjectAndLanguages(isMobile){
-    final double space = isMobile? 8: 10;
-    final double headerFontSize = isMobile? 20: 26;
-    final double titleFontSize = isMobile? 14: 16;
-    final double subtitleFontSize = isMobile? 12: 14;
+// ---------------------------------------------------------------------
+//  HERO: profile picture, name, title, social links + resume button
+// ---------------------------------------------------------------------
+class _HeroSection extends StatelessWidget {
+  final double titleFontSize;
+  final double subtitleFontSize;
+
+  const _HeroSection({
+    required this.titleFontSize,
+    required this.subtitleFontSize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // final colorScheme = Theme.of(context).colorScheme;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isRowLayout = constraints.maxWidth > 700;
+
+        if (isRowLayout) {
+          return Row(
+            children: [
+              // Profile image (placeholder)
+              const _ProfileAvatar(radius: 100),
+              const SizedBox(width: 48),
+              // Text + buttons
+              Expanded(
+                child: _HeroText(
+                  titleFontSize: titleFontSize,
+                  subtitleFontSize: subtitleFontSize,
+                ),
+              ),
+            ],
+          );
+        } else {
+          return Column(
+            children: [
+              const _ProfileAvatar(radius: 80),
+              const SizedBox(height: 24),
+              _HeroText(
+                titleFontSize: titleFontSize,
+                subtitleFontSize: subtitleFontSize,
+              ),
+            ],
+          );
+        }
+      },
+    );
+  }
+}
+
+class _ProfileAvatar extends StatelessWidget {
+  final double radius;
+  const _ProfileAvatar({required this.radius});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      radius: radius,
+      backgroundColor: Theme.of(context).colorScheme.inverseSurface,
+      child: ClipOval(
+        child: Image.asset(
+          'images/profile.jpeg',
+          width: radius * 2,
+          height: radius * 2,
+          fit: BoxFit.cover,
+          errorBuilder: (_, __, ___) => Icon(
+            Icons.person,
+            size: radius,
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _HeroText extends StatelessWidget {
+  final double titleFontSize;
+  final double subtitleFontSize;
+  const _HeroText({
+    required this.titleFontSize,
+    required this.subtitleFontSize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Passionate about creating meaningful digital experiences that simplify lives and solve real-world problems. As a Flutter developer, I focus on building efficient, user-friendly applications that blend functionality with intuitive design. Driven by a desire to continuously learn and innovate, I thrive in collaborative environments where I can contribute to impactful projects and grow alongside my team.",
-          style: TextStyle(
-            // color: Color(0xff4F4F4F),
-            fontSize: titleFontSize,
-            fontFamily: 'Raleway',
+          'HI! I am',
+          style: GoogleFonts.raleway(
+            fontSize: subtitleFontSize * 0.75,
+            fontWeight: FontWeight.w300,
+            color: colorScheme.onSurface,
           ),
         ),
-        const SizedBox(height: 20),
-         Text(
-          "Education",
-          style: TextStyle(
-            // color: Color(0xff4F4F4F),
-            fontSize: headerFontSize,
-            fontFamily: 'Raleway',
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        SizedBox(height: space),
-         Text(
-          "Bachelor of Computer Science | FCAI - Cairo University | Egypt",
-          style: TextStyle(
-            // color: Color(0xff4F4F4F),
-            fontSize: titleFontSize,
-            fontFamily: 'Raleway',
-          ),
-        ),
-        const SizedBox(height: 4),
-         Text(
-          "2020 - 2024",
-          style: TextStyle(
-            // color: Color(0xff4F4F4F),
-            fontSize: subtitleFontSize,
-            fontFamily: 'Raleway',
-          ),
-        ),
-        const SizedBox(height: 20),
-         Text(
-          "Graduation Project",
-          style: TextStyle(
-            // color: Color(0xff4F4F4F),
-            fontSize: headerFontSize,
-            fontFamily: 'Raleway',
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        SizedBox(height: space),
-         Text(
-          "• Built a Flask-based backend system for processing and visualizing complex environmental datasets (NetCDF).\n• Integrated Firebase for storage and database management.\n• Led the project team, managing tasks, communicating with supervisors, and ensuring timely delivery.",
-          style: TextStyle(
-            // color: Color(0xff4F4F4F),
-            fontSize: titleFontSize,
-            fontFamily: 'Raleway',
-          ),
-        ),
-        const SizedBox(height: 20),
-         Text(
-          "Languages",
-          style: TextStyle(
-            // color: Color(0xff4F4F4F),
-            fontSize: headerFontSize,
-            fontFamily: 'Raleway',
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        SizedBox(height: space),
-         Text(
-          "Arabic, English",
-          style: TextStyle(
-            // color: Color(0xff4F4F4F),
-            fontSize: titleFontSize,
-            fontFamily: 'Raleway',
-          ),
-        ),
-      ],
-    );
-  }
-  Widget experienceAndSkills(leftPadding,mainAxisAlignment,crossAxisAlignment, isMobile,screenHeight){
-    final double headerFontSize = isMobile? 20: 26;
-    final double titleFontSize = isMobile? 14: 16;
-    final double subtitleFontSize = isMobile? 12: 14;
-    final children = [
-      Text(
-        "Experience",
-        style: TextStyle(
-          // color: Color(0xff4F4F4F),
-          fontSize: headerFontSize,
-          fontFamily: 'Raleway',
-          fontWeight: FontWeight.w700,
-        ),
-      ),
-      const SizedBox(height: 20),
-      Text(
-        "Mid Level Flutter Developer | Harmonic Systems",
-        style: TextStyle(
-          // color: Color(0xff4F4F4F),
-          fontSize: titleFontSize,
-          fontFamily: 'Raleway',
-        ),
-      ),
-      const SizedBox(height: 4),
-      Text(
-        "June 2025 - Present",
-        style: TextStyle(
-          // color: Color(0xff4F4F4F),
-          fontSize: subtitleFontSize,
-          fontFamily: 'Raleway',
-        ),
-      ),
-      const SizedBox(height: 20),
-      Text(
-        "Junior Flutter Developer | Tuwaiq",
-        style: TextStyle(
-          // color: Color(0xff4F4F4F),
-          fontSize: titleFontSize,
-          fontFamily: 'Raleway',
-        ),
-      ),
-      const SizedBox(height: 4),
-      Text(
-        "March 2024 - June 2025",
-        style: TextStyle(
-          // color: Color(0xff4F4F4F),
-          fontSize: subtitleFontSize,
-          fontFamily: 'Raleway',
-        ),
-      ),
-      const SizedBox(height: 20),
-      Text(
-        "Flutter instructor | Microsoft Student Partner",
-        style: TextStyle(
-          // color: Color(0xff4F4F4F),
-          fontSize: titleFontSize,
-          fontFamily: 'Raleway',
-        ),
-      ),
-      const SizedBox(height: 4),
-      Text(
-        "April 2023 - July 2023",
-        style: TextStyle(
-          // color: Color(0xff4F4F4F),
-          fontSize: subtitleFontSize,
-          fontFamily: 'Raleway',
-        ),
-      ),
-      const SizedBox(height: 20),
-      Text(
-        "Skills",
-        style: TextStyle(
-          // color: Color(0xff4F4F4F),
-          fontSize: headerFontSize,
-          fontFamily: 'Raleway',
-          fontWeight: FontWeight.w700,
-        ),
-      ),
-      const SizedBox(height: 10),
-      Text(
-        "Flutter, Dart, Firebase, Git, GitHub, GitHub projects, Figma\nProvider, Bloc, Dio, Shared Preferences, Hive, REST API, JSON\nCaching, Unit test, localization \nClean architecture",
-        style: TextStyle(
-          // color: Color(0xff4F4F4F),
-          fontSize: titleFontSize,
-          fontFamily: 'Raleway',
-        ),
-      ),
-      const SizedBox(height: 70),
-    ];
-    return isMobile? Column(
-      crossAxisAlignment: crossAxisAlignment,
-      children: children,
-    ) :(screenHeight > 520)
-        ? Column(
-      crossAxisAlignment: crossAxisAlignment,
-      mainAxisAlignment: mainAxisAlignment,
-      children: children,
-    ):ListView(
-      children: children,
-    );
-  }
-  Widget header(context, leftPadding,height,isMobile){
-    return isMobile? Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          "HI! I am",
-          style: TextStyle(
-            // color: Color(0xff4F4F4F),
-            fontSize: 24, // Reduced size for mobile
-            fontFamily: 'Raleway',
-            fontWeight: FontWeight.w100,
-          ),
-        ),
-        const Text(
-          "Nagi El-Shershaby",
-          style: TextStyle(
-            // color: Color(0xff4F4F4F),
-            fontSize: 32,
-            fontFamily: 'Raleway',
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+        const SizedBox(height: 8),
         Row(
           children: [
-            const Text(
-              "Flutter Dev",
-              style: TextStyle(
-                // color: Color(0xff4F4F4F),
-                fontSize: 24,
-                fontFamily: 'Raleway',
+            Text(
+              'Nagi El-Shershaby',
+              style: GoogleFonts.raleway(
+                fontSize: titleFontSize,
+                fontWeight: FontWeight.w700,
+                letterSpacing: -0.5,
+                color: colorScheme.onSurface,
               ),
             ),
-            const SizedBox(width: 10),
-            GestureDetector(
-              onTap: () {
-                launchUrl(Uri.parse(
-                    "https://play.google.com/store/apps/developer?id=Prof.+Nagi"));
-              },
-              child: const FaIcon(FontAwesomeIcons.googlePlay),
+          ],
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Flutter Developer',
+          style: GoogleFonts.raleway(
+            fontSize: subtitleFontSize,
+            fontWeight: FontWeight.w400,
+            color: colorScheme.primary,
+          ),
+        ),
+        const SizedBox(height: 24),
+        const Wrap(
+          spacing: 16,
+          runSpacing: 12,
+          children: [
+            _SocialIconButton(
+              icon: FontAwesomeIcons.googlePlay,
+              url: 'https://play.google.com/store/apps/developer?id=Prof.+Nagi',
+              label: 'Google Play',
             ),
-            const SizedBox(width: 10),
-            IconButton(
-              icon: const FaIcon(FontAwesomeIcons.github),
-              onPressed: () {
-                launchUrl(Uri.parse(
-                    "https://github.com/nagiElshershaby"));
-              },
+            _SocialIconButton(
+              icon: FontAwesomeIcons.github,
+              url: 'https://github.com/nagiElshershaby',
+              label: 'GitHub',
             ),
-            const SizedBox(width: 10),
-            IconButton(
-              icon: const Icon(Icons.mail_outline,color: Colors.black,),
-              onPressed: () {
-                launchUrl(Uri.parse("mailto:nagielshershaby@gmail.com"));
-              },
+            _SocialIconButton(
+              icon: Icons.mail_outline,
+              url: 'mailto:nagielshershaby@gmail.com',
+              label: 'Email',
             ),
-            const SizedBox(width: 10),
-            GestureDetector(
-              onTap: () {
-                launchUrl(Uri.parse(
-                    "https://eg.linkedin.com/in/nagi-el-shershaby-85660a231"));
-              },
-              child: const FaIcon(FontAwesomeIcons.linkedin),
-              // Image.asset(
-              //   'assets/images/icons/linkedin.png',
-              //   width: 46,
-              //   height: 46,
-              //   cacheWidth: (220 * 0.7).toInt(),
-              //   cacheHeight: (560 * 0.7).toInt(),
-              // ),
+            _SocialIconButton(
+              icon: FontAwesomeIcons.linkedin,
+              url: 'https://eg.linkedin.com/in/nagi-el-shershaby-85660a231',
+              label: 'LinkedIn',
             ),
           ],
         ),
       ],
-    ): Container(
-      color: Theme.of(context).colorScheme.surface,
-      height: height,
-      padding: EdgeInsets.only(left: leftPadding),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment:
-        CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "HI! I am",
-            style: TextStyle(
-              // // color: Color(0xff4F4F4F),
-              fontSize: 32,
-              fontFamily: 'Raleway',
-              fontWeight: FontWeight.w100,
+    );
+  }
+}
+
+// ---------------------------------------------------------------------
+//  Social icon button with hover effect (web)
+// ---------------------------------------------------------------------
+class _SocialIconButton extends StatefulWidget {
+  final IconData icon;
+  final String url;
+  final String label;
+
+  const _SocialIconButton({
+    required this.icon,
+    required this.url,
+    required this.label,
+  });
+
+  @override
+  State<_SocialIconButton> createState() => _SocialIconButtonState();
+}
+
+class _SocialIconButtonState extends State<_SocialIconButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: GestureDetector(
+        onTap: () async {
+          final uri = Uri.parse(widget.url);
+          if (await canLaunchUrl(uri)) {
+            await launchUrl(uri);
+          }
+        },
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+          decoration: BoxDecoration(
+            color: _isHovered ? colorScheme.primary : Colors.transparent,
+            borderRadius: BorderRadius.circular(100),
+            border: Border.all(
+              color: _isHovered ? colorScheme.primary : colorScheme.outline,
+              width: 1,
             ),
           ),
-          const Text(
-            "Nagi El-Shershaby",
-            style: TextStyle(
-              // // color: Color(0xff4F4F4F),
-              fontSize: 48,
-              fontFamily: 'Raleway',
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          Row(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                "Flutter Dev",
+              Icon(widget.icon,
+                  size: 18,
+                  color: _isHovered
+                      ? colorScheme.onPrimary
+                      : colorScheme.onSurface),
+              const SizedBox(width: 6),
+              Text(
+                widget.label,
                 style: TextStyle(
-                  // // color: Color(0xff4F4F4F),
-                  fontSize: 32,
-                  fontFamily: 'Raleway',
+                  fontSize: 14,
+                  color: _isHovered
+                      ? colorScheme.onPrimary
+                      : colorScheme.onSurface,
                 ),
               ),
-              const SizedBox(width: 20),
-              GestureDetector(
-                onTap: () {
-                  launchUrl(Uri.parse(
-                      "https://play.google.com/store/apps/developer?id=Prof.+Nagi"));
-                },
-                child: const FaIcon(FontAwesomeIcons.googlePlay),
-                // Image.asset(
-                //   'assets/images/icons/google-play.png',
-                //   width: 28,
-                //   height: 28,
-                //   cacheWidth: (225 * 0.7).toInt(),
-                //   cacheHeight: (225 * 0.7).toInt(),
-                // ),
-              ),
-              const SizedBox(width: 10),
-              IconButton(
-                icon: const FaIcon(FontAwesomeIcons.github),
-                onPressed: () {
-                  launchUrl(Uri.parse(
-                      "https://github.com/nagiElshershaby"));
-                },
-              ),
-
-              const SizedBox(width: 10),
-              IconButton(
-                icon: const Icon(Icons.mail_outline,color: Colors.black,),
-                onPressed: () {
-                  launchUrl(Uri.parse("mailto:nagielshershaby@gmail.com"));
-                },
-              ),
-              const SizedBox(width: 10),
-              GestureDetector(
-                onTap: () {
-                  launchUrl(Uri.parse(
-                      "https://eg.linkedin.com/in/nagi-el-shershaby-85660a231"));
-                },
-                child: const FaIcon(FontAwesomeIcons.linkedin),
-                // Image.asset(
-                //   'assets/images/icons/linkedin.png',
-                //   width: 46,
-                //   height: 46,
-                //   cacheWidth: (220 * 0.7).toInt(),
-                //   cacheHeight: (560 * 0.7).toInt(),
-                // ),
-              ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------
+//  LEFT COLUMN: About, Education, Graduation Project, Languages
+// ---------------------------------------------------------------------
+class _LeftColumn extends StatelessWidget {
+  final double bodyFontSize;
+  final double sectionTitleSize;
+
+  const _LeftColumn({
+    required this.bodyFontSize,
+    required this.sectionTitleSize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _SectionTitle(title: 'About', fontSize: sectionTitleSize),
+        const SizedBox(height: 16),
+        Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color:
+                  Theme.of(context).colorScheme.outline.withValues(alpha: 0.2),
+              width: 1,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Text(
+              'Passionate about creating meaningful digital experiences that simplify lives and solve real-world problems. As a Flutter developer, I focus on building efficient, user-friendly applications that blend functionality with intuitive design. Driven by a desire to continuously learn and innovate, I thrive in collaborative environments where I can contribute to impactful projects and grow alongside my team.',
+              style: GoogleFonts.raleway(
+                fontSize: bodyFontSize,
+                height: 1.6,
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 40),
+        _SectionTitle(title: 'Education', fontSize: sectionTitleSize),
+        const SizedBox(height: 16),
+        _InfoCard(
+          title: 'Bachelor of Computer Science',
+          subtitle: 'FCAI - Cairo University, Egypt',
+          date: '2020 - 2024',
+          bodyFontSize: bodyFontSize,
+        ),
+        const SizedBox(height: 32),
+        _SectionTitle(title: 'Graduation Project', fontSize: sectionTitleSize),
+        const SizedBox(height: 16),
+        Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color:
+                  Theme.of(context).colorScheme.outline.withValues(alpha: 0.2),
+              width: 1,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Environmental Data Processing System',
+                  style: GoogleFonts.raleway(
+                    fontSize: bodyFontSize + 2,
+                    fontWeight: FontWeight.w600,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  '• Built a Flask-based backend for processing and visualizing complex NetCDF environmental datasets.\n'
+                  '• Integrated Firebase for storage and database management.\n'
+                  '• Led the project team, managed tasks, communicated with supervisors, and ensured timely delivery.',
+                  style: GoogleFonts.raleway(
+                    fontSize: bodyFontSize,
+                    height: 1.6,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 32),
+        _SectionTitle(title: 'Languages', fontSize: sectionTitleSize),
+        const SizedBox(height: 16),
+        const Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          children: [
+            _LanguageChip(label: 'Arabic (Native)'),
+            _LanguageChip(label: 'English (Professional)'),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+// ---------------------------------------------------------------------
+//  RIGHT COLUMN: Experience, Skills
+// ---------------------------------------------------------------------
+class _RightColumn extends StatelessWidget {
+  final double bodyFontSize;
+  final double sectionTitleSize;
+
+  const _RightColumn({
+    required this.bodyFontSize,
+    required this.sectionTitleSize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _SectionTitle(title: 'Experience', fontSize: sectionTitleSize),
+        const SizedBox(height: 16),
+        _ExperienceTile(
+          title: 'Mid Level Flutter Developer',
+          company: 'HarmoniQ Innovation Technology',
+          date: 'June 2025 - Present',
+          bodyFontSize: bodyFontSize,
+        ),
+        _ExperienceTile(
+          title: 'Junior Flutter Developer',
+          company: 'Tuwaiq',
+          date: 'March 2024 - June 2025',
+          bodyFontSize: bodyFontSize,
+        ),
+        _ExperienceTile(
+          title: 'Flutter Instructor',
+          company: 'Microsoft Student Partner',
+          date: 'April 2023 - July 2023',
+          bodyFontSize: bodyFontSize,
+        ),
+        const SizedBox(height: 40),
+        _SectionTitle(title: 'Skills', fontSize: sectionTitleSize),
+        const SizedBox(height: 16),
+        Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color:
+                  Theme.of(context).colorScheme.outline.withValues(alpha: 0.2),
+              width: 1,
+            ),
+          ),
+          child: const Padding(
+            padding: EdgeInsets.all(24),
+            child: Wrap(
+              spacing: 12,
+              runSpacing: 12,
+              children: [
+                _SkillChip(label: 'Flutter'),
+                _SkillChip(label: 'Dart'),
+                _SkillChip(label: 'Firebase'),
+                _SkillChip(label: 'Git'),
+                _SkillChip(label: 'GitHub'),
+                _SkillChip(label: 'Figma'),
+                _SkillChip(label: 'Provider'),
+                _SkillChip(label: 'Bloc'),
+                _SkillChip(label: 'Dio'),
+                _SkillChip(label: 'Shared Preferences'),
+                _SkillChip(label: 'Hive'),
+                _SkillChip(label: 'REST API'),
+                _SkillChip(label: 'JSON'),
+                _SkillChip(label: 'Caching'),
+                _SkillChip(label: 'Unit Test'),
+                _SkillChip(label: 'Localization'),
+                _SkillChip(label: 'Clean Architecture'),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ---------------------------------------------------------------------
+//  Reusable components
+// ---------------------------------------------------------------------
+class _SectionTitle extends StatelessWidget {
+  final String title;
+  final double fontSize;
+  const _SectionTitle({required this.title, required this.fontSize});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: GoogleFonts.raleway(
+        fontSize: fontSize,
+        fontWeight: FontWeight.w700,
+        color: Theme.of(context).colorScheme.primary,
+      ),
+    );
+  }
+}
+
+class _InfoCard extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final String date;
+  final double bodyFontSize;
+
+  const _InfoCard({
+    required this.title,
+    required this.subtitle,
+    required this.date,
+    required this.bodyFontSize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: GoogleFonts.raleway(
+              fontSize: bodyFontSize + 2,
+              fontWeight: FontWeight.w600,
+              color: colorScheme.onSurface,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            subtitle,
+            style: GoogleFonts.raleway(
+              fontSize: bodyFontSize,
+              color: colorScheme.onSurfaceVariant,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            date,
+            style: GoogleFonts.raleway(
+              fontSize: bodyFontSize - 2,
+              color: colorScheme.primary,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ],
       ),
     );
   }
-  Widget navigationArrows(context,leftPadding,color,bottomPosition, isMobile){
-    return Positioned(
-      bottom: bottomPosition,
-      child: Container(
-        color: color,
-        height: isMobile?null:107,
-        padding:isMobile?
-        EdgeInsets.all( leftPadding):EdgeInsets.only(left: leftPadding, right: 20),
-        child: GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ProjectsPage(),),
-            );
-          },
-          child: Row(
-            children: [
-              Text(
-                "Projects",
-                style: TextStyle(
-                  color: color == Theme.of(context).colorScheme.surface? Theme.of(context).textTheme.titleLarge?.color: const Color(0xffFFFFFF),
-                  fontSize: isMobile?24:32,
-                  fontFamily: 'Raleway',
-                ),
-              ),
-              SizedBox(width:isMobile?10: 20),
-              Image.asset(
-                'assets/images/icons/Vector.png',
-                color: color == Theme.of(context).colorScheme.surface? Theme.of(context).textTheme.titleLarge?.color: const Color(0xffFFFFFF),
-                width: isMobile? 48:92,
-                height: isMobile? 24:46,
-                cacheWidth: (220 * 0.7).toInt(),
-                cacheHeight: (560 * 0.7).toInt(),
-              ),
-            ],
+}
+
+class _ExperienceTile extends StatelessWidget {
+  final String title;
+  final String company;
+  final String date;
+  final double bodyFontSize;
+
+  const _ExperienceTile({
+    required this.title,
+    required this.company,
+    required this.date,
+    required this.bodyFontSize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 4),
+            width: 10,
+            height: 10,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: colorScheme.primary,
+            ),
           ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: GoogleFonts.raleway(
+                    fontSize: bodyFontSize + 1,
+                    fontWeight: FontWeight.w600,
+                    color: colorScheme.onSurface,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  company,
+                  style: GoogleFonts.raleway(
+                    fontSize: bodyFontSize,
+                    color: colorScheme.onSurfaceVariant,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  date,
+                  style: GoogleFonts.raleway(
+                    fontSize: bodyFontSize - 2,
+                    color: colorScheme.primary,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SkillChip extends StatelessWidget {
+  final String label;
+  const _SkillChip({required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+      decoration: BoxDecoration(
+        color: colorScheme.primary,
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: Text(
+        label,
+        style: GoogleFonts.raleway(
+          fontSize: 14,
+          color: colorScheme.onPrimary,
+          fontWeight: FontWeight.w500,
         ),
       ),
     );
   }
-  Widget toggleThemeButton(themeProvider){
-    return const SizedBox();
-    //   Positioned(
-    //   top: 20,
-    //   right: 20,
-    //   child: IconButton(
-    //     icon: themeProvider.themeMode == ThemeMode.dark
-    //         ? const Icon(Icons.light_mode)
-    //         : const Icon(Icons.dark_mode),
-    //     onPressed: themeProvider.toggleTheme,
-    //   ),
-    // );
+}
+
+class _LanguageChip extends StatelessWidget {
+  final String label;
+  const _LanguageChip({required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      decoration: BoxDecoration(
+        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+        borderRadius: BorderRadius.circular(30),
+        border: Border.all(color: colorScheme.outline.withValues(alpha: 0.3)),
+      ),
+      child: Text(
+        label,
+        style: GoogleFonts.raleway(
+          fontSize: 14,
+          color: colorScheme.onSurfaceVariant,
+        ),
+      ),
+    );
   }
-  Widget verticalBlackLine(context,leftPadding){
-    return Positioned(
-      left: leftPadding,
-      child: Container(
-        // for the color check if the theme is dark or light
-        color:Theme.of(context).colorScheme.onSurface,
-        width: 3,
-        height: MediaQuery.of(context).size.height,
+}
+
+// ---------------------------------------------------------------------
+//  FOOTER: Projects navigation arrow (animated)
+// ---------------------------------------------------------------------
+class _ProjectsNavigation extends StatelessWidget {
+  final bool isMobile;
+  final double screenWidth;
+
+  const _ProjectsNavigation({
+    required this.isMobile,
+    required this.screenWidth,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return Center(
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => ProjectsPage()),
+            );
+          },
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: isMobile ? 24 : 32,
+              vertical: isMobile ? 10 : 14,
+            ),
+            decoration: BoxDecoration(
+              color: colorScheme.primary.withValues(alpha: .7),
+              borderRadius: BorderRadius.circular(50),
+              boxShadow: [
+                BoxShadow(
+                  color: colorScheme.shadow.withValues(alpha: .5),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'View Projects',
+                  style: GoogleFonts.raleway(
+                    fontSize: isMobile ? 18 : 22,
+                    fontWeight: FontWeight.w600,
+                    color: colorScheme.onPrimary,
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Icon(
+                  Icons.arrow_forward,
+                  color: colorScheme.onPrimary,
+                  size: isMobile ? 24 : 28,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
