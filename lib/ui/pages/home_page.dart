@@ -232,7 +232,7 @@ class _ProfileAvatar extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.inverseSurface,
       child: ClipOval(
         child: Image.asset(
-          'images/profile.jpeg',
+          'assets/images/profile.jpeg',
           width: radius * 2,
           height: radius * 2,
           fit: BoxFit.cover,
