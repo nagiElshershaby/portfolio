@@ -67295,7 +67295,7 @@ A.z2.prototype={
 J(a){var s=this.c,r=A.aa(a).ax,q=r.xr
 r=q==null?r.k3:q
 q=s*2
-return new A.BT(new A.C5(A.aeg("images/profile.jpeg",new A.a9f(this,a),B.jz,null,q,q),null),r,s,null)}}
+return new A.BT(new A.C5(A.aeg("assets/images/profile.jpeg",new A.a9f(this,a),B.jz,null,q,q),null),r,s,null)}}
 A.a9f.prototype={
 $3(a,b,c){return A.DE(B.Bc,A.aa(this.b).ax.c,null,null,this.a.c)},
 $S:438}
