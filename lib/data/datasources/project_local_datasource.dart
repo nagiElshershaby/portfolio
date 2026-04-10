@@ -216,7 +216,7 @@ class ProjectLocalDatasource {
         ],
         googlePlay:
             'https://play.google.com/store/apps/details?id=com.prof_nagi.fits',
-        github: 'https://github.com/nagiElshershaby/Fits',
+        // github: 'https://github.com/nagiElshershaby/Fits',
         lastUpdate: '2025',
         features: [
           'Feature-First Clean Architecture with abstract repository interfaces for easy future sync (e.g. Google Drive)',

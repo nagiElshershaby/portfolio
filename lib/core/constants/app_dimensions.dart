@@ -10,10 +10,11 @@ class AppDimensions {
   static const double tabletPadding = 40;
   static const double desktopPadding = 64;
 
-  // Border radii
-  static const double cardRadius = 20;
-  static const double chipRadius = 30;
-  static const double buttonRadius = 100;
+  // Border radii — subtle, not circular
+  static const double cardRadius = 12;
+  static const double chipRadius = 8;
+  static const double buttonRadius = 8;
+  static const double navButtonRadius = 10;
 
   // Font sizes
   static const double titleMobile = 32;

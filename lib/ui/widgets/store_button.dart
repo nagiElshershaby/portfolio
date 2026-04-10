@@ -44,7 +44,7 @@ class _StoreButtonState extends State<StoreButton> {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
               color: _hovered ? cs.primary : Colors.transparent,
-              borderRadius: BorderRadius.circular(100),
+              borderRadius: BorderRadius.circular(8),
               border: Border.all(
                 color: _hovered ? cs.primary : cs.outline,
                 width: 1,

@@ -43,7 +43,7 @@ class _SocialIconButtonState extends State<SocialIconButton> {
                 const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             decoration: BoxDecoration(
               color: _hovered ? cs.primary : Colors.transparent,
-              borderRadius: BorderRadius.circular(100),
+              borderRadius: BorderRadius.circular(8),
               border: Border.all(
                 color: _hovered ? cs.primary : cs.outline,
                 width: 1,
