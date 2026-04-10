@@ -285,7 +285,7 @@ class _HeroText extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          'Flutter Developer',
+          'Software Engineer | Flutter Developer',
           style: GoogleFonts.raleway(
             fontSize: subtitleFontSize,
             fontWeight: FontWeight.w400,
@@ -427,7 +427,23 @@ class _LeftColumn extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(24),
             child: Text(
-              'Passionate about creating meaningful digital experiences that simplify lives and solve real-world problems. As a Flutter developer, I focus on building efficient, user-friendly applications that blend functionality with intuitive design. Driven by a desire to continuously learn and innovate, I thrive in collaborative environments where I can contribute to impactful projects and grow alongside my team.',
+              '''I build Flutter applications that work — for real users, in real markets.
+
+Over the past 3+ years, I've delivered mobile products for clients across Egypt, Saudi Arabia, and the United States. My work has reached hundreds of users and earned the kind of trust that turns one project into a long-term partnership.
+
+I approach every problem the same way: understand it fully before writing a single line of code. Clean architecture, maintainable structure, and meaningful UX are non-negotiables for me — not afterthoughts.
+
+What I bring to a team:
+
+  - 3+ years building production Flutter applications
+  - Cross-market experience across three countries
+  - Strong foundation in clean, scalable mobile architecture
+  - Recent exposure to Java and expanding my backend understanding
+  - A mindset focused on shipping things that actually help people
+
+I'm open to Flutter developer roles where I can contribute from day one, keep growing technically, and be part of a team that cares about what it builds.
+
+If that sounds like your team, I'd like to connect.''',
               style: GoogleFonts.raleway(
                 fontSize: bodyFontSize,
                 height: 1.6,

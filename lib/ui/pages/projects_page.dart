@@ -271,7 +271,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
 
     Project changingRoom = Project(
       name: 'The Closet',
-      type: "Personal Project – Virtual Dressing Room & Outfit Visualization",
+      type: "Personal Project – The Concept That Turned Into Fits",
       description: 'The Closet is a personal concept project for a fashion app that helps users to organize their clothes and plan their outfits.',
       github: 'https://github.com/nagiElshershaby/Changing-Room/tree/master',
       backgroundUrl: 'assets/images/bg/closet_bg.png',
@@ -294,7 +294,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
         "State management using Provider",
         "Responsive UI with flutter_screenutil",
       ],
-      status: "In Development",
+      status: "Concept Only - Evolved into Fits App",
     );
 
     Project zahraFlowers = Project(
@@ -319,6 +319,51 @@ class _ProjectsPageState extends State<ProjectsPage> {
       notes: "A friend commissioned this project. Initially, the assignment seemed straightforward—edit and complete a Shopify template app. However, I discovered that the provided access code was non-functional. I located the section of the code that verified the access code and implemented a workaround. Although this solution met the client's requirements, it was not a viable approach for store publication. Consequently, the app was not uploaded to any public stores, and the code remains private.",
     );
 
+    Project fitsApp = Project(
+      name: 'Fits',
+      type: "Personal Project – Wardrobe Management & Outfit Tracking",
+      description: 'A personal style archive that helps you stop forgetting outfits you love. '
+          'Log every look with its original capture date, organize with tags, and rediscover '
+          'past outfits through smart filters. The Studio feature lets you drag, layer, scale, '
+          'and crop pieces from different photos onto a free-form canvas to prototype new '
+          'combinations — all offline, with no account required.',
+      // backgroundUrl: 'assets/images/bg/fits_bg.png',
+      imagesUrls: [
+        "assets/images/fits/fits1.jpeg",
+        "assets/images/fits/fits2.jpeg",
+        "assets/images/fits/fits3.jpeg",
+        "assets/images/fits/fits4.jpeg",
+        "assets/images/fits/fits5.jpeg",
+        "assets/images/fits/fits6.jpeg",
+        "assets/images/fits/fits7.jpeg",
+        "assets/images/fits/fits8.jpeg",
+        "assets/images/fits/fits9.jpeg",
+        "assets/images/fits/fits10.jpeg",
+        "assets/images/fits/fits11.jpeg",
+        "assets/images/fits/fits12.jpeg",
+      ],
+      googlePlay: 'https://play.google.com/store/apps/details?id=com.prof_nagi.fits',
+      github: 'https://github.com/nagiElshershaby/Fits',
+      lastUpdate: '2025',
+      features: [
+        "Feature-First Clean Architecture with abstract repository interfaces for easy future sync (e.g. Google Drive)",
+        "Mix & Match Studio: free-form canvas with draggable, scalable, rotatable, and croppable layers",
+        "Drag-to-reorder layer panel with live square thumbnails showing z-order",
+        "EXIF metadata extraction to preserve original photo capture dates on import",
+        "Multi-image gallery import with per-image crop flow",
+        "Season filters with Any Year toggle — matches date windows across your entire history",
+        "On This Day filter — surfaces every outfit worn on today's date in any past year",
+        "Bulk selection mode: long-press to select, then delete, tag, or send to Studio",
+        "Interactive pinch-to-zoom in outfit detail view",
+        "Dark mode with system-aware theming via Forui",
+        "Local persistence using SQLite via sqflite",
+        "State management with Provider & ChangeNotifier",
+        "Native image cropping via image_cropper (UCrop on Android)",
+        "R8 release optimisation with custom ProGuard rules",
+      ],
+      status: "Live",
+    );
+
     return [
       magdouHealth,
       crewCoreApp,
@@ -326,6 +371,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
       zahraFlowers,
       ahadithApp,
       changingRoom,
+      fitsApp,
     ];
   }
 }
