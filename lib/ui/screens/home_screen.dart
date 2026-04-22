@@ -119,10 +119,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 const SizedBox(height: 80),
                 const Divider(),
-                const SizedBox(height: 48),
 
                 // ── Projects ───────────────────────────────────────────────
                 SizedBox(key: _projectsKey, height: 0),
+                const SizedBox(height: 48),
                 SectionTitle(title: 'Projects', fontSize: secFs)
                     .animate()
                     .fadeIn(delay: 700.ms, duration: 700.ms),
@@ -309,7 +309,7 @@ class _ProjectsScrollButtonState extends State<_ProjectsScrollButton> {
           duration: const Duration(milliseconds: 150),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 4),
             decoration: BoxDecoration(
               color: _hovered ? cs.primary : Colors.transparent,
               borderRadius: BorderRadius.circular(8),
