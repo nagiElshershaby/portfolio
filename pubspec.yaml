@@ -39,6 +39,7 @@ flutter:
     - assets/images/
     - assets/images/profile/
     - assets/images/fits/
+    - assets/images/nafis_nafsak/
 
   fonts:
     - family: Raleway
