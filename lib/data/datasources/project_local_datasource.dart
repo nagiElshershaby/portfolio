@@ -107,6 +107,28 @@ class ProjectLocalDatasource {
         status: 'Live - Ongoing',
       ),
       Project(
+        name: 'نافس نفسك',
+        type: 'FreeLancing Tasks only – Educational Application',
+        description:
+            'Compete with Yourself is an innovative educational application that helps students improve their academic level through a smart and interactive assessment system. The application allows students to take exams in various academic subjects, analyze their performance, and identify their strengths and weaknesses, which enhances their understanding and motivates them to excel.',
+        backgroundUrl: 'assets/images/bg/rozemoon_bg.png',
+        imagesUrls: [
+          'assets/images/nafis_nafsak/nafis_nafsak_1.png',
+          'assets/images/nafis_nafsak/nafis_nafsak_2.png',
+          'assets/images/nafis_nafsak/nafis_nafsak_3.png',
+          'assets/images/nafis_nafsak/nafis_nafsak_4.png',
+          'assets/images/nafis_nafsak/nafis_nafsak_5.png',
+          'assets/images/nafis_nafsak/nafis_nafsak_6.png',
+          'assets/images/nafis_nafsak/nafis_nafsak_7.png',
+          'assets/images/nafis_nafsak/nafis_nafsak_8.png',
+        ],
+        googlePlay:
+            'https://play.google.com/store/apps/details?id=com.nafis.nafsak&hl=en',
+        // appStore: 'https://apps.apple.com/eg/app/roze-moon/id6739536345',
+        lastUpdate: '2025',
+        status: 'Live - Ongoing',
+      ),
+      Project(
         name: 'Zahra Flowers',
         type: 'Freelance Project – Shopify Template Customization',
         description:

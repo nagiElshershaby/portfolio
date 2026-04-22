@@ -484,15 +484,15 @@ class _ProjectEntry extends StatelessWidget {
             ],
 
             // Features ─────────────────────────────────────────────────────────
-            if (project.features?.isNotEmpty == true) ...[
-              const SizedBox(height: 24),
-              SectionTitle(title: 'Key Features', fontSize: secFs - 4),
-              const SizedBox(height: 12),
-              Wrap(
-                spacing: 10, runSpacing: 10,
-                children: project.features!.map((f) => _FilledChip(label: f)).toList(),
-              ),
-            ],
+            // if (project.features?.isNotEmpty == true) ...[
+            //   const SizedBox(height: 24),
+            //   SectionTitle(title: 'Key Features', fontSize: secFs - 4),
+            //   const SizedBox(height: 12),
+            //   Wrap(
+            //     spacing: 10, runSpacing: 10,
+            //     children: project.features!.map((f) => _FilledChip(label: f)).toList(),
+            //   ),
+            // ],
 
             // Notes ───────────────────────────────────────────────────────────
             if (project.notes?.isNotEmpty == true) ...[
